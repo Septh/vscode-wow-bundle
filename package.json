@@ -53,11 +53,11 @@
 		]
 	},
 	"bugs": {
-		"url": "https://github.com/Septh/vscode-language-lua-wow/issues"
+		"url": "https://github.com/Septh/vscode-wow-bundle/issues"
 	},
-	"homepage": "https://github.com/Septh/vscode-language-lua-wow/blob/master/README.md",
+	"homepage": "https://github.com/Septh/vscode-wow-bundle/blob/master/README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Septh/vscode-language-lua-wow"
+		"url": "https://github.com/Septh/vscode-wow-bundle"
 	}
 }
