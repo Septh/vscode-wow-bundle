@@ -273,7 +273,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;![^.]\.|:)(date|time|bit\.(bnot|band|bor|bxor|lshift|rshift|arshift|mod)|coroutine\.(create|resume|running|status|wrap|yield)|(string\.|:)(byte|char|dump|find|format|gmatch|gsub|len|lower|match|rep|reverse|sub|upper)|(table\.|:)(concat|insert|maxn|pack|remove|sort|unpack)|math(\.(abs|acos|asin|atan2?|ceil|cosh?|deg|exp|floor|fmod|frexp|ldexp|log|log10|max|min|modf|pow|rad|random|randomseed|sinh?|sqrt|tanh?))?)\b</string>
+			<string>(?&lt;![^.]\.|:)\b(date|time|bit\.(bnot|band|bor|bxor|lshift|rshift|arshift|mod)|coroutine\.(create|resume|running|status|wrap|yield)|(string\.|:)(byte|char|dump|find|format|gmatch|gsub|len|lower|match|rep|reverse|sub|upper)|(table\.|:)(concat|insert|maxn|pack|remove|sort|unpack)|math(\.(abs|acos|asin|atan2?|ceil|cosh?|deg|exp|floor|fmod|frexp|ldexp|log|log10|max|min|modf|pow|rad|random|randomseed|sinh?|sqrt|tanh?))?)\b</string>
 			<key>name</key>
 			<string>support.function.library.lua</string>
 		</dict>
