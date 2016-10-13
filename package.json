@@ -3,7 +3,7 @@
 	"displayName": "Wow Bundle",
 	"description": "World of Warcraft addon developper tools for VS Code",
 	"version": "1.0.0",
-	"icon": "./images/wow-icon.png",
+	"icon": "images/wow-icon.png",
 	"publisher": "Septh",
 	"license": "MIT",
 	"galleryBanner": {
@@ -15,7 +15,7 @@
 	},
 	"categories": [ "Languages", "Themes" ],
 	"keywords": [
-		"WoW", "World of Warcraft", "FrameXML", "Lua", "toc", "Dark+"
+		"WoW", "World of Warcraft", "FrameXML", "Lua", "Dark+"
 	],
 	"contributes": {
 		"languages": [
