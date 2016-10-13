@@ -8,6 +8,8 @@ This World of Warcraft addon developper toolset for VS Code includes an improved
 * `.toc` file colorization
 * A new, dedicated color theme based on VS Code's Dark+
 
+![Lua](images/lua.png)
+
 
 ### Grammars
 
@@ -32,11 +34,17 @@ Also included is a grammar for `.toc` files with the following scopes:
 * **keyword.language** - keywords like `##Interface`, `##Author` and such
 * **support.language** - X-keywords like `##X-Date`, `##W-Website` and such
 
+![Toc](images/toc.png)
+
+
 
 ### Colorization
 Standard VS Code themes should work well with these scopes as long as they know how to deal with `support.function`, `support.class`, `support.variable` and `support.constant` scopes. These scopes are generally common to all languages.
 
 However, for further colorization granularity, wow-bundle also includes a specific theme based on VS Code's Dark+ default theme and called **Dark+ (WoW)**. To enable this theme, open the Color Theme picker with **File** > **Preferences** > **Color Theme** (or **Code** > **Preferences** > **Color Theme** on Mac).
+
+![theme](images/theme.gif)
+
 
 **Dark+ (WoW)** only colorizes your `.lua` and `.toc` files and will not interfere with any other language you may use - standard Dark+ colors will still apply to them.
 
@@ -53,6 +61,7 @@ These are the currently known issues with wow-bundle. Should you whish to collab
 
 * Fix above issues
 * Add code snippets
+* Support XML declarations too (low on my priority list, though)
 * Support VS Code light themes?
 * Add support for popular libraries like Ace3?
 
