@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>wow-toc</string>
+	<key>fileTypes</key>
+	<array>
+		<string>toc</string>
+	</array>
+
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>match</key>
+			<string>^## (Interface|Title(\-....)?|Notes(\-....)?|RequiredDeps|Dependencies|OptionalDeps|LoadOnDemand|LoadWith|LoadManagers|SavedVariables|SavedVariablesPerCharacter|DefaultState|Secure|Author|Version)\:</string>
+			<key>name</key>
+			<string>keyword.language.toc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^## (X\-[-A-Za-z0-9]*)\:</string>
+			<key>name</key>
+			<string>support.language.toc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(^#[^#]*)</string>
+			<key>name</key>
+			<string>comment.toc</string>
+		</dict>
+		<!--
+		<dict>
+			<key>match</key>
+			<string>(^.*\.(lua|xml))</string>
+			<key>name</key>
+			<string>variable.other.toc</string>
+		</dict>
+		-->
+	</array>
+	<key>scopeName</key>
+	<string>source.toc</string>
+	<key>uuid</key>
+	<string>C22B105F-216F-4779-9E20-7C881A2B0C99</string>
+</dict>
+</plist>

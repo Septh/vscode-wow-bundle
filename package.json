@@ -1,0 +1,63 @@
+{
+	"name": "wow-bundle",
+	"displayName": "Wow Bundle",
+	"description": "World of Warcraft addon developper tools for VS Code",
+	"version": "1.0.0",
+	"icon": "./images/wow-icon.png",
+	"publisher": "Septh",
+	"license": "MIT",
+	"galleryBanner": {
+		"color": "#FFFFFF",
+		"theme": "light"
+	},
+	"engines": {
+		"vscode": "^1.4.0"
+	},
+	"categories": [ "Languages", "Themes" ],
+	"keywords": [
+		"WoW", "World of Warcraft", "FrameXML", "Lua", "toc", "Dark+"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "lua",
+				"extensions": [ ".lua" ],
+				"aliases": [ "Lua", "WoW", "Lua-WoW", "lua-wow" ],
+				"configuration": "./languages/lua-language-configuration.json"
+			},
+			{
+				"id": "toc",
+				"extensions": [ ".toc" ],
+				"aliases": [ "TOC" ],
+				"configuration": "./languages/toc-language.configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "lua",
+				"scopeName": "source.lua",
+				"path": "./languages/grammars/wow-lua.tmLanguage"
+			},
+			{
+				"language": "toc",
+				"scopeName": "source.toc",
+				"path": "./languages/grammars/wow-toc.tmLanguage"
+			}
+		],
+		"themes": [
+			{
+				"label": "Dark+ (WoW)",
+				"uiTheme": "vs-dark",
+				"path": "./themes/dark_plus_wow.json"
+			}
+		]
+	},
+	"bugs": {
+		"url": "https://github.com/Septh/vscode-language-lua-wow/issues"
+	},
+	"homepage": "https://github.com/Septh/vscode-language-lua-wow/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Septh/vscode-language-lua-wow"
+	}
+}

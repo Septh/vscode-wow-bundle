@@ -1,0 +1,203 @@
+{
+	"name": "Dark+ (Wow)",
+	"include": "./dark_plus.json",
+	"settings": [
+
+		// TOC file
+		{
+			"name": "AddOn TOC file tags",
+			"scope": "keyword.language.toc",
+			"settings": {
+				"foreground": "#FF8000"
+			}
+		},
+		{
+			"name": "AddOn TOC file custom tags",
+			"scope": "support.language.toc",
+			"settings": {
+				"foreground": "#FFD900"
+			}
+		},
+		{
+			"name": "AddOn TOC file includes",
+			"scope": "variable.other.toc",
+			"settings": {
+				"foreground": "#7FC048"
+			}
+		},
+		{
+			"name": "AddOn TOC file comments",
+			"scope": [
+				"comment.toc"
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#74996B"
+			}
+		},
+
+		// Lua comments
+		{
+			"name": "Line comments",
+			"scope": [
+				"comment.line.double-dash.lua"
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#84BE76"
+			}
+		},
+		{
+			"name": "Block comments",
+			"scope": [
+				"comment.block.lua"
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#74996B"
+			}
+		},
+
+		// Lua strings
+		{
+			"name": "Single quoted strings",
+			"scope": [
+				"string.quoted.single.lua"
+			],
+			"settings": {
+				"foreground": "#A8FF60"
+			}
+		},
+		{
+			"name": "Double quoted strings",
+			"scope": [
+				"string.quoted.double.lua"
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#7FC048"
+			}
+		},
+
+		// Lua language
+		{
+			"name": "Lua keywords and standard library functions",
+			"scope": [
+				"keyword.control.lua",
+				"constant.language.lua",
+				"support.function.lua",
+				"support.function.library.lua"
+			],
+			"settings": {
+				"foreground": "#7FABFF"
+			}
+		},
+		{
+			"name": "Lua standard variales",
+			"scope": [
+				"variable.language.lua"
+			],
+			"settings": {
+				"foreground": "#9CDCFE"
+			}
+		},
+		{
+			"name": "Operators",
+			"scope": [
+				"keyword.operator.lua"
+			],
+			"settings": {
+				"foreground": "#C586C0"
+			}
+		},
+
+		// World of Warcraft API
+		{
+			"name": "WoW related stuff (generic)",
+			"scope": [
+				"support.function.wow",
+				"support.constant.wow",
+				"support.variable.wow",
+				"support.class.wow"
+			],
+			"settings": {
+				"foreground": "#FF8000"
+			}
+		},
+
+		{
+			"name": "WoW lua language extensions",
+			"scope": [
+				"support.function.wow.language"
+			],
+			"settings": {
+				"foreground": "#FF8800"
+			}
+		},
+
+		{
+			"name": "WoW API functions",
+			"scope": [
+				"support.function.wow.api"
+			],
+			"settings": {
+				"foreground": "#FF8000"
+			}
+		},
+		{
+			"name": "WoW API functions (protected/nocombat)",
+			"scope": [
+				"support.function.wow.api.protected",
+				"support.function.wow.api.nocombat"
+			],
+			"settings": {
+				"foreground": "#FF4800"
+			}
+		},
+
+		{
+			"name": "WoW library functions",
+			"scope": [
+				"support.function.wow.library"
+			],
+			"settings": {
+				"foreground": "#FFD900"
+			}
+		},
+
+		{
+			"name": "WoW classes methods and scripts",
+			"scope": [
+				"support.class.wow.method",
+				"support.class.wow.script"
+			],
+			"settings": {
+				"foreground": "#BA9E00"
+			}
+		},
+		{
+			"name": "WoW variables and constants",
+			"scope": [
+				"support.constant.wow",
+				"support.variable.wow.global"
+			],
+			"settings": {
+				"foreground": "#BA9E00"
+			}
+		},
+
+		{
+			"name": "WoW API (removed / deprecated stuff)",
+			"scope": [
+				"support.function.wow.removed",
+				"support.constant.wow.removed",
+				"support.variable.wow.removed",
+				"support.class.wow.removed"
+			],
+			"settings": {
+				"fontStyle": "underline",
+				"foreground": "#FF1E00"
+			}
+		}
+	]
+}
