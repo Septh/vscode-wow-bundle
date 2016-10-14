@@ -1,113 +1,62 @@
 {
 	"name": "Dark+ (Wow)",
-	"include": "./dark_plus.json",
+	"include": "./theme-defaults/dark_plus.json",
 	"settings": [
+
+		// Invalid -- just add underline to the current style
+		{
+			"scope": "invalid",
+			"settings": {
+				"fontStyle": "underline"
+			}
+		},
+
+		// Comments -- just add italics to the current style
+		{
+			"scope": [
+				"comment.toc",
+				"comment.lua"
+			],
+			"settings": {
+				"fontStyle": "italic"
+			}
+		},
 
 		// TOC file
 		{
-			"name": "AddOn TOC file tags",
+			"name": "Standard tags",
 			"scope": "keyword.language.toc",
 			"settings": {
-				"foreground": "#FF8000"
+				"foreground": "#ff8000"
 			}
 		},
 		{
-			"name": "AddOn TOC file custom tags",
+			"name": "Custom tags",
 			"scope": "support.language.toc",
 			"settings": {
-				"foreground": "#FFD900"
-			}
-		},
-		{
-			"name": "AddOn TOC file includes",
-			"scope": "variable.other.toc",
-			"settings": {
-				"foreground": "#7FC048"
-			}
-		},
-		{
-			"name": "AddOn TOC file comments",
-			"scope": [
-				"comment.toc"
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#74996B"
+				"foreground": "#ffaa00"
 			}
 		},
 
-		// Lua comments
+		// This is missing in Dark and Dark+ themes...
 		{
-			"name": "Line comments",
+			"name": "Lua language standard library",
 			"scope": [
-				"comment.line.double-dash.lua"
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#84BE76"
-			}
-		},
-		{
-			"name": "Block comments",
-			"scope": [
-				"comment.block.lua"
-			],
-			"settings": {
-				"fontStyle": "italic",
-				"foreground": "#74996B"
-			}
-		},
-
-		// Lua strings
-		{
-			"name": "Single quoted strings",
-			"scope": [
-				"string.quoted.single.lua"
-			],
-			"settings": {
-				"foreground": "#A8FF60"
-			}
-		},
-		{
-			"name": "Double quoted strings",
-			"scope": [
-				"string.quoted.double.lua"
-			],
-			"settings": {
-				"fontStyle": "bold",
-				"foreground": "#7FC048"
-			}
-		},
-
-		// Lua language
-		{
-			"name": "Lua keywords and standard library functions",
-			"scope": [
-				"keyword.control.lua",
-				"constant.language.lua",
-				"support.function.lua",
 				"support.function.library.lua"
 			],
 			"settings": {
-				"foreground": "#7FABFF"
+				"foreground": "#c586c0"
 			}
 		},
+
+		// Blizzard's extensions to Lua language
 		{
-			"name": "Lua standard variales",
+			"name": "Lua language extensions",
 			"scope": [
-				"variable.language.lua"
+				"support.function.wow.language.lua"
 			],
 			"settings": {
-				"foreground": "#9CDCFE"
-			}
-		},
-		{
-			"name": "Operators",
-			"scope": [
-				"keyword.operator.lua"
-			],
-			"settings": {
-				"foreground": "#C586C0"
+				"foreground": "#739be6"
 			}
 		},
 
@@ -121,17 +70,7 @@
 				"support.class.wow"
 			],
 			"settings": {
-				"foreground": "#FF8000"
-			}
-		},
-
-		{
-			"name": "WoW lua language extensions",
-			"scope": [
-				"support.function.wow.language"
-			],
-			"settings": {
-				"foreground": "#FF8800"
+				"foreground": "#ff8000"
 			}
 		},
 
@@ -141,7 +80,7 @@
 				"support.function.wow.api"
 			],
 			"settings": {
-				"foreground": "#FF8000"
+				"foreground": "#ff8000"
 			}
 		},
 		{
@@ -151,7 +90,7 @@
 				"support.function.wow.api.nocombat"
 			],
 			"settings": {
-				"foreground": "#FF4800"
+				"foreground": "#e67300"
 			}
 		},
 
@@ -161,7 +100,7 @@
 				"support.function.wow.library"
 			],
 			"settings": {
-				"foreground": "#FFD900"
+				"foreground": "#f28d00"
 			}
 		},
 
@@ -172,22 +111,22 @@
 				"support.class.wow.script"
 			],
 			"settings": {
-				"foreground": "#BA9E00"
+				"foreground": "#ffaa00"
 			}
 		},
 		{
-			"name": "WoW variables and constants",
+			"name": "WoW global variables and constants",
 			"scope": [
 				"support.constant.wow",
-				"support.variable.wow.global"
+				"support.variable.wow"
 			],
 			"settings": {
-				"foreground": "#BA9E00"
+				"foreground": "#ffd500"
 			}
 		},
 
 		{
-			"name": "WoW API (removed / deprecated stuff)",
+			"name": "WoW API removed/deprecated stuff",
 			"scope": [
 				"support.function.wow.removed",
 				"support.constant.wow.removed",
@@ -196,7 +135,7 @@
 			],
 			"settings": {
 				"fontStyle": "underline",
-				"foreground": "#FF1E00"
+				"foreground": "#f44747"
 			}
 		}
 	]
