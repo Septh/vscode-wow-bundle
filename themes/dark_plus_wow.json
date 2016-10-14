@@ -42,6 +42,8 @@
 		{
 			"name": "Lua language standard library",
 			"scope": [
+				"support.function.lua",
+				"support.function.metamethod.lua",
 				"support.function.library.lua"
 			],
 			"settings": {
@@ -56,7 +58,8 @@
 				"support.function.wow.language.lua"
 			],
 			"settings": {
-				"foreground": "#739be6"
+				// "foreground": "#739be6"
+				"foreground": "#ff8000"
 			}
 		},
 
