@@ -69,6 +69,10 @@ These are the currently known issues with wow-bundle. Should you whish to collab
 
 ## Release notes
 
+### 1.0.2
+
+* Stupid typo fix
+
 ### 1.0.1
 
 * Stop recolorizing the default Lua language constructs, you'll really get Dark+ colors for these.
