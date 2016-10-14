@@ -1,6 +1,6 @@
 {
 	"name": "wow-bundle",
-	"displayName": "Wow Bundle",
+	"displayName": "WoW Bundle",
 	"description": "World of Warcraft addon developper tools for VS Code",
 	"version": "1.0.1",
 	"icon": "images/wow-icon.png",
