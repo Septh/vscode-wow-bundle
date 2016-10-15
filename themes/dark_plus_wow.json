@@ -2,8 +2,7 @@
 	"name": "Dark+ (Wow)",
 	"include": "./theme-defaults/dark_plus.json",
 	"settings": [
-
-		// Invalid -- just add underline to the current style
+		// Invalids -- just add underline to the current style
 		{
 			"scope": "invalid",
 			"settings": {
@@ -22,49 +21,50 @@
 			}
 		},
 
-		// TOC file
-		{
-			"name": "Standard tags",
-			"scope": "keyword.language.toc",
-			"settings": {
-				"foreground": "#ff8000"
-			}
-		},
-		{
-			"name": "Custom tags",
-			"scope": "support.language.toc",
-			"settings": {
-				"foreground": "#ffaa00"
-			}
-		},
-
-		// This is missing in Dark and Dark+ themes...
+		// Lua -- These are missing in the default Dark and Dark+ themes
 		{
 			"name": "Lua language standard library",
 			"scope": [
 				"support.function.lua",
 				"support.function.metamethod.lua",
-				"support.function.library.lua"
+				"support.function.library.lua",
+				"keyword.operator"
 			],
 			"settings": {
-				"foreground": "#c586c0"
+				"foreground": "#c586c0"	// Same as keyword.control in dark_plus.json
 			}
 		},
 
-		// Blizzard's extensions to Lua language
+		// TOC colors
+		{
+			"name": "Standard tags",
+			"scope": "keyword.other.toc",
+			"settings": {
+				"foreground": "#c586c0"	// Same as keyword.control in dark_plus.json
+			}
+		},
+		{
+			"name": "Custom tags",
+			"scope": "support.other.toc",
+			"settings": {
+				"foreground": "#569cd6"	// Same as keyword.control in dark_vs.json
+			}
+		},
+
+		// Blizzard's Lua language extensions
 		{
 			"name": "Lua language extensions",
 			"scope": [
 				"support.function.wow.language.lua"
 			],
 			"settings": {
-				// "foreground": "#739be6"
 				"foreground": "#ff8000"
 			}
 		},
 
 		// World of Warcraft API
 		{
+			"comment": "Catches everything not defined below",
 			"name": "WoW related stuff (generic)",
 			"scope": [
 				"support.function.wow",
@@ -93,41 +93,90 @@
 				"support.function.wow.api.nocombat"
 			],
 			"settings": {
-				"foreground": "#e67300"
+				"foreground": "#cc6600"	// Slightly darker
 			}
 		},
 
 		{
-			"name": "WoW library functions",
+			"name": "WoW global functions",
 			"scope": [
 				"support.function.wow.library"
 			],
 			"settings": {
-				"foreground": "#f28d00"
+				"foreground": "#ffaf3e"	// Slightly lighter
 			}
 		},
-
 		{
-			"name": "WoW classes methods and scripts",
+			"name": "WoW global constants",
 			"scope": [
-				"support.class.wow.method",
-				"support.class.wow.script"
+				"support.constant.wow.global"
 			],
 			"settings": {
-				"foreground": "#ffaa00"
+				"foreground": "#ffd500"
 			}
 		},
 		{
-			"name": "WoW global variables and constants",
+			"name": "WoW global objects",
 			"scope": [
-				"support.constant.wow",
-				"support.variable.wow"
+				"support.class.wow.global"
 			],
 			"settings": {
 				"foreground": "#ffd500"
 			}
 		},
 
+		{
+			"name": "WoW widget methods",
+			"scope": [
+				"support.class.wow.method"
+			],
+			"settings": {
+				"foreground": "#ffaa00"
+			}
+		},
+
+		// String (quoted) constants
+		{
+			"comment": "Catches everything not defined below",
+			"name": "WoW string (quoted) constants",
+			"scope": [
+				"support.constant.wow.quoted"
+			],
+			"settings": {
+				"foreground": "#4ec9b0"
+			}
+		},
+		/*
+		{
+			"name": "WoW quoted constants: string parameters",
+			"scope": [
+				"support.constant.wow.quoted.function-parameter"
+			],
+			"settings": {
+				"foreground": "#4ec9b0"
+			}
+		},
+		{
+			"name": "WoW quoted constants: widget script handlers",
+			"scope": [
+				"support.constant.wow.quoted.script-handler"
+			],
+			"settings": {
+				"foreground": "#4ec9b0"
+			}
+		},
+		{
+			"name": "WoW quoted constants: event names",
+			"scope": [
+				"support.constant.wow.quoted.event-name"
+			],
+			"settings": {
+				"foreground": "#4ec9b0"
+			}
+		},
+		*/
+
+		// Removed/deprecated stuff
 		{
 			"name": "WoW API removed/deprecated stuff",
 			"scope": [

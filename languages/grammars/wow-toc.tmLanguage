@@ -15,28 +15,20 @@
 			<key>match</key>
 			<string>^## (Interface|Title(\-....)?|Notes(\-....)?|RequiredDeps|Dependencies|OptionalDeps|LoadOnDemand|LoadWith|LoadManagers|SavedVariables|SavedVariablesPerCharacter|DefaultState|Secure|Author|Version)\:</string>
 			<key>name</key>
-			<string>keyword.language.toc</string>
+			<string>keyword.other.toc</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^## (X\-[-A-Za-z0-9]*)\:</string>
+			<string>^## (X\-[a-zA-Z0-9-]+)\:</string>
 			<key>name</key>
-			<string>support.language.toc</string>
+			<string>support.other.toc</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(^#[^#]*)</string>
+			<string>(^#[^#]+)</string>
 			<key>name</key>
 			<string>comment.toc</string>
 		</dict>
-		<!--
-		<dict>
-			<key>match</key>
-			<string>(^.*\.(lua|xml))</string>
-			<key>name</key>
-			<string>variable.other.toc</string>
-		</dict>
-		-->
 	</array>
 	<key>scopeName</key>
 	<string>source.toc</string>
