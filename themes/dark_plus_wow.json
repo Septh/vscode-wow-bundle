@@ -25,10 +25,20 @@
 		{
 			"name": "Lua language standard library",
 			"scope": [
+				"keyword.operator",
+				"string.quoted.types.lua"
+			],
+			"settings": {
+				"foreground": "#569cd6"	// Same as keyword.control in dark_vs.json
+			}
+		},
+		{
+			"name": "Lua language standard library",
+			"scope": [
+				"keyword.operator.logical.lua",	// Let 'or', 'and' and 'not' look like keyw<ords
 				"support.function.lua",
 				"support.function.metamethod.lua",
-				"support.function.library.lua",
-				"keyword.operator"
+				"support.function.library.lua"
 			],
 			"settings": {
 				"foreground": "#c586c0"	// Same as keyword.control in dark_plus.json

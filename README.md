@@ -70,6 +70,10 @@ These are the currently known issues with wow-bundle. Should you whish to collab
 ## Release notes
 
 ### 1.0.5
+* [language.lua] Added support for Lua types (eg. `'string'`, `'table'`, `'function'`...) as returned by the the `type()` function
+* [language.lua] Don't highlight partial words like 'date' in 'update' or 'time' in 'downtime'
+* [language.lua] Added API constants for `texture:SetBlendMode()`: `'ADD'`, `'ALPHAKEY'`, `'BLEND'`, `'DISABLE'` and `'MOD'`
+* [language.toc] Allow all caracters in X-tags, not only numbers, letters and hyphen
 * [misc] Removed old `./sources` directory which was completely out of sync
 
 ### 1.0.4
@@ -82,7 +86,7 @@ These are the currently known issues with wow-bundle. Should you whish to collab
 ### 1.0.3
 * [language.toc] Renamed `keyword.language.toc` and `support.language.toc` scopes to `keyword.other.toc` and `support.other.toc`
 * [language.lua] Added a bunch of API definitions
-* [language.lua] `tinsert()` and `tremove()` were actually Blizzard language extensions that got removed in WoW 6.0.2
+* [language.lua] `tinsert()` and `tremove()` were actually Blizzard language extensions that got ~~removed~~ deprecated in WoW 6.0.2
 
 ### 1.0.2
 * [language.lua] Stupid typo fix

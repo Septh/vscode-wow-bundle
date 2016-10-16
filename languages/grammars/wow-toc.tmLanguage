@@ -19,7 +19,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^## (X\-[a-zA-Z0-9-]+)\:</string>
+			<string>^## (X\-[^:\s]+)\:</string>
 			<key>name</key>
 			<string>support.other.toc</string>
 		</dict>

@@ -112,6 +112,12 @@
 
 		<!-- These need to come before regular string patterns -->
 		<dict>
+			<key>name</key>
+			<string>string.quoted.types.lua</string>
+			<key>match</key>
+			<string>(['"])(nil|number|string|table|boolean|function|userdata|thread)(\1)</string>
+		</dict>
+		<dict>
 			<key>include</key>
 			<string>#wow-string-parameters</string>
 		</dict>
@@ -266,7 +272,7 @@
 			<key>match</key>
 			<string>\b(and|or|not)\b</string>
 			<key>name</key>
-			<string>keyword.operator.lua</string>
+			<string>keyword.operator.logical.lua</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -276,7 +282,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(assert|collectgarbage|dofile|error|getfenv|getmetatable|ipairs|loadfile|loadstring|module|next|pairs|pcall|rawequal|rawget|rawset|reqlibraryre|select|setfenv|setmetatable|tonumber|tostring|type|unpack|xpcall)\b</string>
+			<string>\b(assert|collectgarbage|dofile|error|getfenv|getmetatable|ipairs|loadfile|loadstring|module|next|pairs|pcall|rawequal|rawget|rawset|reqlibraryre|select|setfenv|setmetatable|tonumber|tostring|type|unpack|xpcall)(?=\s*\()\b</string>
 			<key>name</key>
 			<string>support.function.lua</string>
 		</dict>
@@ -288,7 +294,14 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;![^.]\.|:)(date|time|bit\.(bnot|band|bor|bxor|lshift|rshift|arshift|mod)|coroutine\.(create|resume|running|status|wrap|yield)|(string\.|:)(byte|char|dump|find|format|gmatch|gsub|len|lower|match|rep|reverse|sub|upper)|(table\.|:)(concat|insert|maxn|pack|remove|sort|unpack)|math(\.(abs|acos|asin|atan2?|ceil|cosh?|deg|exp|floor|fmod|frexp|ldexp|log|log10|max|min|modf|pow|rad|random|randomseed|sinh?|sqrt|tanh?))?)\b</string>
+			<string>\b(date|time|bit\.(bnot|band|bor|bxor|lshift|rshift|arshift|mod)|coroutine\.(create|resume|running|status|wrap|yield)|math(\.(abs|acos|asin|atan2?|ceil|cosh?|deg|exp|floor|fmod|frexp|ldexp|log|log10|max|min|modf|pow|rad|random|randomseed|sinh?|sqrt|tanh?))?)\b</string>
+			<key>name</key>
+			<string>support.function.library.lua</string>
+		</dict>
+		<dict>
+			<!-- Allow both simple and OO-style calls, eg. string.format(fmt, ...) and fmt:format(...) -->
+			<key>match</key>
+			<string>(?&lt;![^.]\.|:)((string\.|:)(byte|char|dump|find|format|gmatch|gsub|len|lower|match|rep|reverse|sub|upper)|(table\.|:)(concat|insert|maxn|pack|remove|sort|unpack))\b</string>
 			<key>name</key>
 			<string>support.function.library.lua</string>
 		</dict>
@@ -1478,7 +1491,7 @@
 		<key>wow-string-parameters-ci</key>
 		<dict>
 			<key>match</key>
-			<string>(['"])(?i)(Button|Browser|CheckButton|ColorSelect|CoolDown|Frame|Minimap|MovieFrame|PlayerModel|ScrollFrame|Slider|StatusBar|EditBox|MessageFrame|UICamera|CENTER|TOP|TOPLEFT|LEFT|BOTTOMLEFT|BOTTOM|BOTTOMRIGHT|RIGHT|TOPRIGHT|BACKGROUND|ARTWORK|BORDER|OVERLAY|LOW|MEDIUM|HIGH|DIALOG|FULLSCREEN|FULLSCREEN_DIALOG|TOOLTIP)(\1)</string>
+			<string>(['"])(?i)(Button|Browser|CheckButton|ColorSelect|CoolDown|Frame|Minimap|MovieFrame|PlayerModel|ScrollFrame|Slider|StatusBar|EditBox|MessageFrame|CENTER|TOP|TOPLEFT|LEFT|BOTTOMLEFT|BOTTOM|BOTTOMRIGHT|RIGHT|TOPRIGHT|BACKGROUND|ARTWORK|BORDER|OVERLAY|LOW|MEDIUM|HIGH|DIALOG|FULLSCREEN|FULLSCREEN_DIALOG|TOOLTIP|ADD|APLHAKEY|BLEND|DISABLE|MOD)(\1)</string>
 			<key>name</key>
 			<string>support.constant.wow.quoted.function-parameter.lua</string>
 		</dict>
