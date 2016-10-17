@@ -1,8 +1,9 @@
 {
-	"name": "Dark+ (Wow)",
-	"include": "./theme-defaults/dark_plus.json",
+	"name": "Monokai (Wow)",
+	"include": "./theme-monokai-dimmed/dimmed-monokai.json",
 	"settings": [
 		// Invalids -- just add underline to the current style
+		// Note: Monokai.tmTheme uses a background setting which is not supported by VS Code (yet?)
 		{
 			"scope": "invalid",
 			"settings": {
@@ -21,27 +22,16 @@
 			}
 		},
 
-		// Escapes -- bolder and slightly brighter than regular strings
+		// Lua -- These are missing in the default Monokai Dimmed theme
 		{
 			"scope": [
-				"constant.character.escape.lua"
-			],
-			"settings": {
-				"foreground": "#cfaa78",
-				"fontStyle": "bold"
-			}
-		},
-
-		// Lua -- These are missing in the default Dark and Dark+ themes
-		{
-			"scope": [
-				"support.function.lua",
+				// "support.function.lua",
+				// "support.function.library.lua",
 				"support.function.metamethod.lua",
-				"support.function.library.lua",
 				"keyword.operator.logical.lua"	// Make 'or', 'and' and 'not' look like keywords
 			],
 			"settings": {
-				"foreground": "#c586c0"			// Same as keyword.control in dark_plus.json
+				"foreground": "#9872a2"			// Same as keyword.function in dimmed-monokai.tmTheme
 			}
 		},
 		{
@@ -50,7 +40,7 @@
 				"string.quoted.types.lua"
 			],
 			"settings": {
-				"foreground": "#569cd6"			// Same as keyword.control in dark_vs.json
+				"foreground": "#676867"			// Same as keyword (which appears twice) in dimmed-monokai.tmTheme
 			}
 		},
 
@@ -58,13 +48,14 @@
 		{
 			"scope": "keyword.other.toc",
 			"settings": {
-				"foreground": "#c586c0"			// Same as keyword.control in dark_plus.json
+				"foreground": "#6089b4"			// Same as keyword #1 in dimmed-monokai.tmTheme
 			}
 		},
 		{
 			"scope": "support.other.toc",
 			"settings": {
-				"foreground": "#569cd6"			// Same as keyword.control in dark_vs.json
+				"foreground": "#676867",		// Same as keyword #2 in dimmed-monokai.tmTheme
+				"fontStyle": "italic"
 			}
 		},
 
@@ -74,7 +65,7 @@
 				"support.function.wow.language.lua"
 			],
 			"settings": {
-				"foreground": "#ff8000"
+				"foreground": "#9872a2"			// Same as keyword #2 in dimmed-monokai.tmTheme
 			}
 		},
 

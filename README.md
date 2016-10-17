@@ -1,18 +1,23 @@
 # wow-bundle for VS Code
-This World of Warcraft addon developper toolset for VS Code includes an improved Lua language grammar with WoW API knowledge, a .toc file grammar, colorization for both Lua and TOC sources, and more.
+
+This World of Warcraft addon developper toolset for VS Code includes an improved Lua language grammar with WoW API knowledge, a .toc file grammar, colorization for both .lua source and .toc files, and more.
 
 
 ## Features
-* Improved Lua grammar
+
+* Improved Lua grammar (see below)
 * Blizzard's Lua language extensions, WoW API and libraries support
 * `.toc` file colorization
-* A new, dedicated color theme based on VS Code's Dark+
+* Three new, dedicated color themes based on VS Code's Dark+, Monokai and Monokai Dimmed
 
 
 ### Grammars
 
 #### Lua source
-wow-bundle improves VS Code's built-in Lua language grammar. Worth noticing are references to metamethods, deprecated stuff like `foreach`/`foreachi` and  a bunch of WoW-related stuff with comprehensive scopes:
+wow-bundle improves VS Code's built-in Lua language grammar. Worth noticing are OO-style strings and tables support (eg. both `table.concat(mytable)` and `mytable:concat()` are supported), references to metamethods (`__index` & al.), deprecated features like `foreach`/`foreachi` warning.
+
+#### World of Warcraft API
+wow-bundle's Lua grammar file also tags a bunch of WoW-related stuff with these comprehensive scopes:
 
 * **support.function.wow.language.lua** - Blizzard's extensions to the Lua language like `wipe()`, `strjoin()`, etc.
 * **support.function.wow.api.lua** - World of Warcraft API functions, with 2 sub-scopes:
@@ -27,7 +32,10 @@ wow-bundle improves VS Code's built-in Lua language grammar. Worth noticing are 
 * **support.constant.wow.quoted.event-name.lua** - Game events like `'PLAYER_ENTERING_WORLD'`, `'VARIABLES_LOADED'` and such
 * **support.XXX.wow.removed.lua** - Removed and/or deprecated stuff in the API, were, `XXX` can be one of `function`, `class`, `variable` or `constant`
 
-![Lua](images/lua.png)
+These scopes make it easy to colorize everyting WoW-related. See **Colorization** below for details.
+
+
+![lua](images/lua.png)
 
 
 #### Toc files
@@ -36,16 +44,16 @@ Also included is a simple grammar for `.toc` files with the following scopes:
 * **keyword.other.toc** - keywords like `## Interface`, `## Author` and such
 * **support.other.toc** - X-keywords like `## X-Date`, `## X-Website` and such
 
-![Toc](images/toc.png)
+![toc](images/toc.png)
 
 
 ### Colorization
-Standard VS Code themes should work well with these scopes. However, for further colorization granularity, wow-bundle also includes a specific theme based on VS Code's Dark+ default theme and called **Dark+ (WoW)**. To enable this theme, open the Color Theme picker with **File** > **Preferences** > **Color Theme** (or **Code** > **Preferences** > **Color Theme** on Mac).
+Standard VS Code themes should work well with these scopes. However, for further colorization granularity, wow-bundle also includes several specific theme based on VS Code's default themes and called **Dark+ (WoW)**, **Monokai (WoW)** and **Monokai Dimmed (Wow)**. To choose one of these themes, open the Color Theme picker with **File** > **Preferences** > **Color Theme** (or **Code** > **Preferences** > **Color Theme** on Mac).
 
-![theme](images/theme.gif)
+![themes](images/themes.gif)
 
-**Dark+ (WoW)** only colorizes the scopes described above and does not interfere with Dark+ default colors for Lua or any other language you may use.
->New to 1.0.1: **Dark+ (WoW)** adds italics to comments and underline to invalid/deprecated keywords in Lua source files. I like it this way. :)
+wow-bundle's themes only colorizes the scopes described above and does not interfere with VS Code default colors for Lua or any other language you may use.
+>New since 1.0.1: I do add italics to comments and underline to invalid/deprecated keywords in Lua source files. I like it this way. :)
 
 
 ## Known Issues
@@ -69,11 +77,17 @@ These are the currently known issues with wow-bundle. Should you whish to collab
 
 ## Release notes
 
+### 1.0.6
+* [themes] Added the **Monokai (WoW)** and **Monokai Dimmed (WoW)** themes
+* [language.lua] Added the semicolon `;` as an operator (which it is, albeit an optional one)
+* [language.lua] Better character escapes matching and colorizing
+* [language.lua] Added some identifiers to `support.constant.wow.global.lua`
+
 ### 1.0.5
 * [language.lua] Added support for Lua types (eg. `'string'`, `'table'`, `'function'`...) as returned by the the `type()` function
 * [language.lua] Don't highlight partial words like 'date' in 'update' or 'time' in 'downtime'
 * [language.lua] Added API constants for `texture:SetBlendMode()`: `'ADD'`, `'ALPHAKEY'`, `'BLEND'`, `'DISABLE'` and `'MOD'`
-* [language.toc] Allow all caracters in X-tags, not only numbers, letters and hyphen
+* [language.toc] Allow all chars in X-tags, not only numbers, letters and hyphen
 * [misc] Removed old `./sources` directory which was completely out of sync
 
 ### 1.0.4
