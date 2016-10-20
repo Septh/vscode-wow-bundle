@@ -38,7 +38,8 @@
 				"support.function.lua",
 				"support.function.metamethod.lua",
 				"support.function.library.lua",
-				"keyword.operator.logical.lua"	// Make 'or', 'and' and 'not' look like keywords
+				// "keyword.operator.logical.lua",	// Make 'or', 'and' and 'not' look like keywords
+				"punctuation.definition.parameters"
 			],
 			"settings": {
 				"foreground": "#c586c0"			// Same as keyword.control in dark_plus.json
@@ -46,11 +47,18 @@
 		},
 		{
 			"scope": [
-				"keyword.operator",
-				"string.quoted.types.lua"
+				"keyword.operator"
 			],
 			"settings": {
 				"foreground": "#569cd6"			// Same as keyword.control in dark_vs.json
+			}
+		},
+		{
+			"scope": [
+				"string.quoted.types.lua"
+			],
+			"settings": {
+				"foreground": "#9cdcfe"			// Same as variable.name in dark_vs.json
 			}
 		},
 

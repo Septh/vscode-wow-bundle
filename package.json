@@ -1,8 +1,8 @@
 {
 	"name": "wow-bundle",
 	"displayName": "WoW Bundle",
-	"description": "World of Warcraft addon developper tools for VS Code",
-	"version": "1.0.6",
+	"description": "World of Warcraft addon developer toolset for VS Code",
+	"version": "1.0.7",
 	"icon": "images/wow-icon.png",
 	"publisher": "Septh",
 	"license": "MIT",
@@ -15,20 +15,20 @@
 	},
 	"categories": [ "Languages", "Themes" ],
 	"keywords": [
-		"WoW", "World of Warcraft", "FrameXML", "Lua", "Dark+"
+		"WoW", "World of Warcraft", "FrameXML", "Blizzard", "Lua"
 	],
 	"contributes": {
 		"languages": [
 			{
 				"id": "lua",
 				"extensions": [ ".lua" ],
-				"aliases": [ "Lua", "WoW", "Lua-WoW", "lua-wow" ],
+				"aliases": [ "Lua" ],
 				"configuration": "./languages/lua-language-configuration.json"
 			},
 			{
 				"id": "toc",
 				"extensions": [ ".toc" ],
-				"aliases": [ "TOC" ],
+				"aliases": [ "Toc", "TOC" ],
 				"configuration": "./languages/toc-language.configuration.json"
 			}
 		],
@@ -65,7 +65,7 @@
 	"bugs": {
 		"url": "https://github.com/Septh/vscode-wow-bundle/issues"
 	},
-	"homepage": "https://github.com/Septh/vscode-wow-bundle/blob/master/README.md",
+	"homepage": "https://marketplace.visualstudio.com/items?itemName=Septh.wow-bundle",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Septh/vscode-wow-bundle"
