@@ -1,64 +1,35 @@
 {
-	"name": "Dark+ (Wow)",
+	"name": "Dark+ (wow-bundle)",
 	"include": "./theme-defaults/dark_plus.json",
 	"settings": [
-		// Invalids -- just add underline to the current style
-		{
-			"scope": "invalid",
-			"settings": {
-				"fontStyle": "underline"
-			}
-		},
-
 		// Comments -- just add italics to the current style
 		{
-			"scope": [
-				"comment.toc",
-				"comment.lua"
-			],
+			"scope": "comment",
 			"settings": {
 				"fontStyle": "italic"
 			}
 		},
 
-		// Escapes -- bolder and slightly brighter than regular strings
+		// Escapes -- bold and slightly brighter than regular strings
 		{
-			"scope": [
-				"constant.character.escape.lua"
-			],
+			"scope": "constant.character.escape",
 			"settings": {
 				"foreground": "#cfaa78",
 				"fontStyle": "bold"
 			}
 		},
 
-		// Lua -- These are missing in the default Dark and Dark+ themes
+		// Keywords and operators -- These are missing in the default Dark and Dark+ themes
 		{
-			"scope": [
-				"support.function.lua",
-				"support.function.metamethod.lua",
-				"support.function.library.lua",
-				// "keyword.operator.logical.lua",	// Make 'or', 'and' and 'not' look like keywords
-				"punctuation.definition.parameters"
-			],
+			"scope": "support.function",
 			"settings": {
-				"foreground": "#c586c0"			// Same as keyword.control in dark_plus.json
+				"foreground": "#c586c0"			// Same as keyword.control
 			}
 		},
 		{
-			"scope": [
-				"keyword.operator"
-			],
+			"scope": "keyword.operator",
 			"settings": {
-				"foreground": "#569cd6"			// Same as keyword.control in dark_vs.json
-			}
-		},
-		{
-			"scope": [
-				"string.quoted.types.lua"
-			],
-			"settings": {
-				"foreground": "#9cdcfe"			// Same as variable.name in dark_vs.json
+				"foreground": "#569cd6"			// Same as keyword.new
 			}
 		},
 
@@ -66,27 +37,17 @@
 		{
 			"scope": "keyword.other.toc",
 			"settings": {
-				"foreground": "#c586c0"			// Same as keyword.control in dark_plus.json
+				"foreground": "#c586c0"			// Same as keyword.control
 			}
 		},
 		{
 			"scope": "support.other.toc",
 			"settings": {
-				"foreground": "#569cd6"			// Same as keyword.control in dark_vs.json
+				"foreground": "#569cd6"			// Same as keyword.new
 			}
 		},
 
-		// Blizzard's Lua language extensions
-		{
-			"scope": [
-				"support.function.wow.language.lua"
-			],
-			"settings": {
-				"foreground": "#ff8000"
-			}
-		},
-
-		// World of Warcraft API
+		// World of Warcraft defaults colors. Customized below
 		{
 			"comment": "Catches everything not defined below",
 			"scope": [
@@ -101,9 +62,16 @@
 		},
 
 		{
-			"scope": [
-				"support.function.wow.api"
-			],
+			"name": "Blizzard's Lua language extensions",
+			"scope": "support.function.wow.language",
+			"settings": {
+				"foreground": "#ff8000"
+			}
+		},
+
+		{
+			"name": "WoW API functions",
+			"scope": "support.function.wow.api",
 			"settings": {
 				"foreground": "#ff8000"
 			}
@@ -119,51 +87,43 @@
 		},
 
 		{
-			"scope": [
-				"support.function.wow.library"
-			],
+			"name": "WoW Library (FrameXML)",
+			"scope": "support.function.wow.library",
 			"settings": {
 				"foreground": "#ffaf3e"	// Slightly lighter
 			}
 		},
 		{
-			"scope": [
-				"support.constant.wow.global"
-			],
+			"scope": "support.variable.wow",
 			"settings": {
 				"foreground": "#ffd500"
 			}
 		},
 		{
-			"scope": [
-				"support.class.wow.global"
-			],
+			"scope": "support.variable.wow.value",
 			"settings": {
-				"foreground": "#ffd500"
+				"foreground": "#d7ba7d"			// Same as entity.name.selector
 			}
 		},
 
 		{
-			"scope": [
-				"support.class.wow.method"
-			],
+			"scope": "support.class.wow.method",
 			"settings": {
 				"foreground": "#ffaa00"
 			}
 		},
 
-		// String (quoted) constants
 		{
-			"scope": [
-				"support.constant.wow.quoted"
-			],
+			"name": "WoW API Constants",
+			"comment": "These are all quoted strings",
+			"scope": "support.constant.wow",
 			"settings": {
-				"foreground": "#4ec9b0"
+				"foreground": "#4ec9b0"			// Same as support.type
 			}
 		},
 
-		// Removed/deprecated stuff
 		{
+			"name": "Removed/deprecated stuff",
 			"scope": [
 				"support.function.wow.removed",
 				"support.constant.wow.removed",
@@ -171,7 +131,7 @@
 				"support.class.wow.removed"
 			],
 			"settings": {
-				"fontStyle": "underline",
+				// "fontStyle": "underline",
 				"foreground": "#f44747"
 			}
 		}
