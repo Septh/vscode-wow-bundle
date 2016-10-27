@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>wow-toc</string>
+	<string>toc</string>
 	<key>fileTypes</key>
 	<array>
 		<string>toc</string>
@@ -13,15 +13,57 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>^## (Interface|Title(\-....)?|Notes(\-....)?|RequiredDeps|Dependencies|OptionalDeps|LoadOnDemand|LoadWith|LoadManagers|SavedVariables|SavedVariablesPerCharacter|DefaultState|Secure|Author|Version)\:</string>
-			<key>name</key>
-			<string>keyword.other.toc</string>
+			<string>^(##)\s*(Author|DefaultState|Dependencies|Interface|Load(?:OnDemand|With|Managers)|Notes(?:\-.{4})?|OptionalDeps|RequiredDeps|SavedVariables(?:PerCharacter)?|Secure|Title(?:\-.{4})?|Version)(\:)\s*(.*)$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.toc</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.toc</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.toc</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.toc</string>
+				</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^## (X\-[^:\s]+)\:</string>
-			<key>name</key>
-			<string>support.other.toc</string>
+			<string>^(##)\s*(X\-[^:\s]+)(\:)\s*(.*)$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.toc</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.x.toc</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.toc</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.toc</string>
+				</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>match</key>

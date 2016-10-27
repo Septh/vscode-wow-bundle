@@ -10,51 +10,78 @@
 			}
 		},
 
-		// Escapes -- bold and slightly brighter than regular strings
+		// Lua colors ONLY - except for comments above, we dont mess with other languages
 		{
-			"scope": "constant.character.escape",
+			"scope": "support.function.lua",
 			"settings": {
-				"foreground": "#cfaa78",
-				"fontStyle": "bold"
+				"foreground": "#c586c0"
+			}
+		},
+		{
+			"scope": "support.function.metamethod.lua",
+			"settings": {
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"scope": "keyword.operator.lua, keyword.operator.logical.lua",
+			"settings": {
+				"foreground": "#569cd6"
+			}
+		},
+		{
+			"scope": "variable.language.lua, support.variable.lua",
+			"settings": {
+				"foreground": "#569cd6"
+			}
+		},
+		{
+			"scope": "constant.language.lua, support.constant.lua",
+			"settings": {
+				"foreground": "#9cdcfe"
+			}
+		},
+		{
+			"scope": "constant.character.escape.lua",
+			"settings": {
+				"foreground": "#e6bc85"
 			}
 		},
 
-		// Keywords and operators -- These are missing in the default Dark and Dark+ themes
+		// Word of Warcraft .toc file colors
 		{
-			"scope": "support.function",
+			"scope": "keyword.operator.toc",
 			"settings": {
-				"foreground": "#c586c0"			// Same as keyword.control
+				"foreground": "#9cdcfe"
 			}
 		},
 		{
-			"scope": "keyword.operator",
+			"scope": "keyword.control.toc",
 			"settings": {
-				"foreground": "#569cd6"			// Same as keyword.new
+				"foreground": "#c586c0"
+			}
+		},
+		{
+			"scope": "keyword.control.x.toc",
+			"settings": {
+				"foreground": "#569cd6"
+			}
+		},
+		{
+			"scope": "variable.parameter.toc",
+			"settings": {
+				"foreground": "#ce9178"
 			}
 		},
 
-		// TOC colors
-		{
-			"scope": "keyword.other.toc",
-			"settings": {
-				"foreground": "#c586c0"			// Same as keyword.control
-			}
-		},
-		{
-			"scope": "support.other.toc",
-			"settings": {
-				"foreground": "#569cd6"			// Same as keyword.new
-			}
-		},
-
-		// World of Warcraft defaults colors. Customized below
+		// World of Warcraft API colors
 		{
 			"comment": "Catches everything not defined below",
 			"scope": [
-				"support.function.wow",
-				"support.constant.wow",
-				"support.variable.wow",
-				"support.class.wow"
+				"support.function.wow-api", "support.function.wow-library",
+				"support.variable.wow-api", "support.variable.wow-library",
+				"support.constant.wow-api", "support.constant.wow-library",
+				"support.class.wow-api",    "support.class.wow-library"
 			],
 			"settings": {
 				"foreground": "#ff8000"
@@ -62,24 +89,16 @@
 		},
 
 		{
-			"name": "Blizzard's Lua language extensions",
-			"scope": "support.function.wow.language",
-			"settings": {
-				"foreground": "#ff8000"
-			}
-		},
-
-		{
 			"name": "WoW API functions",
-			"scope": "support.function.wow.api",
+			"scope": "support.function.wow-api",
 			"settings": {
 				"foreground": "#ff8000"
 			}
 		},
 		{
 			"scope": [
-				"support.function.wow.api.protected",
-				"support.function.wow.api.nocombat"
+				"support.function.wow-api.protected",
+				"support.function.wow-api.nocombat"
 			],
 			"settings": {
 				"foreground": "#cc6600"
@@ -88,26 +107,26 @@
 
 		{
 			"name": "WoW Library (FrameXML)",
-			"scope": "support.function.wow.library",
+			"scope": "support.function.wow-library",
 			"settings": {
-				"foreground": "#ffaf3e"	// Slightly lighter
+				"foreground": "#ffaf3e"
 			}
 		},
 		{
-			"scope": "support.variable.wow",
+			"scope": "support.variable.wow-library.object",
 			"settings": {
 				"foreground": "#ffd500"
 			}
 		},
 		{
-			"scope": "support.variable.wow.value",
+			"scope": "support.variable.wow-library.value",
 			"settings": {
 				"foreground": "#d7ba7d"			// Same as entity.name.selector
 			}
 		},
 
 		{
-			"scope": "support.class.wow.method",
+			"scope": "support.class.wow-api.method",
 			"settings": {
 				"foreground": "#ffaa00"
 			}
@@ -116,7 +135,7 @@
 		{
 			"name": "WoW API Constants",
 			"comment": "These are all quoted strings",
-			"scope": "support.constant.wow",
+			"scope": "support.constant.wow-api",
 			"settings": {
 				"foreground": "#4ec9b0"			// Same as support.type
 			}
@@ -124,15 +143,17 @@
 
 		{
 			"name": "Removed/deprecated stuff",
-			"scope": [
-				"support.function.wow.removed",
-				"support.constant.wow.removed",
-				"support.variable.wow.removed",
-				"support.class.wow.removed"
-			],
+			"scope": "invalid.deprecated",
 			"settings": {
-				// "fontStyle": "underline",
 				"foreground": "#f44747"
+			}
+		},
+		{
+			"name": "Removed/deprecated stuff",
+			"scope": "invalid.removed",
+			"settings": {
+				"foreground": "#f44747",
+				"fontStyle": "underline"
 			}
 		}
 	]

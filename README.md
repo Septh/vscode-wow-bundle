@@ -7,39 +7,41 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 
 ## Features
-* Improved Lua grammar
-* Blizzard's Lua language extensions, API and libraries
+* Improved Lua 5.1 grammar fine-tuned for World of Warcraft's built-in Lua interpreter
+* Full Blizzard's 7.1.0 API
+* Extensive widgets and FrameXML Lua library support
 * `.toc` file colorization
 * Three new, dedicated color themes based on VS Code's Dark+, Monokai and Monokai Dimmed
 
 
 ### Grammars
 
-#### Lua language
+#### Lua 5.1 language
 wow-bundle improves VS Code's built-in Lua language grammar. Worth noticing are:
-* **OO-style strings and tables calls** support, ie. both `table.concat(mytable)` and `mytable:concat()` are supported
-* **Full metamethods** support: `__index`, `__add` & al.
-* **Quoted string constants** support: `'string'`, `'table'` & al. as returned by the `type()` function
+
+* **OO-style string functions** support, ie. both `string.upper(mystring)` and `mystring:upper()` are supported
+* **Full metamethods** support
+* **Quoted string constants** as used or returned by the `collectgarbage()`, `date()` and `type()` functions and the `__mode()` metamethod
 * Better **character escapes** inside strings: Unicode entities, decimal and hexadecimal values and control chars
-* **Deprecated features** like `foreach`/`foreachi` and `getn`/`setn` warning
+* **Deprecated features** warning: `table.foreach`/`foreachi`, `table.getn`/`setn`, `string.gfind()`...
 
 #### World of Warcraft API
 wow-bundle's Lua grammar also tags a bunch of WoW-related stuff with these comprehensive scopes:
 
-* **support.function.wow.language.lua** - Blizzard's extensions to the Lua language like `wipe()`, `strjoin()`, etc.
-* **support.function.wow.api.lua** - World of Warcraft API functions, with 2 sub-scopes:
-	* **support.function.wow.api.nocombat.lua** - API functions that can't be called while in combat
-	* **support.function.wow.api.protected.lua** - API functions that can be called only from secure code
-* **support.function.wow.library.lua** - Library functions written in Lua (mostly used by UI code)
-* **support.variable.wow.lua** - Global objects like `UIParent`, `GameFontNormal` and such
-* **support.variable.wow.value.lua** - Global variables like `HIGHLIGHT_FONT_COLOR_CODE`, `UIDROPDOWNMENU_INIT_MENU` and such
-* **support.class.wow.method.lua** - Widgets methods like `:AddLine()`, `:SetTexture()` and such
-* **support.constant.wow.string-parameter.lua** - Common function parameters like `'CheckButton'`, `'BOTTOMLEFT'`, `'OVERLAY'`, `'player'` and such
-* **support.constant.wow.script-handler.lua** - Widgets event handlers like `'OnEnter'`, `'OnShow'` and such
-* **support.constant.wow.event-name.lua** - Game events like `'PLAYER_ENTERING_WORLD'`, `'VARIABLES_LOADED'` and such
-* **support.XXX.wow.removed.lua** - Removed and/or deprecated stuff in the API, were **XXX** can be one of **function**, **class**, **variable** or **constant**
+* ~~**support.function.wow-language.lua** - Blizzard's extensions to the Lua language like `wipe()`, `strjoin()`, etc.~~ No more since 1.1.0, see change log.
+* **support.function.wow-api.lua** - World of Warcraft API functions, with 2 sub-scopes:
+	* **support.function.wow-api.nocombat.lua** - API functions that can't be called while in combat
+	* **support.function.wow-api.protected.lua** - API functions that can be called only from secure code
+* **support.function.wow-library.lua** - Library functions written in Lua (mostly used by UI code)
+* **support.variable.wow-libray.object.lua** - Global objects like `UIParent`, `GameFontNormal` and such
+* **support.variable.wow-library.value.lua** - Global variables like `HIGHLIGHT_FONT_COLOR_CODE`, `UIDROPDOWNMENU_INIT_MENU` and such
+* **support.class.wow-api.method.lua** - Widgets methods like `:AddLine()`, `:SetTexture()` and such
+* **support.constant.wow-api.string-parameter.lua** - Common function parameters like `'CheckButton'`, `'BOTTOMLEFT'`, `'OVERLAY'`, `'player'` and such
+* **support.constant.wow-api.script-handler.lua** - Widgets event handler names like `'OnEnter'`, `'OnShow'` and such
+* **support.constant.wow-api.event-name.lua** - Game events like `'PLAYER_ENTERING_WORLD'`, `'VARIABLES_LOADED'` and such
+* **invalid.removed.lua** and **invalid.deprecated.lua** - Removed and/or deprecated stuff in the API
 
-These scopes make it easy to colorize everyting WoW-related. See **Colorization** below for details.
+These scopes make it super-easy to colorize everyting WoW-related. See **Colorization** below for details.
 
 ![lua](images/lua.png)
 
@@ -62,7 +64,7 @@ However, for further colorization granularity, wow-bundle also includes several 
 
 wow-bundle's themes only colorizes the scopes described above and does not interfere with VS Code default colors for Lua or any other language you may use.
 
->New since 1.0.1: I do however add italics to comments ~~and underline to invalid/deprecated keywords~~. I just like it this way. :)
+>New since 1.0.1: I do however add italics to ALL comments ~~and underline to invalid/deprecated keywords~~.
 
 >News since 1.0.7: No more underline for invalids, not everybody likes it.
 
@@ -70,7 +72,7 @@ wow-bundle's themes only colorizes the scopes described above and does not inter
 ## Known Issues
 These are the currently known issues with wow-bundle. Should you whish to collaborate to the projet and help resolve these issues, you're welcome to submit a PR on Github.
 
-* The WoW API isn't fully complete yet, some 7.0.3 functions, methods and probably other things are still missing - I'll add them when time permits.
+* ~~The WoW API isn't fully complete yet, some 7.0.3 functions, methods and probably other things are still missing - I'll add them when time permits.~~ - Full 7.1 support since v1.1.0
 * Because Blizzard's FrameXML code exposes hundreds of global functions, objects and variables, it is impossible to support them all. Therefore, only a selection of the most frequently used identifiers is supported. Please open an issue on Github if you need to add more.
 * ~~Game events and widgets script handlers are still shown as regular strings. I'm looking for a way to make them stand appart.~~ - Fixed in 1.0.4
 
@@ -89,6 +91,15 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 
 
 ## Release notes
+
+### 1.1.0
+* [general] Major code cleanup, rewrote almost all regexes
+* [languages.lua] No longer differenciate Blizzard's Lua extensions like `strsplit()` or `wipe()` from core Lua functions, they all show up as **support.function.lua**. This was done because a) wow-bundle is a WoW-colorizer, not a Lua one; and b) this reduces the kaleidoscope-ish look of Lua code
+* [language.lua] Lua tables do not have a __metatable, things like `mytable:sort()` do not exist
+* [language.lua] Renamed a bunch of scopes to more closely adhere to scope naming conventions
+
+### 1.0.8
+* Nothing special here - just got things mixed up and bumped an already bumped version tag...
 
 ### 1.0.7
 * [language.lua] Added `'k'`, `'v'`, `'kv'` and `'vk'` (used by the `__mode` metamethod) as language constants
