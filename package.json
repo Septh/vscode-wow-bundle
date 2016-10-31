@@ -2,7 +2,7 @@
 	"name": "wow-bundle",
 	"displayName": "WoW Bundle",
 	"description": "World of Warcraft addon developer toolset for VS Code",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"icon": "images/wow-icon.png",
 	"publisher": "Septh",
 	"license": "MIT",
@@ -49,6 +49,11 @@
 				"label": "Dark+ (WoW)",
 				"uiTheme": "vs-dark",
 				"path": "./themes/dark_plus_wow.json"
+			},
+			{
+				"label": "Light+ (WoW)",
+				"uiTheme": "vs",
+				"path": "./themes/light_plus_wow.json"
 			},
 			{
 				"label": "Monokai (WoW)",

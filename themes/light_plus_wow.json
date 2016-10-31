@@ -1,6 +1,6 @@
 {
-	"name": "Monokai (wow-bundle)",
-	"include": "./theme-monokai/Monokai.json",
+	"name": "Light+ (wow-bundle)",
+	"include": "./theme-defaults/light_plus.json",
 	"settings": [
 		// Comments -- just add italics to the current style
 		{
@@ -14,7 +14,7 @@
 		{
 			"scope": "support.function.lua",
 			"settings": {
-				"foreground": "#f92672"
+				"foreground": "#0000ff"
 			}
 		},
 		{
@@ -26,22 +26,52 @@
 		{
 			"scope": "keyword.operator.lua, keyword.operator.logical.lua",
 			"settings": {
-				"foreground": "#f92672"
+				"foreground": "#000000"
+			}
+		},
+		{
+			"scope": "variable.language.lua, support.variable.lua",
+			"settings": {
+				"foreground": "#000000"
+			}
+		},
+		{
+			"scope": "constant.language.lua, support.constant.lua",
+			"settings": {
+				"foreground": "#09885a"
+			}
+		},
+		{
+			"scope": "constant.character.escape.lua",
+			"settings": {
+				"foreground": "#cc1b1b",
+				"fontStyle": "bold"
 			}
 		},
 
 		// Word of Warcraft .toc file colors
 		{
-			"scope": "keyword.other.toc",
+			"scope": "keyword.operator.toc",
 			"settings": {
-				"foreground": "#f92672"
+				"foreground": "#000000"
 			}
 		},
 		{
-			"scope": "support.other.toc",
+			"scope": "keyword.control.toc",
 			"settings": {
-				"foreground": "#ae81ff",
-				"fontStyle": "italic"
+				"foreground": "#0000ff"
+			}
+		},
+		{
+			"scope": "keyword.control.x.toc",
+			"settings": {
+				"foreground": "#000000"
+			}
+		},
+		{
+			"scope": "variable.parameter.toc",
+			"settings": {
+				"foreground": "#ce9178"
 			}
 		},
 
@@ -60,7 +90,7 @@
 				"support.class.method.wow-api",              "support.class.method.wow-library"
 			],
 			"settings": {
-				"foreground": "#ff8000"
+				"foreground": "#cc6600"
 			}
 		},
 
@@ -68,7 +98,7 @@
 			"name": "WoW API functions",
 			"scope": "support.function.wow-api",
 			"settings": {
-				"foreground": "#ff8000"
+				"foreground": "#cc6600"
 			}
 		},
 		{
@@ -77,7 +107,7 @@
 				"support.function.wow-api.nocombat"
 			],
 			"settings": {
-				"foreground": "#cc6600"
+				"foreground": "#994c00"
 			}
 		},
 
@@ -85,26 +115,26 @@
 			"name": "WoW Library (FrameXML)",
 			"scope": "support.function.wow-library",
 			"settings": {
-				"foreground": "#ffaf3e"
+				"foreground": "#b37a2b"
 			}
 		},
 		{
 			"scope": "support.variable.object.wow-library",
 			"settings": {
-				"foreground": "#ffd500"
+				"foreground": "#e6bf00"
 			}
 		},
 		{
 			"scope": "support.variable.value.wow-library",
 			"settings": {
-				"foreground": "#d7ba7d"			// Same as entity.name.selector
+				"foreground": "#b39b68"			// Same as entity.name.selector
 			}
 		},
 
 		{
 			"scope": "support.class.method.wow-api",
 			"settings": {
-				"foreground": "#ffaa00"
+				"foreground": "#cc6600"
 			}
 		},
 

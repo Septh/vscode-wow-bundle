@@ -85,15 +85,19 @@
 			}
 		},
 
-
 		// World of Warcraft API colors
 		{
 			"comment": "Catches everything not defined below",
 			"scope": [
-				"support.function.wow-api", "support.function.wow-library",
-				"support.variable.wow-api", "support.variable.wow-library",
-				"support.constant.wow-api", "support.constant.wow-library",
-				"support.class.wow-api",    "support.class.wow-library"
+				"support.function.wow-api",                  "support.function.wow-library",
+				"support.variable.object.wow-api",           "support.variable.object.wow-library",
+				"support.variable.value.wow-api",            "support.variable.value.wow-library",
+				"support.constant.wow-api",                  "support.constant.wow-library",
+				"support.constant.string-parameter.wow-api", "support.constant.string-parameter.wow-library",
+				"support.constant.script-handler.wow-api",   "support.constant.script-handler.wow-library",
+				"support.constant.event-name.wow-api",       "support.constant.event-name.wow-library",
+				"support.class.wow-api",                     "support.class.wow-library",
+				"support.class.method.wow-api",              "support.class.method.wow-library"
 			],
 			"settings": {
 				"foreground": "#ff8000"
@@ -125,20 +129,20 @@
 			}
 		},
 		{
-			"scope": "support.variable.wow-library.object",
+			"scope": "support.variable.object.wow-library",
 			"settings": {
 				"foreground": "#ffd500"
 			}
 		},
 		{
-			"scope": "support.variable.wow-library.value",
+			"scope": "support.variable.value.wow-library",
 			"settings": {
 				"foreground": "#d7ba7d"			// Same as entity.name.selector
 			}
 		},
 
 		{
-			"scope": "support.class.wow-api.method",
+			"scope": "support.class.method.wow-api",
 			"settings": {
 				"foreground": "#ffaa00"
 			}
@@ -146,8 +150,12 @@
 
 		{
 			"name": "WoW API Constants",
-			"comment": "These are all quoted strings",
-			"scope": "support.constant.wow-api",
+			"scope": [
+				"support.constant.wow-api",
+				"support.constant.string-parameter.wow-api",
+				"support.constant.script-handler.wow-api",
+				"support.constant.event-name.wow-api"
+			],
 			"settings": {
 				"foreground": "#4ec9b0"			// Same as support.type
 			}
