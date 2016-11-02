@@ -92,6 +92,9 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 
 ## Release notes
 
+### 1.1.3
+* [language.lua] Corrected a typo that prevented the bundle from correctly loading. Sorry guys.
+
 ### 1.1.2
 * [language.lua] Allow method calls on array items, eg. thins like `mytable[1]:SetText('something')` will be correctly recognized
 * [language.lua] Added some missing widget methods

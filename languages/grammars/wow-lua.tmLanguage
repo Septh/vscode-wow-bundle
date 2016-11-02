@@ -684,7 +684,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;=(\w|\)|\])(\.|:))(GetTitleRegion|CreateTitleRegion))\b</string>
+			<string>(?&lt;=(\w|\)|\])(\.|:))(GetTitleRegion|CreateTitleRegion)\b</string>
 			<key>name</key>
 			<string>invalid.removed</string>
 		</dict>
