@@ -94,6 +94,7 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 
 ### 1.1.2
 * [language.lua] Allow method calls on array items, eg. thins like `mytable[1]:SetText('something')` will be correctly recognized
+* [language.lua] Added some missing widget methods
 
 ### 1.1.1
 * [language.lua] More regexes optimizations
