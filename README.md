@@ -7,9 +7,10 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 
 ## Features
+
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
 * **Full Blizzard's 7.1.0 API**
-* Extensive widgets and FrameXML Lua library support
+* Extensive widgets and Lua library support
 * `.toc` file colorization
 * Four new, dedicated color themes based on VS Code's default themes: Light+, Dark+, Monokai and Monokai Dimmed
 
@@ -17,6 +18,7 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 ### Grammars
 
 #### Lua 5.1 language
+
 wow-bundle replaces VS Code's built-in Lua language grammar. Changes worth noticing are:
 
 * **OO-style string functions** support, ie. both `string.upper(mystring)` and `mystring:upper()` are supported
@@ -26,6 +28,7 @@ wow-bundle replaces VS Code's built-in Lua language grammar. Changes worth notic
 * **Deprecated features** warning: `table.foreach`/`foreachi`, `table.getn`/`setn`, `string.gfind()`...
 
 #### World of Warcraft API
+
 wow-bundle's Lua grammar also tags a bunch of WoW-related stuff with these comprehensive scopes:
 
 * ~~**support.function.wow-language.lua** - Blizzard's extensions to the Lua language like `wipe()`, `strjoin()`, etc.~~ No more since 1.1.0, see change log.
@@ -47,6 +50,7 @@ These scopes make it super-easy to colorize everyting WoW-related. See **Coloriz
 
 
 #### Toc files
+
 Also included is a simple grammar for `.toc` files with the following scopes:
 
 * **keyword.control.toc** - keywords like `## Interface`, `## Author` and such
@@ -56,6 +60,7 @@ Also included is a simple grammar for `.toc` files with the following scopes:
 
 
 ### Colorization
+
 All VS Code themes should word fine with these scopes as long as they follow [the standard scope naming convention](https://manual.macromates.com/en/language_grammars).
 
 However, for further colorization granularity, wow-bundle also includes four specific theme based on VS Code's default themes and called **Light+ (WoW)**, **Dark+ (WoW)**, **Monokai (WoW)** and **Monokai Dimmed (Wow)**. To choose one of these themes, open the Color Theme picker with **File** > **Preferences** > **Color Theme** (or **Code** > **Preferences** > **Color Theme** on Mac).
@@ -70,6 +75,7 @@ wow-bundle's themes only colorizes the scopes described above and does not inter
 
 
 ## Known Issues
+
 These are the currently known issues with wow-bundle. Should you whish to collaborate to the projet and help resolve these issues, you're welcome to submit a PR on Github.
 
 * ~~The WoW API isn't fully complete yet, some 7.0.3 functions, methods and probably other things are still missing - I'll add them when time permits.~~ - Full 7.1 support since v1.1.0
@@ -80,6 +86,7 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 
 
 ## TODOs (and mayhaps)
+
 1. ~~Fix above issues~~
 2. Add code snippets
 3. Support XML declarations too (low on my priority list, though)
@@ -92,65 +99,7 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 
 ## Release notes
 
-### 1.1.3
-* [language.lua] Corrected a typo that prevented the bundle from correctly loading. Sorry guys.
+See [Changelog.md](CHANGELOG.md)
 
-### 1.1.2
-* [language.lua] Allow method calls on array items, eg. thins like `mytable[1]:SetText('something')` will be correctly recognized
-* [language.lua] Added some missing widget methods
-
-### 1.1.1
-* [language.lua] More regexes optimizations
-* [language.lua] More Library and removed functions
-* [themes] Added Light+ (WoW) color theme
-
-### 1.1.0
-* [general] Major code cleanup, rewrote almost all regexes
-* [languages.lua] No longer differenciate Blizzard's Lua extensions like `strsplit()` or `wipe()` from core Lua functions, they all show up as **support.function.lua**. This was done because a) wow-bundle is a WoW-colorizer, not a Lua one; and b) this reduces the kaleidoscope-ish look of Lua code
-* [language.lua] Lua tables do not have a __metatable, things like `mytable:sort()` do not exist
-* [language.lua] Renamed a bunch of scopes to more closely adhere to scope naming conventions
-
-### 1.0.8
-* Not really. Just got things mixed up and bumped an already bumped version tag...
-
-### 1.0.7
-* [language.lua] Added `'k'`, `'v'`, `'kv'` and `'vk'` (used by the `__mode` metamethod) as quoted constants
-* [language.lua] Also added the comma (`,`) and the ellipsis (`...`) as operators
-* [language.lua] Better `meta.function.lua` patterns
-* [themes] Tweaked some colors and styles
-
-### 1.0.6
-* [themes] Added the **Monokai (WoW)** and **Monokai Dimmed (WoW)** themes
-* [language.lua] Added the semicolon `;` as an operator (which it is, albeit an optional one)
-* [language.lua] Better character escapes matching and colorizing
-* [language.lua] Added some identifiers to `support.constant.wow.global.lua`
-
-### 1.0.5
-* [language.lua] Added support for Lua types (eg. `'string'`, `'table'`, `'function'`...) as returned by the the `type()` function
-* [language.lua] Don't highlight partial words like 'date' in 'update' or 'time' in 'downtime'
-* [language.lua] Added API constants for `texture:SetBlendMode()`: `'ADD'`, `'ALPHAKEY'`, `'BLEND'`, `'DISABLE'` and `'MOD'`
-* [language.toc] Allow all chars in X-tags, not only numbers, letters and hyphen
-* [misc] Removed old `./sources` directory which was completely out of sync
-
-### 1.0.4
-* [language.lua] Finally found a way to differenciate quoted constants like functions parameters, event names, script handlers... from strings
-* [language.lua] `message()`, `print()`, `getprinthandler()`, `setprinthandler()`, `tostringall()` are actually Lua code in FrameXML, not language extensions
-* [language.lua] Added some 7.0.3 identifiers, many are still missing though
-* [theme] Changed colors of .toc file keywords for consistency with the default Dark+ colors
-* [misc] When the source code reads _'For testing only, comment out before publishing'_, well... just do it
-
-### 1.0.3
-* [language.toc] Renamed `keyword.language.toc` and `support.language.toc` scopes to `keyword.other.toc` and `support.other.toc`
-* [language.lua] Added a bunch of API definitions
-* [language.lua] `tinsert()` and `tremove()` were actually Blizzard language extensions that got ~~removed~~ deprecated in WoW 6.0.2
-
-### 1.0.2
-* [language.lua] Stupid typo fix
-* Updated `Readme.md`
-
-### 1.0.1
-* [theme] Stop recolorizing the default Lua language constructs, you'll really get Dark+ colors for these
-* Reorganized the internal directory structure in preparation for TODO #4
-
-### 1.0.0
-Initial release.
+[wow-bundle]: https://github.com/Septh/vscode-wow-bundle
+[VS Code]: https://code.visualstudio.com/
