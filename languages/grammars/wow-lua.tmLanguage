@@ -189,7 +189,7 @@
 		<!-- Variables/constants -->
 		<dict>
 			<key>match</key>
-			<string>\b(_(?:G|VERSION)?false|nil|self|true)\b</string>
+			<string>\b(_(?:G|VERSION)?|false|nil|self|true)\b</string>
 			<key>name</key>
 			<string>constant.language.lua</string>
 		</dict>
