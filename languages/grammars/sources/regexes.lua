@@ -1,8 +1,5 @@
--- Ajouts 09/11/2016 dans:
--- Library functions
--- Global objects
--- Global variables
--- Removed events
+-- Ajouts :
+
 
 
 -- API Functions
