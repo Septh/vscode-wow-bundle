@@ -1,6 +1,9 @@
-## 1.1.6
-- [language.lua] More regexes optimizations -- again
+## 1.1.7
 - [language.lua] Added some more identifiers -- again
+
+## 1.1.6
+- [language.lua] More regexes optimizations
+- [language.lua] Added some more identifiers
 
 ## 1.1.5
 - Inadvertently broke a regex. Oops.

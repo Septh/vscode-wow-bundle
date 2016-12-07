@@ -1,8 +1,10 @@
 -- Ajouts :
+-- Global variables
+-- Library functions
+-- Widgets methods
 
 
-
--- API Functions
+-- API Functions - A
 Abandon(?:Quest|Skill)|
 Accept(?:AreaSpiritHeal|BattlefieldPort|Duel|Group|Guild|LevelGrant|Proposal|Quest|Resurrect|Sockets|SpellConfirmationPrompt|Trade|XPLoss)|
 Acknowledge(?:AutoAcceptQuest|Survey)|
@@ -20,6 +22,7 @@ AttackTarget|
 Auto(?:ChooseCurrentGraphicsSetting|EquipCursorItem|LootMailItem|StoreGuildBankItem)|
 ~
 
+-- API Functions - B
 BN(?:AcceptFriendInvite|CheckBattleTagInviteTo(?:GuildMember|Unit)|Connected|DeclineFriendInvite|FeaturesEnabled(?:AndConnected)?|Get(?:(?:Blocked|FOF)?Info|Friend(?:GameAccountInfo|Index|Info(?:ByID)?|InviteInfo)|GameAccountInfo(?:ByGUID)?|Num(?:Blocked|FOF|Friend(?:GameAccounts|Invites|s))|Selected(?:Block|Friend))|InviteFriend|Is(?:Blocked|Friend|Self)|RemoveFriend|ReportPlayer|Request(?:FOFInfo|InviteFriend)|Send(?:FriendInvite(?:ByID)?|GameData|SoR|VerifiedBattleTagInvite|Whisper)|Set(?:AFK|Blocked|CustomMessage|DND|FriendNote|Selected(?:Block|Friend))|SummonFriendByIndex|TokenFindName)|
 BankButtonIDToInvSlotID|
 BarberShopReset|
@@ -30,6 +33,7 @@ BreakUpLargeNumbers|
 Buy(?:GuildBankTab|GuildCharter|MerchantItem|ReagentBank|TrainerService|backItem)|
 ~
 
+-- API Functions - C
 C_AdventureJournal\.(?:ActivateEntry|CanBeShown|GetNumAvailableSuggestions|GetPrimaryOffset|GetReward|GetSuggestions|SetPrimaryOffset|UpdateSuggestions)|
 C_AdventureMap\.(?:Close|GetContinentInfo|GetMapID|GetMapInsetDetailTileInfo|GetMapInsetInfo|GetNumMapInsets|GetNumQuestOffers|GetNumZoneChoices|GetQuestInfo|GetQuestOfferInfo|GetZoneChoiceInfo|StartQuest)|
 C_ArtifactUI\.(?:AddPower|ApplyCursorRelicToSlot|CanApplyCursorRelicToSlot|CanApplyArtifactRelic|CanApplyRelicItemIDToEquippedArtifactSlot|CanApplyRelicItemIDToSlot|CheckRespecNPC|Clear|ClearForgeCamera|ConfirmRespec|DoesEquippedArtifactHaveAnyRelicsSlotted|GetAppearanceInfo|GetAppearanceInfoByID|GetAppearanceSetInfo|GetArtifactArtInfo|GetArtifactInfo|GetArtifactKnowledgeLevel|GetArtifactKnowledgeMultiplier|GetArtifactXPRewardTargetInfo|GetCostForPointAtRank|GetEquippedArtifactArtInfo|GetEquippedArtifactInfo|GetEquippedArtifactNumRelicSlots|GetEquippedArtifactRelicInfo|GetForgeRotation|GetItemLevelIncreaseProvidedByRelic|GetMetaPowerInfo|GetNumAppearanceSets|GetNumObtainedArtifacts|GetNumRelicSlots|GetPointsRemaining|GetPowerHyperlink|GetPowerInfo|GetPowerLinks|GetPowers|GetPowersAffectedByRelic|GetPowersAffectedByRelicItemID|GetPreviewAppearance|GetRelicInfo|GetRelicInfoByItemID|GetRelicSlotType|GetRespecArtifactArtInfo|GetRespecArtifactInfo|GetRespecCost|GetTotalPurchasedRanks|IsAtForge|IsPowerKnown|IsViewedArtifactEquipped|SetAppearance|SetForgeCamera|SetForgeRotation|SetPreviewAppearance|ShouldSuppressForgeRotation)|
@@ -102,6 +106,7 @@ Create(?:Font|ForbiddenFrame|Frame|Macro|NewRaidProfile)|
 Cursor(?:CanGoInSlot|Has(?:Item|Macro|Money|Spell))|
 ~
 
+-- API Functions - D
 DeathRecap_(?:GetEvents|HasEvents)|
 Decline(?:ChannelInvite|Group|Guild(?:Applicant)?|LevelGrant|Name|Quest|Resurrect|SpellConfirmationPrompt)|
 Del(?:Ignore|Mute)|
@@ -121,6 +126,7 @@ Drop(?:CursorMoney|ItemOnUnit)|
 Dungeon(?:AppearsInRandomLFD|UsesTerrainMap)|
 ~
 
+-- API Functions - E
 EJ_(?:ClearSearch|EndSearch|Get(?:CreatureInfo|Current(?:Instance|Tier)|Difficulty|EncounterInfo(?:ByIndex)?|Instance(?:ByIndex|Info)|InvTypeSortOrder|Loot(?:Filter|Info(?:ByIndex)?)|MapEncounter|Num(?:EncountersForLootByIndex|Loot|SearchResults|Tiers)|Search(?:Progress|Result|Size)|Section(?:Info|Path)|SlotFilter|TierInfo)|HandleLinkPath|InstanceIsRaid|Is(?:LootListOutOfDate|SearchFinished|ValidInstanceDifficulty)|Reset(?:Loot|Slot)Filter|Select(?:Encounter|Instance|Tier)|Set(?:Difficulty|LootFilter|Search|SlotFilter))|
 EditMacro|
 EjectPassengerFromSeat|
@@ -133,6 +139,7 @@ ExecuteVoidTransfer|
 Expand(?:AllFactionHeaders|ChannelHeader|CurrencyList|FactionHeader|GuildTradeSkillHeader|QuestHeader|WarGameHeader)|
 ~
 
+-- API Functions - F
 FactionToggleAtWar|
 FillLocalizedClassList|
 FindSpellBookSlotBySpellID|
@@ -146,6 +153,7 @@ Force(?:Gossip|Logout|Quit)|
 FrameXML_Debug|
 ~
 
+-- API Functions - G
 GM(?:Europa(?:Bugs|Complaints|Suggestions|Tickets)Enabled|ItemRestorationButtonEnabled|QuickTicketSystem(?:Enabled|Throttled)|ReportLag|RequestPlayerInfo|ResponseResolve|Submit(?:Bug|Suggestion)|Survey(?:Answer(?:Submit)?|CommentSubmit|NumAnswers|Question|Submit))|
 GameMovieFinished|
 Get(?:AbandonQuest(?:Items|Name)|AccountExpansionLevel|Achievement(?:Category|ComparisonInfo|CriteriaInfo(?:ByID)?|GuildRep|Info|Link|Num(?:Criteria|Rewards)?|Reward|Search(?:Progress|Size))|Action(?:Autocast|BarPage|BarToggles|Charges|Cooldown|Count|Info|LossOfControlCooldown|Text|Texture)|Active(?:ArtifactByRace|Level|LootRollIDs|SpecGroup|Title|VoiceChannel)|AddOn(?:CPUUsage|Dependencies|EnableState|Info|MemoryUsage|Metadata|OptionalDependencies)|AllTaxiNodes|AllowLowLevelRaid|AlternatePowerInfoByID|AlternativeDefaultLanguage|Archaeology(?:Info|RaceInfo(?:ByID)?)|Area(?:MapInfo|Maps|SpiritHealerTime)|Arena(?:OpponentSpec|Rewards|SkirmishRewards)|ArmorEffectiveness|Artifact(?:InfoByRace|Progress)|AtlasInfo|AttackPowerForStat|Auction(?:HouseDepositRate|Item(?:BattlePetInfo|Info|Link|SubClasses|TimeLeft)|SellItemInfo|Sort)|Auto(?:(?:Complete(?:PresenceID|Realms|Results))|DeclineGuildInvites|QuestPopUp)|Available(?:Bandwidth|Level|Locales|QuestInfo|Title)|AverageItemLevel|Avoidance|BackgroundLoadingStatus|Backpack(?:AutosortDisabled|CurrencyInfo)|Bag(?:Name|SlotFlag)|Bank(?:AutosortDisabled|BagSlotFlag|SlotCost)|BarberShop(?:StyleInfo|TotalCost)|Battlefield(?:ArenaFaction|EstimatedWaitTime|FlagPosition|Instance(?:Expiration|RunTime)|MapIconScale|PortExpiration|Score|Stat(?:Data|Info)|Status|TeamInfo|TimeWaited|VehicleInfo|Winner)|Battleground(?:Info|Points)|Best(?:(?:FlexRaid|RF)Choice)|BidderAuctionItems|BillingTimeRested|BindLocation|Binding(?:Action|ByKey|Key|Text)?|BlacklistMap(?:Name)?|BladedArmorEffect|BlockChance|BonusBar(?:Index|Offset)|BuildInfo|BuybackItem(?:Info|Link)|CVar(?:Bitfield|Bool|Default|Info|SettingValidity)?|CallPetSpellInfo|CameraZoom|Category(?:AchievementPoints|Info|List|NumAchievements)|CemeteryPreference|Channel(?:DisplayInfo|List|Name|RosterInfo)|ChatTypeIndex|ChatWindow(?:Channels|Info|Messages|SavedDimensions|SavedPosition)|Class(?:Info(?:ByID)?)|ClickFrame|Coin(?:Icon|Text|TextureString)|CombatRating(?:Bonus(?:ForCombatRatingValue)?)?|ComboPoints|CompanionInfo|Comparison(?:AchievementPoints|CategoryNumAchievements|Statistic)|Container(?:FreeSlots|Item(?:Cooldown|Durability|EquipmentSetInfo|ID|Info|Link|Purchase(?:Currency|Info|Item)|QuestInfo)|Num(?:Free)?Slots)|Continent(?:MapInfo|Maps|Name)|Corpse(?:MapPosition|RecoveryDelay)|CritChance(?:ProvidesParryEffect)?|CriteriaSpell|Currency(?:Info|Link|List(?:Info|Link|Size))|Current(?:ArenaSeason|BindingSet|EventID|GlyphNameForSpell|GraphicsSetting|GuildBankTab|KeyBoardFocus|Level(?:Features|Spells)|Map(?:AreaID|Continent|DungeonLevel|HeaderIndex|LevelRange|Zone)|Refresh|Region|Resolution|Title)|Cursor(?:Delta|Info|Money|Position)|DailyQuestsCompleted|Death(?:RecapLink|ReleasePosition)|DebugZoneMap|Default(?:GraphicsQuality|Language|VideoOptions?|VideoQualityOption)|DemotionRank|DifficultyInfo|DetailedItemLevelInfo|DistanceSqToQuest|DodgeChance(?:FromAttribute)?|DownloadedPercentage|Dungeon(?:DifficultyID|ForRandomSlot|Info|MapInfo|Maps)|Equipment(?:NameFromSpell|Set(?:IgnoreSlots|Info(?:ByName)?|ItemIDs|Locations))|Event(?:CPUUsage|Time)|Existing(?:Socket(?:Info|Link))|ExpansionLevel|Expertise|ExtraBarIndex|FacialHairCustomization|Faction(?:Info(?:ByID)?)|Failed(?:PVPTalentIDs|TalentIDs)|FileStreamingStatus|FilteredAchievementID|FlexRaidDungeonInfo|Flyout(?:ID|Info|SlotInfo)|FollowerTypeIDFromSpell|FontInfo|Fonts|Frame(?:CPUUsage|rate)|FramesRegisteredForEvent|FriendInfo|FriendshipReputation(?:Ranks)?|FunctionCPUUsage|GM(?:Status|Ticket)|Game(?:MessageInfo|Time)|Gamma|Gossip(?:ActiveQuests|AvailableQuests|Options|Text)|Graphics(?:APIs|DropdownIndexByMasterIndex)|GreetingText|GroupMemberCounts|GuildAchievement(?:MemberInfo|Members|NumMembers)|GuildApplicant(?:Info|Selection)|GuildBank(?:BonusDepositMoney|Item(?:Info|Link)|Money(?:Transaction)?|Tab(?:Cost|Info|Permissions)|Text|Transaction|Withdraw(?:GoldLimit|Money))|Guild(?:CategoryList|ChallengeInfo|CharterCost|EventInfo|ExpirationTime|Faction(?:Group|Info)|Info(?:Text)?|LogoInfo)|GuildMemberRecipes|GuildMembershipRequest(?:Info|Settings)|GuildNews(?:Filters|Info|MemberName|Sort)|GuildPerkInfo|GuildRecipe(?:InfoPostQuery|Member)|GuildRecruitment(?:Comment|Settings)|GuildRenameRequired|GuildRewardInfo|GuildRoster(?:Info|LargestAchievementPoints|LastOnline|MOTD|Selection|ShowOffline)|GuildTabardFileNames|GuildTradeSkillInfo|HairCustomization|Haste|HitModifier|HomePartyInfo|Honor(?:Exhaustion|LevelRewardPack|RestState)|IgnoreName|Inbox(?:HeaderInfo|InvoiceInfo|Item|ItemLink|NumItems|Text)|InsertItemsLeftToRight|Inspect(?:ArenaData|Glyph|GuildInfo|HonorData|PvpTalent|RatedBGData|Specialization|Talent)|Instance(?:BootTimeRemaining|Info)|InstanceLockTimeRemaining(?:Encounter)?|InvasionInfo(?:ByMapAreaID)?|Inventory(?:AlertStatus|ItemBroken|ItemCooldown|ItemCount|ItemDurability|ItemEquippedUnusable|ItemID|ItemLink|ItemQuality|ItemTexture|ItemsForSlot|SlotInfo)|Invite(?:ConfirmationInfo|ConfirmationInvalidQueues|ReferralInfo)|Item(?:ChildInfo|ClassInfo|Cooldown|Count|CreationContext|Family|Gem|Icon|Info|InfoInstant|InventorySlotInfo|LevelColor|LevelIncrement|QualityColor|SetInfo|SpecInfo|Spell|StatDelta|Stats|SubClassInfo|Uniqueness|UpdateLevel|UpgradeEffect|UpgradeItemInfo|UpgradeStats)|JournalInfoForSpellConfirmation|LFDChoice(?:CollapseState|EnabledState|LockedState|Order)|LFDLock(?:Info|PlayerCount)|LFDRole(?:LockInfo|Restrictions)|LFG(?:BonusFactionID|BootProposal|CategoryForID)|LFGCompletionReward(?:Item|ItemLink)?|LFGDeserterExpiration|LFGDungeon(?:EncounterInfo|Info|NumEncounters|RewardCapBarInfo|RewardCapInfo|RewardInfo|RewardLink|Rewards|ShortageRewardInfo|ShortageRewardLink)|LFGInfoServer|LFGInviteRole(?:Availability|Restrictions)|LFGProposal(?:Encounter|Member)?|LFGQueueStats|LFGQueuedList|LFGRandom(?:CooldownExpiration|DungeonInfo)|LFGReadyCheckUpdate(?:BattlegroundInfo)?|LFGRole(?:ShortageRewards|Update|UpdateBattlegroundInfo|UpdateMember|UpdateSlot)|LFGRoles|LFGSuspendedPlayers|LFGTypes|LFRChoiceOrder|LanguageByIndex|LatestCompleted(?:Comparison)?Achievements|Latest(?:ThreeSenders|UpdatedComparisonStats|UpdatedStats)|LegacyRaidDifficultyID|LevelUpInstances|Lifesteal|Locale|LookingForGuild(?:Comment|Settings)|LooseMacro(?:Icons|ItemIcons)|Loot(?:Info|Method|RollItemInfo|RollItemLink|RollTimeLeft|SlotInfo|SlotLink|SlotType|SourceInfo|Specialization|Threshold)|Macro(?:Body|Icons|IndexByName|Info|Item|ItemIcons|Spell)|ManaRegen|Map(?:Continents|DebugObjectInfo|Hierarchy|Info|LandmarkInfo|NameByID|OverlayInfo|Subzones|Zones)|MasterLootCandidate|Mastery(?:Effect)?|Max(?:ArenaCurrency|BattlefieldID|CombatRatingBonus|NumCUFProfiles|PlayerHonorLevel|PlayerLevel|PrestigeLevel|RenderScale|RewardCurrencies|SpellStartRecoveryOffset|TalentTier)|MeleeHaste|Merchant(?:Currencies|Filter|ItemCostInfo|ItemCostItem|ItemID|ItemInfo|ItemLink|ItemMaxStack|NumItems)|MinimapZoneText|MirrorTimer(?:Info|Progress)|ModResilienceDamageReduction|ModifiedClick(?:Action)?|Money|Monitor(?:AspectRatio|Count|Name)|Mouse(?:ButtonClicked|ButtonName|ClickFocus|Focus|MotionFocus)|MovieDownloadProgress|MultiCast(?:BarIndex|TotemSpells)|Mute(?:Name|Status)|Net(?:IpTypes|Stats)|NewSocket(?:Info|Link)|Next(?:Achievement|CompleatedTutorial|PendingInviteConfirmation)|NormalizedRealmName|Num(?:ActiveQuests|AddOns|ArchaeologyRaces|ArenaOpponentSpecs|ArenaOpponents|ArtifactsByRace|AuctionItems|AutoQuestPopUps|AvailableQuests|BankSlots|BattlefieldFlagPositions|BattlefieldScores|BattlefieldStats|BattlefieldVehicles|BattlegroundTypes|Bindings|BuybackItems|ChannelMembers|Classes|Companions|ComparisonCompletedAchievements|CompletedAchievements|DeclensionSets|DisplayChannels|DungeonForRandomSlot|DungeonMapLevels|EquipmentSets|Factions|FilteredAchievements|FlexRaidDungeons|Flyouts|Frames|Friends|GossipActiveQuests|GossipAvailableQuests|GossipOptions|GroupMembers|GuildApplicants|GuildBankMoneyTransactions|GuildBankTabs|GuildBankTransactions|GuildChallenges|GuildEvents|GuildMembers|GuildMembershipRequests|GuildNews|GuildPerks|GuildRewards|GuildTradeSkill|Ignores|ItemUpgradeEffects|Languages|LootItems|Macros|MapDebugObjects|MapLandmarks|MapOverlays|MembersInRank|ModifiedClickActions|Mutes|PetitionNames|QuestChoices|QuestCurrencies|QuestItemDrops|QuestItems|QuestLeaderBoards|QuestLogChoices|QuestLogEntries|QuestLogRewardCurrencies|QuestLogRewardFactions|QuestLogRewardSpells|QuestLogRewards|QuestLogTasks|QuestPOIWorldEffects|QuestRewards|QuestWatches|RFDungeons|RaidProfiles|RandomDungeons|RandomScenarios|RecruitingGuilds|RewardCurrencies|RewardSpells|Routes|SavedInstances|SavedWorldBosses|Scenarios|ShapeshiftForms|SoRRemaining|Sockets|SpecGroups|Specializations|SpecializationsForClassID|SpellTabs|SubgroupMembers|Titles|TrackedAchievements|TrackingTypes|TrainerServices|TreasurePickerItems|UnspentPvpTalents|UnspentTalents|VoiceSessionMembersBySessionID|VoiceSessions|VoidTransferDeposit|VoidTransferWithdrawal|WarGameTypes|WhoResults|WorldPVPAreas|WorldQuestWatches|WorldStateUI)|NumberOfDetailTiles|OSLocale|ObjectIconTextureCoords|ObjectiveText|OptOutOfLoot|OutdoorPVPWaitTime|Override(?:APBySpellPower|BarIndex|BarSkin|SpellPowerByAP)|OwnerAuctionItems|POITextureCoords|PVP(?:Desired|GearStatRules|LifetimeStats|Roles|SessionStats|Timer|YesterdayStats)|ParryChance(?:FromAttribute)?|Party(?:Assignment|LFGBackfillInfo|LFGID)|Pending(?:GlyphName|InviteConfirmations)|PersonalRatedInfo|PetAction(?:Cooldown|Info|SlotUsable)|PetActionsUsable|Pet(?:Experience|FoodTypes|Icon|MeleeHaste|SpellBonusDamage|TalentTree|TimeRemaining)|Petition(?:Name)?Info|PhysicalScreenSize|Player(?:Facing|InfoByGUID|MapAreaID|MapPosition|TradeCurrency|TradeMoney)|PossessInfo|PowerRegen(?:ForPowerType)?|PrestigeInfo|PrevCompleatedTutorial|Previous(?:Achievement|ArenaSeason)|PrimarySpecialization|ProfessionInfo|Professions|ProgressText|PromotionRank|Pvp(?:PowerDamage|PowerHealing|TalentInfo|TalentInfoByID|TalentInfoBySpecialization|TalentLevelRequirement|TalentLink|TalentRowSelectionInfo|TalentUnlock)|Quest(?:BackgroundMaterial|BountyInfoForMapID)|QuestChoice(?:Option)?Info|QuestChoiceReward(?:Currency|Faction|Info|Item)|Quest(?:CurrencyInfo|FactionGroup|GreenRange|ID)|QuestIndex(?:ForTimer|ForWatch)|QuestItem(?:Info|Link)|QuestLink|QuestLog(?:ChoiceInfo|CompletionText|CriteriaSpell|GroupNum|IndexByID|IsAutoComplete|ItemDrop|ItemLink|LeaderBoard|PortraitGiver|PortraitTurnIn|Pushable|QuestText|QuestType|RequiredMoney|RewardArtifactXP|RewardCurrencyInfo|RewardFactionInfo|RewardHonor|RewardInfo|RewardMoney|RewardSkillPoints|RewardSpell|RewardTitle|RewardXP|Selection|SpecialItemCooldown|SpecialItemInfo|SpellLink|TaskInfo|TimeLeft|Title)|Quest(?:MoneyToGet|ObjectiveInfo|POIBlobCount|POILeaderBoard|POIWorldEffectInfo|POIs|PortraitGiver|PortraitTurnIn|ProgressBarPercent|ResetTime|Reward|SortIndex|SpellLink|TagInfo|Text|Timers|WatchIndex|WatchInfo|WorldMapAreaID)|Quests(?:Completed|ForPlayerByMapID)|RFDungeonInfo|Raid(?:DifficultyID|ProfileFlattenedOptions|ProfileName|ProfileOption|ProfileSavedPosition|RosterInfo|TargetIndex)|Random(?:Dungeon|Scenario)BestChoice|RandomBG(?:Info|Rewards)|RandomScenarioInfo|Ranged(?:CritChance|Haste)|Rated(?:BGRewards|BattleGroundInfo)|ReadyCheck(?:Status|TimeLeft)|ReagentBankCost|RealZoneText|RealmName|RecruitingGuild(?:Info|Selection|Settings|TabardInfo)|RefreshRates|RegisteredAddonMessagePrefixes|ReleaseTimeRemaining|RepairAllCost|ResSicknessDuration|RestState|RestrictedAccountData|Reward(?:ArtifactXP|Honor|Money|NumSkillUps|PackArtifactPower|PackCurrencies|PackItems|PackMoney|PackTitle|PackTitleName|SkillLineID|SkillPoints|Spell|Text|Title|XP)|Rune(?:Cooldown|Count)|RunningMacro(?:Button)?|SavedInstance(?:ChatLink|EncounterInfo|Info)|SavedWorldBossInfo|ScenariosChoiceOrder|SchoolString|Screen(?:DPIScale|Height|Resolutions|Width)|ScriptCPUUsage|SecondsUntilParentalControlsKick|Selected(?:ArtifactInfo|AuctionItem|DisplayChannel|Faction|Friend|Ignore|Mute|WarGameType)|SendMail(?:COD|Item(?:Link)?|Money|Price)|ServerTime|SessionTime|SetBonusesForSpecializationByItemID|ShapeshiftForm(?:Cooldown|ID|Info)?|SheathState|ShieldBlock|SocketItem(?:BoundTradeable|Info|Refundable)|SocketTypes|SortBagsRightToLeft|SpecChangeCost|Specialization(?:|Info|InfoByID|InfoForClassID|InfoForSpecID|MasterySpells|NameForSpecID|Role|RoleByID|Spells)|SpecsForSpell|Speed|Spell(?:Autocast|AvailableLevel|BaseCooldown)|SpellBonus(?:Damage|Healing)|SpellBookItem(?:Info|Name|Texture|TextureFileName)|Spell(?:Charges|ConfirmationPromptsInfo|Cooldown|Count|CritChance|Description|HitModifier|Info|LevelLearned|Link|LossOfControlCooldown|Penetration|PowerCost|Rank|TabInfo|Texture|TextureFileName)|SpellsForCharacterUpgradeTier|StablePet(?:FoodTypes|Info)|Statistic|StatisticsCategoryList|Sturdiness|SubZoneText|SuggestedGroupNum|SummonConfirm(?:AreaName|Summoner|TimeLeft)|SummonFriendCooldown|SuperTrackedQuestID|Tabard(?:CreationCost|Info)|TalentInfo(?:ByID|BySpecialization)?|Talent(?:Link|TierInfo)|Target(?:CorpseMapPosition|TradeCurrency|TradeMoney)|Task(?:Info|POIs)|TasksTable|Taxi(?:BenchmarkMode|MapID)|TempShapeshiftBarIndex|Text|ThreatStatusColor|TickTime|Time(?:ToWellRested)?|Title(?:Name|Text)|ToolTipInfo|TotalAchievementPoints|Totem(?:CannotDismiss|Info|TimeLeft)|TrackedAchievements|TrackingInfo|TradePlayerItem(?:Info|Link)|TradeTargetItem(?:Info|Link)|Trainer(?:GreetingText|SelectionIndex)|TrainerService(?:AbilityReq|Cost|Description|Icon|Info|ItemLink|LevelReq|NumAbilityReq|SkillLine|SkillReq|StepIndex|TypeFilter)|TrainerTradeskillRankValues|TreasurePickerItemInfo|TutorialsEnabled|UICameraInfo|Unit(?:Max)?HealthModifier|Unit(?:PowerModifier|Speed)|Vehicle(?:BarIndex|UIIndicator|UIIndicatorSeat)|VersatilityBonus|Video(?:Caps|Options)|Voice(?:CurrentSessionID|SessionInfo|SessionMemberInfoBySessionID|Status)|VoidItem(?:HyperlinkString|Info)|Void(?:StorageSlotPageIndex|TransferCost|TransferDepositInfo|TransferWithdrawalInfo|UnlockCost)|WarGame(?:QueueStatus|TypeInfo)|WatchedFactionInfo|WeaponEnchantInfo|WebTicket|WeeklyPVPRewardInfo|WhoInfo|World(?:ElapsedTime|ElapsedTimers|LocFromMapPos|MapActionButtonSpellInfo|MapTransformInfo|MapTransforms|PVPAreaInfo|PVPQueueStatus|QuestWatchInfo|StateUIInfo)|XPExhaustion|Zone(?:AbilitySpellInfo|PVPInfo|Text))|
@@ -156,12 +164,14 @@ GuildControl(?:AddRank|DelRank|GetAllowedShifts|GetNumRanks|GetRankFlags|GetRank
 Guild(?:Demote|Disband|Info|Invite|Leave|MasterAbsent|NewsSetSticky|NewsSort|Promote|Roster|RosterSendSoR|RosterSetOfficerNote|RosterSetPublicNote|SetLeader|SetMOTD|Uninvite)|
 ~
 
+-- API Functions - H
 Has(?:APEffectsSpellPower|Action|AlternateForm|ArtifactEquipped|AttachedGlyph|BonusActionBar|BoundGemProposed|CompletedAnyAchievement|DebugZoneMap|DualWieldPenalty|ExtraActionBar|FullControl|IgnoreDualWieldWeapon|InboxItem|InspectHonorData|LFGRestrictions|LoadedCUFProfiles|NewMail|NoReleaseAura|OverrideActionBar|PendingGlyphCast|PetSpells|PetUI|SPEffectsAttackPower|SendMailItem|Soulstone|TempShapeshiftActionBar|VehicleActionBar|WandEquipped)|
 HaveQuest(?:Reward)?Data|
 HearthAndResurrectFromArea|
 HideRepairCursor|
 ~
 
+-- API Functions - I
 IgnoreQuest|In(?:ActiveBattlefield|Cinematic|CombatLockdown|GuildParty|RepairMode)|
 InboxItemCanDelete|
 InitWorldMapPing|
@@ -172,13 +182,16 @@ Is(?:64BitClient|AchievementEligible|ActionInRange|Active(?:BattlefieldArena|Que
 Item(?:AddedToArtifact|CanTargetGarrisonFollowerAbility|HasRange|Text(?:GetCreator|GetItem|GetMaterial|GetPage|GetText|HasNextPage|IsFullPage|NextPage|PrevPage))|
 ~
 
+-- API Functions - J
 Join(?:Arena|Battlefield|ChannelByName|LFG|PermanentChannel|RatedBattlefield|SingleLFG|Skirmish|TemporaryChannel)|
 JumpOrAscendStart|
 ~
 
+-- API Functions - K
 KB(?:Article_(?:BeginLoading|GetData|IsLoaded)|Query_(?:BeginLoading|GetArticleHeaderCount|GetArticleHeaderData|GetTotalArticleCount|IsLoaded)|Setup_(?:BeginLoading|GetArticleHeaderCount|GetArticleHeaderData|GetCategoryCount|GetCategoryData|GetLanguageCount|GetLanguageData|GetSubCategoryCount|GetSubCategoryData|GetTotalArticleCount|IsLoaded)|System_(?:GetMOTD|GetServerNotice|GetServerStatus))|
 ~
 
+-- API Functions - L
 LFGTeleport|
 Learn(?:Pvp)?Talents?|
 Leave(?:Battlefield|ChannelByName|LFG|Party|SingleLFG)|
@@ -188,12 +201,14 @@ Log(?:ging(?:Chat|Combat)|out)|
 Loot(?:MoneyNotify|Slot(?:HasItem)?)|
 ~
 
+-- API Functions - M
 ModifyEquipmentSet|
 Mouse(?:OverrideCinematicDisable|look(?:Start|Stop))|
 Move(?:AndSteer|Backward|Forward|View(?:Down|In|Left|Out|Right|Up))(?:Start|Stop)|
 MultiSampleAntiAliasingSupported|
 ~
 
+-- API Functions - N
 NeutralPlayerSelectFaction|
 NextView|
 NoPlayTime|
@@ -202,12 +217,14 @@ NotifyInspect|
 NumTaxiNodes|
 ~
 
+-- API Functions - O
 OfferPetition|
 OffhandHasWeapon|
 Open(?:Calendar|Trainer)|
 OpeningCinematic|
 ~
 
+-- API Functions - P
 PartialPlayTime|
 PartyLFGStartBackfill|
 Pet(?:Abandon|AggressiveMode|AssistMode|Attack|CanBe(?:Abandoned|Dismissed|Renamed)|DefensiveMode|Dismiss|Follow|Has(?:ActionBar|Spellbook)|MoveTo|PassiveMode|Rename|StopAttack|UsesPetFrame|Wait)|
@@ -226,11 +243,13 @@ PurchaseSlot|
 PutItemIn(?:Backpack|Bag)|
 ~
 
+-- API Functions - Q
 Query(?:AuctionItems|Guild(?:EventLog|MembersForRecipe|News|Recipes|Bank(?:Log|Tab|Text))|WorldCountdownTimer)|
 Quest(?:ChooseRewardError|FlagsPVP|GetAuto(?:Accept|Launched)|HasPOIInfo|Is(?:Daily|From(?:AdventureMap|AreaTrigger)|Weekly)|Log(?:PushQuest|RewardHasTreasurePicker|ShouldShowPortrait)|MapUpdateAllQuests|POI(?:Get(?:IconInfo|QuestIDByIndex|QuestIDByVisibleIndex|SecondaryLocations)|UpdateIcons))|
 Quit|
 ~
 
+-- API Functions - R
 RaidProfile(?:Exists|HasUnsavedChanges)|
 RandomRoll|
 ReagentBankButtonIDToInvSlotID|
@@ -259,6 +278,7 @@ RollOnLoot|
 Run(?:Binding|Macro(?:Text)?|Script)|
 ~
 
+-- API Functions - S
 Save(?:AddOns|Bindings|EquipmentSet|RaidProfileCopy|View)|
 Screenshot|
 ScriptsDisallowedForBeta|
@@ -293,6 +313,7 @@ SwapRaidSubgroup|
 SwitchAchievementSearchTab|
 ~
 
+-- API Functions - T
 Take(?:Inbox(?:Item|Money|TextItem)|TaxiNode)|
 Target(?:Direction(?:Enemy|Finished|Friend)|Last(?:Enemy|Friend|Target)|Nearest(?:Enemy|EnemyPlayer|Friend|FriendPlayer|PartyMember|RaidMember)?|PriorityHighlight(?:End|Start)|Totem|Unit)|
 Taxi(?:Get(?:Dest(?:X|Y)|NodeSlot|Src(?:X|Y))|IsDirectFlight|Node(?:Cost|GetType|Name|Position)|RequestEarlyLanding)|
@@ -304,6 +325,7 @@ TurnInGuildCharter|
 Turn(?:Left|OrAction|Right)(?:Start|Stop)|
 ~
 
+-- API Functions - U
 Un(?:ignoreQuest|inviteUnit|learnSpecialization|lockVoidStorage)|
 Unit(?:AffectingCombat|Alternate(?:Power(?:Counter|Texture)?Info)|Armor|Attack(?:BothHands|Power|Speed)|Aura|BattlePet(?:Level|SpeciesID|Type)|BonusArmor|Buff|Can(?:Assist|Attack|Cooperate|PetBattle)|CastingInfo|ChannelInfo|Class(?:Base)?|Classification|ControllingVehicle|Creature(?:Family|Type)|Damage|Debuff|Defense|DetailedThreatSituation|DistanceSquared|EffectiveLevel|Exists|FactionGroup|FullName|GUID|Get(?:AvailableRoles|IncomingHeals|Total(?:Heal)?Absorbs)|GroupRolesAssigned|HPPerStamina|Has(?:IncomingResurrection|LFG(?:Deserter|RandomCooldown)|RelicSlot|Vehicle(?:PlayerFrame)?UI)|Health(?:Max)?|Honor(?:Level|Max)?|In(?:AnyGroup|Battleground|OtherParty|Party|Phase|Raid|Range|Subgroup|Vehicle(?:ControlSeat|HidesPetFrame)?)|Is(?:AFK|BattlePet(?:Companion)?|Charmed|Connected|Controlling|Corpse|DND|Dead(?:OrGhost)?|Enemy|FeignDeath|Friend|Ghost|Group(?:Assistant|Leader)|InMyGuild|Mercenary|OtherPlayers(?:Battle)?Pet|PVP(?:FreeForAll)?|PVPSanctuary|Player|Possessed|QuestBoss|RaidOfficer|SameServer|Silenced|Talking|TapDenied|Trivial|Unconscious|Unit|Visible|WildBattlePet)|LeadsAnyGroup|Level|Mana(?:Max)?|Name|NumPowerBarTimers|OnTaxi|PVPName|Player(?:Controlled|OrPetIn(?:Party|Raid))|Position|Power(?:Max|Type)?|PowerBarTimerInfo|Prestige|Race|Ranged(?:Attack(?:Power)?|Damage)|Reaction|RealmRelationship|Resistance|SelectionColor|SetRole|Sex|ShouldDisplayName|SpellHaste|Stagger|Stat|SwitchToVehicleSeat|TargetsVehicleInRaidUI|Threat(?:PercentageOfLead|Situation)|UsingVehicle|VehicleSeat(?:Count|Info)|VehicleSkin|XP(?:Max)?)|
 Update(?:AddOn(?:CPU|Memory)Usage|InventoryAlertStatus|MapHighlight|WarGamesList)|
@@ -311,15 +333,24 @@ UpgradeItem|
 Use(?:Action|ContainerItem|EquipmentSet|Hearthstone|InventoryItem|ItemByName|QuestLogSpecialItem|Soulstone|Toy|ToyByName|WorldMapActionButtonSpellOnQuest)|
 ~
 
+-- API Functions - V
 Vehicle(?:Aim(?:Decrement|Down(?:Start|Stop)|Get(?:Angle|Norm(?:Angle|Power))|Increment|Request(?:(?:Norm)?Angle)|SetNormPower|Up(?:Start|Stop))|CameraZoom(?:In|Out)|Exit|NextSeat|PrevSeat)|
 ViewGuildRecipes|
 Voice(?:Chat_(?:ActivatePrimaryCaptureCallback|GetCurrentMicrophoneSignalLevel|IsPlayingLoopbackSound|IsRecordingLoopbackSound|PlayLoopbackSound|RecordLoopbackSound|StartCapture|StopCapture|StopPlayingLoopbackSound|StopRecordingLoopbackSound)|Enumerate(?:Capture|Output)Devices|GetCurrent(?:Capture|Output)Device|IsDisabledByClient|PushToTalk(?:Start|Stop)|Select(?:Capture|Output)Device)|
 ~
 
+-- API Functions - X
 WarGameRespond|
 WithdrawGuildBankMoney|
 ~
 
+-- API Functions - X
+~
+
+-- API Functions - Y
+~
+
+-- API Functions - Z
 ZoomOut|
 ~
 
@@ -435,7 +466,7 @@ HighlightText|
 HookScript|
 InitializeTabardColors|
 Insert|
-Is(?:Enabled|MouseOver|Movable|ObjectType|Owned|Playing|Resizable|Shown|UserPlaced|Visible)|
+Is(?:Enabled|EventRegistered|MouseOver|Movable|ObjectType|Owned|Playing|Resizable|Shown|UserPlaced|Visible)|
 LockHighlight|
 Lower|
 NumLines|
@@ -449,7 +480,7 @@ Register(?:(?:Unit)?Event|For(?:Clicks|Drag))|
 ReplaceIconTexture|
 Save|
 Scroll(?:Down|To(?:Bottom|Top)|Up)|
-Set(?:Action|AllPoints|Alpha(?:Gradient)?|Attribute|Auction(Sell)?Item|AutoFocus|Backdrop(?:BorderColor)?|BackdropColor|BagItem|BlendMode|ButtonState|BuybackItem|Camera|Checked(?:Texture)?|ClampedToScreen|Color(?:HSV|RGB)|ColorTexture|Craft(?:Item|Spell)|CursorPosition|Desaturated|Disabled(?:CheckedTexture|FontObject|TextColor|Texture)|DrawLayer|Duration|EndDelay|Facing|FlattensRenderLayers|Focus|Fog(?:Color|Far|Near)|Font(?:Height|Object)?|FormattedText|Frame(?:Level|Strata)|FromAlpha|Gradient(?:Alpha)|Height|Highlight(?:FontObject|TextColor|Texture)|HitRectInsets|HorizontalScroll|HorizTile|Hyperlink|ID|InboxItem|InventoryItem|JustifyH|JustifyV|Light|Looping|Loot(Roll)?Item|Max(?:Bytes|Letters|Resize)|Merchant(?:Compare)?Item|MinMaxValues|MinResize|Model|MoneyWidth|Movable|Normal(?:FontObject|Texture)|Number|Offset|Order|Orientation|Origin|Owner|Padding|Parent|PetAction|PlayerBuff|Point|PortraitZoom|Position|PushedTexture|Quest(?:Log)?(?:Item|RewardSpell)|QuestRewardSpell|Resizable|Rotation|Scale|Script|ScrollFromBottom|SendMailItem|Sequence(?:Time)?|Shadow(?:Color|Offset)|Shapeshift|Size|Slot|Smoothing|Spell|StartDelay|StatusBar(?:Color|Texture)|Talent|TexCoord|Text(?:Color|Height|Insets)?|Texture|To(?:Final)?Alpha|Toplevel|TrackingSpell|Trade(?:PlayerItem|SkillItem|TargetItem)|TrainerService|Unit|UnitBuff|UnitDebuff|UserPlaced|Value(?:Step)?|VertexColor|VerticalScroll|VertTile|Width|Zoom)|
+Set(?:Action|AllPoints|Alpha(?:Gradient)?|Attribute|Auction(Sell)?Item|AutoFocus|Backdrop(?:BorderColor)?|BackdropColor|BagItem|BlendMode|ButtonState|BuybackItem|Camera|Checked(?:Texture)?|ClampedToScreen|Color(?:HSV|RGB)|ColorTexture|Craft(?:Item|Spell)|CursorPosition|Desaturated|Disabled(?:CheckedTexture|FontObject|TextColor|Texture)|DrawLayer|Duration|EndDelay|Facing|FlattensRenderLayers|Focus|Fog(?:Color|Far|Near)|Font(?:Height|Object)?|FormattedText|Frame(?:Level|Strata)|FromAlpha|Gradient(?:Alpha)|Height|Highlight(?:FontObject|TextColor|Texture)|HitRectInsets|HorizontalScroll|HorizTile|Hyperlink|ID|InboxItem|InventoryItem|ItemByID|JustifyH|JustifyV|Light|Looping|Loot(Roll)?Item|Max(?:Bytes|Letters|Resize)|Merchant(?:Compare)?Item|MinMaxValues|MinResize|Model|MoneyWidth|Movable|Normal(?:FontObject|Texture)|Number|Offset|Order|Orientation|Origin|Owner|Padding|Parent|PetAction|PlayerBuff|Point|PortraitZoom|Position|PushedTexture|Quest(?:Log)?(?:Item|RewardSpell)|QuestRewardSpell|Resizable|Rotation|Scale|Script|ScrollFromBottom|SendMailItem|Sequence(?:Time)?|Shadow(?:Color|Offset)|Shapeshift|Size|Slot|Smoothing|Spell|StartDelay|StatusBar(?:Color|Texture)|Talent|TexCoord|Text(?:Color|Height|Insets)?|Texture|To(?:Final)?Alpha|Toplevel|TrackingSpell|Trade(?:PlayerItem|SkillItem|TargetItem)|TrainerService|Unit|UnitBuff|UnitDebuff|UserPlaced|Value(?:Step)?|VertexColor|VerticalScroll|VertTile|Width|Zoom)|
 Show|
 Start(?:Movie|Moving|Sizing)|
 Stop(?:Movie|MovingOrSizing)?|
@@ -482,7 +513,6 @@ AddToAutoHide|
 AnimateTexCoords|
 BetterDate|
 Build(?:(?:(?:Colored|NewLine)?ListString)|MultilineTooltip)|
-ButtonInventorySlot|
 ButtonPulse_StopPulse|
 CRF(?:Flow|Group)FilterFunc|
 CallRestrictedClosure|
@@ -549,8 +579,9 @@ Register(?:AttributeDriver|AutoHide|StateDriver|UnitWatch)|
 Saturate|
 SecondsToTime(?:Abbrev)?|
 Secure(?:Cmd(?:ItemParse|UseItem)|Handler(?:Execute|SetFrameRef|UnwrapScript|WrapScript))|
-Set(?:ButtonPulse|ClampedTextureRotation|CheckButtonIsRadio|DressUpBackground|GuildTabardTextures|ItemButton(?:Count|Texture(?:VertexColor)?|Desaturated|NameFrameVertexColor|NormalTextureVertexColor|SlotVertexColor|Stock)|ItemRef|LargeGuildTabardTextures|MoneyFrameColor|RaidTargetIcon|SelfMuteState|TextStatusBarText(?:Prefix|ZeroText)?|TitleByName|UIPanelAttribute|UpAnimation|ZoneText)|
+Set(?:ButtonPulse|ClampedTextureRotation|CheckButtonIsRadio|DressUpBackground|GuildTabardTextures|ItemButton(?:Count|Quality|Texture(?:VertexColor)?|Desaturated|NameFrameVertexColor|NormalTextureVertexColor|SlotVertexColor|Stock)|ItemRef|LargeGuildTabardTextures|MoneyFrameColor|RaidTargetIcon|SelfMuteState|TextStatusBarText(?:Prefix|ZeroText)?|TitleByName|UIPanelAttribute|UpAnimation|ZoneText)|
 Show(?:BonusActionBar|InspectCursor|MacroFrame|NumericThreat|PartyFrame|PetActionBar|QuickButton|ReadyCheck|ResurrectRequest|TextStatusBarText|UIPanel|WatchedReputationBarText|WhoPanel)|
+Social_InsertLink|
 SquareButton_SetIcon|
 StaticPopup_(?:Hide|Show)|
 Target(?:ofTarget)?HealthCheck|
@@ -583,6 +614,7 @@ GameTooltip(?:Text(?:Small)?)?|
 HelpFrame|
 LootHistoryFrame|
 MacroFrame|
+MailFrame|
 MerchantFrame|
 MessageFrame|
 Minimap(?:Cluster)?|
@@ -591,7 +623,7 @@ OrderHallCommandBar|
 PlayerArrowEffectFrame|
 QuestLog(?:Scroll)?Frame|
 RaidFrame|
-SocialFrame|
+SocialPostFrame|
 TalentFrame|
 TaxiRouteFrame|
 TradeSkillFrame|
@@ -600,10 +632,13 @@ WhoFrame(?:EditBox|WhoButton)|
 World(?:Map)?Frame|
 ~
 
--- Library global variables
+
+-- Global variables
 ACHIEVEMENT_COLOR_CODE|
 BACKPACK_CONTAINER|
+BANK_CONTAINER(?:_INVENTORY_OFFSET)?|
 BATTLENET_FONT_COLOR(?:_CODE)?|
+CONTAINER_BAG_OFFSET|
 COPPER_PER_SILVER|
 DIFFICULTY_(?:(?:DUNGEON|RAID10|RAID25)_(?:NORMAL|HEROIC)|DUNGEON_CHALLENGE|RAID_LFR|RAID40|PRIMARYRAID_(NORMAL|HEROIC|MYTHIC|LFR))|
 DIM_RED_FONT_COLOR|
@@ -614,12 +649,13 @@ GRAY_FONT_COLOR(?:_CODE)?|
 GREEN_FONT_COLOR(?:_CODE)?|
 HIGHLIGHT_FONT_COLOR(?:_CODE)?|
 INSTANCE_TYPE_(?:ARENA|BG|DUNGEON|RAID)|
-ITEM_QUALITY_COLORS|
+INVSLOT_(?:AMMO|BACK|BODY|CHEST|FEET|FINGER[1-2]|HAND|HEAD|LAST_EQUIPPED|LEGS|MAINHAND|NECK|OFFHAND|RANGED|SHOULDER|TABARD|TRINKET[1-2]|WAIST|WRIST)|
+ITEM_(?:INVENTORY_BANK_BAG_OFFSET|QUALITY_COLORS)|
+KEYRING_CONTAINER|
 LFG_TYPE_(?:DUNGEON|RAID|RANDOM_DUNGEON)|
 LIGHTYELLOW_FONT_COLOR(?:_CODE)?|
 LOCALIZED_CLASS_NAMES_(?:FE)?MALE|
-MAX_(?:CLASSES|OBJECTIVES|QUESTLOG_QUESTS|(?:WATCHABLE_)?QUESTS)|
-MAX_GUILDBANK_TABS|
+MAX_(?:CLASSES|GUILDBANK_TABS|OBJECTIVES|QUESTLOG_QUESTS|WATCHABLE_QUESTS)|
 NORMAL_FONT_COLOR(?:_CODE)?|
 NUM_(?:BAG_SLOTS|BANKBAGSLOTS|BANKGENERIC_SLOTS|CHAT_WINDOWS)|
 ORANGE_FONT_COLOR(?:_CODE)?|
@@ -628,6 +664,7 @@ PLAYER_FACTION_(?:COLORS|GROUP)|
 QUEST_TAG_(ACCOUNT|DUNGEON|GROUP|HEROIC|LEGENDARY|PVP|RAID10|RAID25|RAID|SCENARIO)|
 QuestDifficulty(?:Highlight)?Colors|
 RAID_CLASS_COLORS|
+REAGENTBANK_CONTAINER|
 RED_FONT_COLOR(?:_CODE)?|
 SCHOOL_MASK_(NONE|PHYSICAL|HOLY|FIRE|NATURE|FROST|SHADOW|ARCANE)|
 SILVER_PER_GOLD|
@@ -644,6 +681,79 @@ On(?:AnimFinished|AttributeChanged|Char(?:Composition)?|Click|ColorSelect|Cursor
 PreClick|
 PostClick|
 ~
+
+-- Quoted string parameters - case sensitive
+AUTOLOOTTOGGLE|
+CHATLINK|
+COMPAREITEMS|
+DRESSUP|
+FOCUSCAST|
+MAILAUTOLOOTTOGGLE|
+OPENALLBAGS|
+PICKUPACTION|
+QUESTWATCHTOGGLE|
+SELFCAST|
+SHOWITEMFLYOUT|
+SHOWMULTICASTFLYOUT|
+SOCKETITEM|
+SPLITSTACK|
+STICKYCAMERA|
+TOKENWATCHTOGGLE|
+arena[1-5]|
+boss[1-5]|
+focus|
+mouseover|
+none|
+npc|
+party(?:pet)?[1-4]|
+pet|
+player|
+raid(?:pet)?\d{1,2}|
+target|
+vehicle|
+~
+
+-- Quoted string parameters - case insensitive
+ADD|
+Ambience|
+ANCHOR_(?:BOTTOM(?:LEFT|RIGHT)?|CURSOR|LEFT|NONE|PRESERVE|RIGHT|TOP(?:LEFT|RIGHT)?)|
+APLHAKEY|
+ARTWORK|
+BACKGROUND|
+BLEND|
+BORDER|
+BOTTOM(?:LEFT|RIGHT)?|
+Browser|
+Button[1-5]?|
+CENTER|
+CheckButton|
+ColorSelect|
+CoolDown|
+DIALOG|
+DISABLE|
+EditBox|
+Frame|
+FULLSCREEN(?:_DIALOG)?|
+HIGH|
+LeftButton|
+LEFT|
+LOW|
+Master|
+MEDIUM|
+MiddleButton|
+MOD|
+Music|
+OVERLAY|
+RightButon|
+RIGHT|
+ScrollFrame|
+SFXSimpleHTML|
+Slider|
+StatusBar|
+TOOLTIP|
+TOP(?:LEFT|RIGHT)?|
+~
+
 
 -- Events A-E
 ACHIEVEMENT_(?:EARNED|SEARCH_UPDATED)|
