@@ -739,7 +739,7 @@
 			<key>name</key>
 			<string>support.constant.string-parameter.wow-api.lua</string>
 			<key>match</key>
-			<string>(['"])(?i)(ADD|Ambience|ANCHOR_(?:BOTTOM(?:LEFT|RIGHT)?|CURSOR|LEFT|NONE|PRESERVE|RIGHT|TOP(?:LEFT|RIGHT)?)|APLHAKEY|ARTWORK|BACKGROUND|BLEND|BORDER|BOTTOM(?:LEFT|RIGHT)?|Browser|Button[1-5]?|CENTER|CheckButton|ColorSelect|CoolDown|DIALOG|DISABLE|EditBox|Frame|FULLSCREEN(?:_DIALOG)?|HIGH|LeftButton|LEFT|LOW|Master|MEDIUM|MiddleButton|MOD|Music|OVERLAY|RightButon|RIGHT|ScrollFrame|SFXSimpleHTML|Slider|StatusBar|TOOLTIP|TOP(?:LEFT|RIGHT)?)\1</string>
+			<string>(['"])(?i)(ADD|Ambience|ANCHOR_(?:BOTTOM(?:LEFT|RIGHT)?|CURSOR|LEFT|NONE|PRESERVE|RIGHT|TOP(?:LEFT|RIGHT)?)|APLHAKEY|ARTWORK|BACKGROUND|BLEND|BORDER|BOTTOM(?:LEFT|RIGHT)?|Browser|Button[1-5]?|CENTER|CheckButton|ColorSelect|CoolDown|DIALOG|DISABLE|EditBox|Frame|FULLSCREEN(?:_DIALOG)?|HIGH|LeftButton|LEFT|LOW|Master|MEDIUM|MiddleButton|MOD|Music|OVERLAY|RightButton|RIGHT|ScrollFrame|SFXSimpleHTML|Slider|StatusBar|TOOLTIP|TOP(?:LEFT|RIGHT)?)\1</string>
 		</dict>
 
 		<!-- WoW widget event handlers -->
