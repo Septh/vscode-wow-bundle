@@ -1,7 +1,4 @@
 -- Ajouts :
--- Global variables
--- Library functions
--- Widgets methods
 
 
 -- API Functions - A
@@ -448,7 +445,7 @@ ValidateTransmogrifications|
 ~
 
 -- Widget methods
-Add(?:DoubleLine|HistoryLine|Line|Message)|
+Add(?:DoubleLine|HistoryLine|Line|Message|Texture)|
 AdvanceTime|
 AppendText|
 AtBottom|
@@ -460,7 +457,7 @@ CycleVariation|
 Disable(?:DrawLayer)?|
 Enable(?:DrawLayer|Keyboard|Mouse(?:Wheel)?|Subtitles)?|
 FadeOut|
-Get(?:Alpha|Attribute|Bottom|ButtonState|Center|Checked|Color(?:HSV|RGB)|Current(?:Line|Scroll)|DebugName|Facing|FlattensRenderLayers|Font(?:Height|Object)?|FrameLevel|Height|HorizontalScroll(?:Range)?|ID|InputLanguage|Item|Left|LowerBackgroundFileName|LowerEmblem(?:FileName|Texture)|MinMaxValues|Name|Normal(?:FontObject|Texture)|Num(?:Letters|LinesDisplay|Messages|Points)|Number|Owner|Parent|PingPosition|Point|Position|PushedTexture|Rect|Regions|Right|Scale|Script|Size|StringWidth|Text(?:Height|Width)?|Texture|Top|UpperBackgroundFileName|UpperEmblem(?:FileName|Texture)|Value(?:Step)?|VerticalScroll|Width|Zoom(?:Levels)?)|
+Get(?:Alpha|AnchorType|Attribute|Bottom|ButtonState|Center|Checked|Color(?:HSV|RGB)|Current(?:Line|Scroll)|DebugName|Facing|FlattensRenderLayers|Font(?:Height|Object)?|FrameLevel|Height|HorizontalScroll(?:Range)?|ID|InputLanguage|Item|Left|LowerBackgroundFileName|LowerEmblem(?:FileName|Texture)|MinimumWidth|MinMaxValues|Name|Normal(?:FontObject|Texture)|Num(?:Letters|LinesDisplay|Messages|Points)|Number|Owner|Parent|PingPosition|Point|Position|PushedTexture|Rect|Regions|Right|Scale|Script|Size|StringWidth|Text(?:Height|Width)?|Texture|Top|UpperBackgroundFileName|UpperEmblem(?:FileName|Texture)|Value(?:Step)?|VerticalScroll|Width|Zoom(?:Levels)?)|
 Hide|
 HighlightText|
 HookScript|
@@ -480,7 +477,7 @@ Register(?:(?:Unit)?Event|For(?:Clicks|Drag))|
 ReplaceIconTexture|
 Save|
 Scroll(?:Down|To(?:Bottom|Top)|Up)|
-Set(?:Action|AllPoints|Alpha(?:Gradient)?|Attribute|Auction(Sell)?Item|AutoFocus|Backdrop(?:BorderColor)?|BackdropColor|BagItem|BlendMode|ButtonState|BuybackItem|Camera|Checked(?:Texture)?|ClampedToScreen|Color(?:HSV|RGB)|ColorTexture|Craft(?:Item|Spell)|CursorPosition|Desaturated|Disabled(?:CheckedTexture|FontObject|TextColor|Texture)|DrawLayer|Duration|EndDelay|Facing|FlattensRenderLayers|Focus|Fog(?:Color|Far|Near)|Font(?:Height|Object)?|FormattedText|Frame(?:Level|Strata)|FromAlpha|Gradient(?:Alpha)|Height|Highlight(?:FontObject|TextColor|Texture)|HitRectInsets|HorizontalScroll|HorizTile|Hyperlink|ID|InboxItem|InventoryItem|ItemByID|JustifyH|JustifyV|Light|Looping|Loot(Roll)?Item|Max(?:Bytes|Letters|Resize)|Merchant(?:Compare)?Item|MinMaxValues|MinResize|Model|MoneyWidth|Movable|Normal(?:FontObject|Texture)|Number|Offset|Order|Orientation|Origin|Owner|Padding|Parent|PetAction|PlayerBuff|Point|PortraitZoom|Position|PushedTexture|Quest(?:Log)?(?:Item|RewardSpell)|QuestRewardSpell|Resizable|Rotation|Scale|Script|ScrollFromBottom|SendMailItem|Sequence(?:Time)?|Shadow(?:Color|Offset)|Shapeshift|Size|Slot|Smoothing|Spell|StartDelay|StatusBar(?:Color|Texture)|Talent|TexCoord|Text(?:Color|Height|Insets)?|Texture|To(?:Final)?Alpha|Toplevel|TrackingSpell|Trade(?:PlayerItem|SkillItem|TargetItem)|TrainerService|Unit|UnitBuff|UnitDebuff|UserPlaced|Value(?:Step)?|VertexColor|VerticalScroll|VertTile|Width|Zoom)|
+Set(?:Action|AllPoints|Alpha(?:Gradient)?|Attribute|Auction(Sell)?Item|AutoFocus|Backdrop(?:BorderColor)?|BackdropColor|BagItem|BlendMode|ButtonState|BuybackItem|Camera|Checked(?:Texture)?|ClampedToScreen|Color(?:HSV|RGB)|ColorTexture|Craft(?:Item|Spell)|CursorPosition|Desaturated|Disabled(?:CheckedTexture|FontObject|TextColor|Texture)|DrawLayer|Duration|EndDelay|Facing|FlattensRenderLayers|Focus|Fog(?:Color|Far|Near)|Font(?:Height|Object)?|FormattedText|Frame(?:Level|Strata)|FromAlpha|Gradient(?:Alpha)|Height|Highlight(?:FontObject|TextColor|Texture)|HitRectInsets|HorizontalScroll|HorizTile|Hyperlink|ID|InboxItem|InventoryItem|ItemByID|JustifyH|JustifyV|Light|Looping|Loot(Roll)?Item|Max(?:Bytes|Letters|Resize)|Merchant(?:Compare)?Item|MinimumWidth|MinMaxValues|MinResize|Model|MoneyWidth|Movable|Normal(?:FontObject|Texture)|Number|Offset|Order|Orientation|Origin|Owner|Padding|Parent|PetAction|PlayerBuff|Point|PortraitZoom|Position|PushedTexture|Quest(?:Log)?(?:Item|RewardSpell)|QuestRewardSpell|Resizable|Rotation|Scale|Script|ScrollFromBottom|SendMailItem|Sequence(?:Time)?|Shadow(?:Color|Offset)|Shapeshift|Size|Slot|Smoothing|Spell|StartDelay|StatusBar(?:Color|Texture)|Talent|TexCoord|Text(?:Color|Height|Insets)?|Texture|To(?:Final)?Alpha|Toplevel|TrackingSpell|Trade(?:PlayerItem|SkillItem|TargetItem)|TrainerService|Unit|UnitBuff|UnitDebuff|UserPlaced|Value(?:Step)?|VertexColor|VerticalScroll|VertTile|Width|Zoom)|
 Show|
 Start(?:Movie|Moving|Sizing)|
 Stop(?:Movie|MovingOrSizing)?|
@@ -649,13 +646,13 @@ GRAY_FONT_COLOR(?:_CODE)?|
 GREEN_FONT_COLOR(?:_CODE)?|
 HIGHLIGHT_FONT_COLOR(?:_CODE)?|
 INSTANCE_TYPE_(?:ARENA|BG|DUNGEON|RAID)|
-INVSLOT_(?:AMMO|BACK|BODY|CHEST|FEET|FINGER[1-2]|HAND|HEAD|LAST_EQUIPPED|LEGS|MAINHAND|NECK|OFFHAND|RANGED|SHOULDER|TABARD|TRINKET[1-2]|WAIST|WRIST)|
+INVSLOT_(?:AMMO|BACK|BODY|CHEST|FEET|FINGER[1-2]|FIRST_EQUIPPED|HAND|HEAD|LAST_EQUIPPED|LEGS|MAINHAND|NECK|OFFHAND|RANGED|SHOULDER|TABARD|TRINKET[1-2]|WAIST|WRIST)|
 ITEM_(?:INVENTORY_BANK_BAG_OFFSET|QUALITY_COLORS)|
 KEYRING_CONTAINER|
 LFG_TYPE_(?:DUNGEON|RAID|RANDOM_DUNGEON)|
 LIGHTYELLOW_FONT_COLOR(?:_CODE)?|
 LOCALIZED_CLASS_NAMES_(?:FE)?MALE|
-MAX_(?:CLASSES|GUILDBANK_TABS|OBJECTIVES|QUESTLOG_QUESTS|WATCHABLE_QUESTS)|
+MAX_(?:CLASSES|GUILDBANK_TABS|OBJECTIVES|QUESTLOG_QUESTS|WATCHABLE_QUESTS|QUESTS)|
 NORMAL_FONT_COLOR(?:_CODE)?|
 NUM_(?:BAG_SLOTS|BANKBAGSLOTS|BANKGENERIC_SLOTS|CHAT_WINDOWS)|
 ORANGE_FONT_COLOR(?:_CODE)?|
@@ -683,77 +680,12 @@ PostClick|
 ~
 
 -- Quoted string parameters - case sensitive
-AUTOLOOTTOGGLE|
-CHATLINK|
-COMPAREITEMS|
-DRESSUP|
-FOCUSCAST|
-MAILAUTOLOOTTOGGLE|
-OPENALLBAGS|
-PICKUPACTION|
-QUESTWATCHTOGGLE|
-SELFCAST|
-SHOWITEMFLYOUT|
-SHOWMULTICASTFLYOUT|
-SOCKETITEM|
-SPLITSTACK|
-STICKYCAMERA|
-TOKENWATCHTOGGLE|
-arena[1-5]|
-boss[1-5]|
-focus|
-mouseover|
-none|
-npc|
-party(?:pet)?[1-4]|
-pet|
-player|
-raid(?:pet)?\d{1,2}|
-target|
-vehicle|
+AUTOLOOTTOGGLE|CHATLINK|COMPAREITEMS|DRESSUP|FOCUSCAST|MAILAUTOLOOTTOGGLE|OPENALLBAGS|PICKUPACTION|QUESTWATCHTOGGLE|SELFCAST|SHOW(?:ITEM|MULTICAST)FLYOUT|SOCKETITEM|SPLITSTACK|STICKYCAMERA|TOKENWATCHTOGGLE|arena[1-5]|boss[1-5]|focus|mouseover|none|npc|party(?:pet)?[1-4]|pet|player|raid(?:pet)?\d{1,2}|target|vehicle|
 ~
 
 -- Quoted string parameters - case insensitive
-ADD|
-Ambience|
-ANCHOR_(?:BOTTOM(?:LEFT|RIGHT)?|CURSOR|LEFT|NONE|PRESERVE|RIGHT|TOP(?:LEFT|RIGHT)?)|
-APLHAKEY|
-ARTWORK|
-BACKGROUND|
-BLEND|
-BORDER|
-BOTTOM(?:LEFT|RIGHT)?|
-Browser|
-Button[1-5]?|
-CENTER|
-CheckButton|
-ColorSelect|
-CoolDown|
-DIALOG|
-DISABLE|
-EditBox|
-Frame|
-FULLSCREEN(?:_DIALOG)?|
-HIGH|
-LeftButton|
-LEFT|
-LOW|
-Master|
-MEDIUM|
-MiddleButton|
-MOD|
-Music|
-OVERLAY|
-RightButon|
-RIGHT|
-ScrollFrame|
-SFXSimpleHTML|
-Slider|
-StatusBar|
-TOOLTIP|
-TOP(?:LEFT|RIGHT)?|
+ADD|Ambience|ANCHOR_(?:BOTTOM(?:LEFT|RIGHT)?|CURSOR|LEFT|NONE|PRESERVE|RIGHT|TOP(?:LEFT|RIGHT)?)|APLHAKEY|ARTWORK|BACKGROUND|BLEND|BORDER|BOTTOM(?:LEFT|RIGHT)?|Browser|Button[1-5]?|CENTER|CheckButton|ColorSelect|CoolDown|DIALOG|DISABLE|EditBox|Frame|GameTooltip|FULLSCREEN(?:_DIALOG)?|HIGH|LeftButton|LEFT|LOW|Master|MEDIUM|MiddleButton|MOD|Music|OVERLAY|RightButon|RIGHT|ScrollFrame|SFXSimpleHTML|Slider|StatusBar|TOOLTIP|TOP(?:LEFT|RIGHT)?|
 ~
-
 
 -- Events A-E
 ACHIEVEMENT_(?:EARNED|SEARCH_UPDATED)|

@@ -1,5 +1,8 @@
-## 1.1.8
+## 1.1.9
 - [language.lua] Added some more identifiers -- again
+
+## 1.1.8
+- [language.lua] Added some more identifiers
 
 ## 1.1.7
 - [language.lua] Added some more identifiers
