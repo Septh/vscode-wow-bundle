@@ -1,3 +1,6 @@
+## 1.1.11
+- [language.lua] Added some more identifiers to match up WoW 7.1.5
+
 ## 1.1.10
 - [general] Fixed the color mismatch in WoW themes introduced by VS Code 1.9.0
 

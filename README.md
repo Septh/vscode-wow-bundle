@@ -9,7 +9,7 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 ## Features
 
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
-* **Full Blizzard's 7.1.0 API**
+* **Full Blizzard's 7.1.5 API**
 * Extensive widgets and Lua library support
 * `.toc` file colorization
 * Four new, dedicated color themes based on VS Code's default themes: Light+, Dark+, Monokai and Monokai Dimmed
