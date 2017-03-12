@@ -13,22 +13,39 @@
 	"engines": {
 		"vscode": "^1.9.0"
 	},
-	"categories": [ "Languages", "Themes" ],
+	"categories": [
+		"Languages",
+		"Snippets",
+		"Themes"
+	],
 	"keywords": [
-		"WoW", "World of Warcraft", "Blizzard", "FrameXML", "Lua"
+		"WoW",
+		"World of Warcraft",
+		"Blizzard",
+		"FrameXML",
+		"Lua"
 	],
 	"contributes": {
 		"languages": [
 			{
 				"id": "lua",
-				"extensions": [ ".lua" ],
-				"aliases": [ "Lua" ],
+				"extensions": [
+					".lua"
+				],
+				"aliases": [
+					"Lua"
+				],
 				"configuration": "./languages/lua-language-configuration.json"
 			},
 			{
 				"id": "toc",
-				"extensions": [ ".toc" ],
-				"aliases": [ "Toc", "TOC" ],
+				"extensions": [
+					".toc"
+				],
+				"aliases": [
+					"Toc",
+					"TOC"
+				],
 				"configuration": "./languages/toc-language.configuration.json"
 			}
 		],
@@ -42,6 +59,16 @@
 				"language": "toc",
 				"scopeName": "source.toc",
 				"path": "./languages/grammars/wow-toc.tmLanguage"
+			}
+		],
+		"snippets": [
+			{
+				"language": "lua",
+				"path": "./languages/snippets/lua.json"
+			},
+			{
+				"language": "toc",
+				"path": "./languages/snippets/toc.json"
 			}
 		],
 		"themes": [
@@ -74,5 +101,10 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Septh/vscode-wow-bundle"
+	},
+	"__metadata": {
+		"id": "191fe3c2-f05c-45f3-baa8-a046773863c9",
+		"publisherId": "887d8eeb-f941-478d-a425-6fc5a1ec5c4b",
+		"publisherDisplayName": "Septh"
 	}
 }
