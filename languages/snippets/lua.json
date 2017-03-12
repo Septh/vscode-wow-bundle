@@ -1,7 +1,4 @@
 {
-	// LUA FUNCTIONS //
-	// Comments
-
 	"multiline comment": {
 		"prefix": "-[",
 		"body": [
@@ -17,8 +14,6 @@
 		],
 		"description": "Create a nested multiline comment"
 	},
-
-	// Functions
 
 	"function": {
 		"prefix": "fun",
@@ -39,8 +34,6 @@
 		],
 		"description": "Create a local function"
 	},
-
-	// Loops
 
 	"while loop": {
 		"prefix": "while",
@@ -92,8 +85,6 @@
 		"description": "Create a for loop using pairs"
 	},
 
-	// Variables
-
 	"local variable definition": {
 		"prefix": "lvar",
 		"body": [
@@ -109,8 +100,6 @@
 		],
 		"description": "Create a global variable"
 	},
-
-	// Conditionals
 
 	"if conditional": {
 		"prefix": "if",
@@ -155,8 +144,6 @@
 		],
 		"description": "Create an if not else conditional"
 	},
-
-	// Tables
 
 	"table definition": {
 		"prefix": "tab",
@@ -222,8 +209,6 @@
 		"description": "Returns the list of elements in a table"
 	},
 
-	// Strings
-
 	"to string": {
 		"prefix": "tostring",
 		"body": [
@@ -247,8 +232,6 @@
 		],
 		"description": "Return a number if arg can be converted to number. Optional argument specifies the base to interpret the numeral."
 	},
-
-	// Math
 
 	"math abs": {
 		"prefix": "abs",
@@ -434,8 +417,6 @@
 		"description": "Returns the tangent of the degree value"
 	},
 
-	// Misc
-
 	"return": {
 		"prefix": "return",
 		"body": [
@@ -451,8 +432,6 @@
 		],
 		"description": "Print something"
 	},
-
-	// WOW SNIPPETS //
 
 	"Database (savedvariables)": {
 		"prefix": "svar",
