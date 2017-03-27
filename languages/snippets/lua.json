@@ -2,7 +2,11 @@
 	"multiline comment": {
 		"prefix": "-[",
 		"body": [
-			"--[[ ${0:comment...}]]"
+			"--[[",
+			"${TM_SELECTED_TEXT:comment...}",
+			"$0",
+			"]]",
+			""
 		],
 		"description": "Create a multiline comment"
 	},
@@ -10,27 +14,33 @@
 	"nested multiline comment": {
 		"prefix": "=[",
 		"body": [
-			"--[=[ ${0:comment...}]=]"
+			"--[=[",
+			"${TM_SELECTED_TEXT:comment...}",
+			"$0",
+			"]=]",
+			""
 		],
 		"description": "Create a nested multiline comment"
 	},
 
-	"function": {
-		"prefix": "fun",
+	"function definition": {
+		"prefix": "func",
 		"body": [
 			"function ${1:FunctionName}(${2:args})",
-			"	${0:...body...}",
-			"end"
+			"\t$0",
+			"end",
+			""
 		],
-		"description": "Create a global function"
+		"description": "Create a function"
 	},
 
-	"local function": {
-		"prefix": "lfun",
+	"function definition (local)": {
+		"prefix": "func",
 		"body": [
 			"local function ${1:FunctionName}(${2:args})",
-			"	${0:...body...}",
-			"end"
+			"\t$0",
+			"end",
+			""
 		],
 		"description": "Create a local function"
 	},
@@ -39,8 +49,9 @@
 		"prefix": "while",
 		"body": [
 			"while ${1:condition} do",
-			"	${0:...body...}",
-			"end"
+			"\t$0",
+			"end",
+			""
 		],
 		"description": "Create a while loop"
 	},
@@ -49,98 +60,108 @@
 		"prefix": "repeat",
 		"body": [
 			"repeat",
-			"	${0:...body...}",
-			"until ${1:condition}"
+			"\t$0",
+			"until ${1:condition}",
+			""
 		],
 		"description": "Create a repeat loop"
 	},
 
-	"for i,v in ipairs()": {
-		"prefix": "fori",
-		"body": [
-			"for ${1:i},${2:v} in ipairs(${3:table name}) do",
-			"	${0:...body...}",
-			"end"
-		],
-		"description": "Create a for loop using ipairs"
-	},
-
-	"for i=1,10": {
+	"for loop": {
 		"prefix": "for",
 		"body": [
-			"for ${1:i}=${2:start},${3:end} do",
-			"	${0:...body...}",
-			"end"
+			"for ${1:i} = ${2:start}, ${3:end} do",
+			"\t$0",
+			"end",
+			""
 		],
 		"description": "Create a for loop"
 	},
 
-	"for k,v in pairs()": {
-		"prefix": "forp",
+	"for i,v in ipairs()": {
+		"prefix": "for",
 		"body": [
-			"for ${1:k},${2:v} in pairs(${3:table name}) do",
-			"	${0:...body...}",
-			"end"
+			"for ${1:i},${2:v} in ipairs(${3:tableName}) do",
+			"\t$0",
+			"end",
+			""
 		],
-		"description": "Create a for loop using pairs"
+		"description": "Create a for loop using ipairs"
 	},
 
-	"local variable definition": {
-		"prefix": "lvar",
+	"for k,v in pairs()": {
+		"prefix": "for",
 		"body": [
-			"local ${1:variable} = ${0:value}"
+			"for ${1:k},${2:v} in pairs(${3:tableName}) do",
+			"\t$0",
+			"end",
+			""
 		],
-		"description": "Create a local variable"
+		"description": "Create a for loop using pairs"
 	},
 
 	"variable definition": {
 		"prefix": "var",
 		"body": [
-			"${1:variable} = ${0:value}"
+			"${0:variable} = ${1:value}",
+			""
 		],
 		"description": "Create a global variable"
+	},
+
+	"variable definition (local)": {
+		"prefix": "var",
+		"body": [
+			"local ${0:variable} = ${1:value}",
+			""
+		],
+		"description": "Create a local variable"
 	},
 
 	"if conditional": {
 		"prefix": "if",
 		"body": [
 			"if ${1:value} then",
-			"	${0:...body...}",
-			"end"
+			"\t$0",
+			"end",
+			""
 		],
 		"description": "Create an if conditional"
 	},
 
 	"if else conditional": {
-		"prefix": "ife",
+		"prefix": "if",
 		"body": [
 			"if ${1:value} then",
-			"	${2:...body...}",
+			"\t$2",
 			"else",
-			"	${0:...body...}",
-			"end"
+			"\t$3",
+			"end",
+			""
 		],
 		"description": "Create an if else conditional"
 	},
 
 	"if not conditional": {
-		"prefix": "ifn",
+		"prefix": "if",
 		"body": [
 			"if not ${1:value} then",
-			"	${0:...body...}",
-			"end"
+			"\t$0",
+			"end",
+			""
 		],
 		"description": "Create an if not conditional"
 	},
 
 	"if not else conditional": {
-		"prefix": "ifne",
+		"prefix": "if",
 		"body": [
 			"if not ${1:value} then",
-			"	${2:...body...}",
+			"\t$2",
 			"else",
-			"	${0:...body...}",
-			"end"
+			"\t$3",
+			"end",
+			""
 		],
 		"description": "Create an if not else conditional"
 	},
@@ -148,28 +169,36 @@
 	"table definition": {
 		"prefix": "tab",
 		"body": [
-			"${1:table name} = {${0:values}}"
+			"${1:tableName} = { ${2:value1}, ${3:value2} }"
 		],
 		"description": "Create a global table"
 	},
 
-	"local table definition": {
-		"prefix": "ltab",
+	"table definition (local)": {
+		"prefix": "tab",
 		"body": [
-			"local ${1:table name} = {${0:values}}"
+			"local ${1:tableName} = { ${2:value1}, ${3:value2} }"
 		],
 		"description": "Create a local table"
 	},
 
-	"table insert": {
+	"table.insert": {
 		"prefix": "tins",
 		"body": [
-			"tinsert(${1:table name},${0:data})"
+			"table.insert(${1:tableName}, ${0:data})"
 		],
 		"description": "Insert a given value into a table"
 	},
 
-	"table concat": {
+	"tinsert": {
+		"prefix": "tins",
+		"body": [
+			"tinsert(${1:tableName}, ${0:data})"
+		],
+		"description": "Insert a given value into a table"
+	},
+
+	"table.concat": {
 		"prefix": "tconc",
 		"body": [
 			"table.concat(${1:tableName}${2:, ' '}${3:, start_index}${4:, end_index})"
@@ -177,15 +206,23 @@
 		"description": "Concatenates string tables"
 	},
 
-	"table sort": {
-		"prefix": "tabs",
+	"table.sort": {
+		"prefix": "tsort",
 		"body": [
-			"sort(${1:tableName}${2:, sortfunction})"
+			"table.sort(${1:tableName}${2:, sortfunction})"
 		],
 		"description": "Sorts a table. You can use a sort function to choose how to sort"
 	},
 
-	"table remove": {
+	"table.remove": {
+		"prefix": "trem",
+		"body": [
+			"table.remove(${1:tableName}${2:, position})"
+		],
+		"description": "Remove an element from a table"
+	},
+
+	"tremove": {
 		"prefix": "trem",
 		"body": [
 			"tremove(${1:tableName}${2:, position})"
@@ -193,13 +230,21 @@
 		"description": "Remove an element from a table"
 	},
 
-	"wipe table": {
+	"table.wipe": {
+		"prefix": "wipe",
+		"body": [
+			"table.wipe(${1:tableName})"
+		],
+		"description": "Wipe a table"
+	},
+
+	"wipe": {
 		"prefix": "wipe",
 		"body": [
 			"wipe(${1:tableName})"
 		],
 		"description": "Wipe a table"
-	},	
+	},
 
 	"unpack table": {
 		"prefix": "unpack",
@@ -209,7 +254,7 @@
 		"description": "Returns the list of elements in a table"
 	},
 
-	"to string": {
+	"tostring": {
 		"prefix": "tostring",
 		"body": [
 			"tostring(${1:value})"
@@ -217,7 +262,7 @@
 		"description": "Returns a string representation of a value"
 	},
 
-	"to number": {
+	"tonumber": {
 		"prefix": "tonumber",
 		"body": [
 			"tonumber(${1:string}${2:, base})"
@@ -225,7 +270,7 @@
 		"description": "Return a number if arg can be converted to number. Optional argument specifies the base to interpret the numeral."
 	},
 
-	"string lenght": {
+	"string length": {
 		"prefix": "strlen",
 		"body": [
 			"strlen(${1:string})"
@@ -233,7 +278,7 @@
 		"description": "Return a number if arg can be converted to number. Optional argument specifies the base to interpret the numeral."
 	},
 
-	"math abs": {
+	"abs": {
 		"prefix": "abs",
 		"body": [
 			"abs(${0:x})"
@@ -241,7 +286,15 @@
 		"description": "Returns the absolute value of the number"
 	},
 
-	"math acos": {
+	"math.abs": {
+		"prefix": "abs",
+		"body": [
+			"math.abs(${0:x})"
+		],
+		"description": "Returns the absolute value of the number"
+	},
+
+	"acos": {
 		"prefix": "acos",
 		"body": [
 			"acos(${0:x})"
@@ -249,7 +302,15 @@
 		"description": "Returns the arc cosine of the value in degrees"
 	},
 
-	"math asin": {
+	"math.acos": {
+		"prefix": "acos",
+		"body": [
+			"math.acos(${0:x})"
+		],
+		"description": "Returns the arc cosine of the value in degrees"
+	},
+
+	"asin": {
 		"prefix": "asin",
 		"body": [
 			"asin(${0:x})"
@@ -257,7 +318,15 @@
 		"description": "Returns the arc sine of the value in degrees"
 	},
 
-	"math atan": {
+	"math.asin": {
+		"prefix": "asin",
+		"body": [
+			"math.asin(${0:x})"
+		],
+		"description": "Returns the arc sine of the value in degrees"
+	},
+
+	"atan": {
 		"prefix": "atan",
 		"body": [
 			"atan(${0:x})"
@@ -265,7 +334,15 @@
 		"description": "Returns the arc tangent of the value in degrees"
 	},
 
-	"math atan2": {
+	"math.atan": {
+		"prefix": "atan",
+		"body": [
+			"math.atan(${0:x})"
+		],
+		"description": "Returns the arc tangent of the value in degrees"
+	},
+
+	"atan2": {
 		"prefix": "atan2",
 		"body": [
 			"atan2(${0:y}, ${1:x})"
@@ -273,7 +350,15 @@
 		"description": "Returns the arc tangent of y/x in degrees"
 	},
 
-	"math ceil": {
+	"math.atan2": {
+		"prefix": "atan2",
+		"body": [
+			"math.atan2(${0:y}, ${1:x})"
+		],
+		"description": "Returns the arc tangent of y/x in degrees"
+	},
+
+	"ceil": {
 		"prefix": "ceil",
 		"body": [
 			"ceil(${0:x})"
@@ -281,7 +366,15 @@
 		"description": "Returns the ceiling of value"
 	},
 
-	"math cos": {
+	"math.ceil": {
+		"prefix": "ceil",
+		"body": [
+			"math.ceil(${0:x})"
+		],
+		"description": "Returns the ceiling of value"
+	},
+
+	"cos": {
 		"prefix": "cos",
 		"body": [
 			"cos(${0:x})"
@@ -289,7 +382,15 @@
 		"description": "Returns the cosine of the degree value"
 	},
 
-	"math deg": {
+	"math.cos": {
+		"prefix": "cos",
+		"body": [
+			"math.cos(${0:x})"
+		],
+		"description": "Returns the cosine of the degree value"
+	},
+
+	"deg": {
 		"prefix": "deg",
 		"body": [
 			"deg(${0:x})"
@@ -297,7 +398,15 @@
 		"description": "Returns the degree equivalent of the radian value"
 	},
 
-	"math exp": {
+	"math.deg": {
+		"prefix": "deg",
+		"body": [
+			"math.deg(${0:x})"
+		],
+		"description": "Returns the degree equivalent of the radian value"
+	},
+
+	"exp": {
 		"prefix": "exp",
 		"body": [
 			"exp(${0:x})"
@@ -305,7 +414,15 @@
 		"description": "Returns the exponent of value"
 	},
 
-	"math floor": {
+	"math.exp": {
+		"prefix": "exp",
+		"body": [
+			"math.exp(${0:x})"
+		],
+		"description": "Returns the exponent of value"
+	},
+
+	"floor": {
 		"prefix": "floor",
 		"body": [
 			"floor(${0:x})"
@@ -313,15 +430,31 @@
 		"description": "Returns the floor of value"
 	},
 
-	"math fmod": {
+	"math.floor": {
+		"prefix": "floor",
+		"body": [
+			"math.floor(${0:x})"
+		],
+		"description": "Returns the floor of value"
+	},
+
+	"fmod": {
 		"prefix": "fmod",
 		"body": [
-			"fmod(${0:x}, ${1:y})"
+			"fmod(${1:x}, ${2:y})"
 		],
 		"description": "Returns the remainder of the division of value by modulus that rounds the quotient towards zero"
 	},
 
-	"math frexp": {
+	"math.fmod": {
+		"prefix": "fmod",
+		"body": [
+			"math.fmod(${1:x}, ${2:y})"
+		],
+		"description": "Returns the remainder of the division of value by modulus that rounds the quotient towards zero"
+	},
+
+	"frexp": {
 		"prefix": "frexp",
 		"body": [
 			"frexp(${0:x})"
@@ -329,7 +462,15 @@
 		"description": "Extract mantissa and exponent from a floating point number"
 	},
 
-	"math ldexp": {
+	"math.frexp": {
+		"prefix": "frexp",
+		"body": [
+			"math.frexp(${0:x})"
+		],
+		"description": "Extract mantissa and exponent from a floating point number"
+	},
+
+	"ldexp": {
 		"prefix": "ldexp",
 		"body": [
 			"ldexp(${0:value}, ${1:exponent})"
@@ -337,7 +478,15 @@
 		"description": "Load exponent of a floating point number"
 	},
 
-	"math log": {
+	"math.ldexp": {
+		"prefix": "ldexp",
+		"body": [
+			"math.ldexp(${0:value}, ${1:exponent})"
+		],
+		"description": "Load exponent of a floating point number"
+	},
+
+	"log": {
 		"prefix": "log",
 		"body": [
 			"log(${0:x})"
@@ -345,7 +494,15 @@
 		"description": "Returns the natural logarithm (log base e) of value"
 	},
 
-	"math log10": {
+	"math.log": {
+		"prefix": "log",
+		"body": [
+			"math.log(${0:x})"
+		],
+		"description": "Returns the natural logarithm (log base e) of value"
+	},
+
+	"log10": {
 		"prefix": "log10",
 		"body": [
 			"log10(${0:x})"
@@ -353,23 +510,47 @@
 		"description": "Returns the base-10 logarithm of value"
 	},
 
-	"math max": {
+	"math.log10": {
+		"prefix": "log10",
+		"body": [
+			"math.log10(${0:x})"
+		],
+		"description": "Returns the base-10 logarithm of value"
+	},
+
+	"max": {
 		"prefix": "max",
 		"body": [
-			"max(${0:x}, ${1:...})"
+			"max(${1:x}, ${2:...})"
 		],
 		"description": "Returns the numeric maximum of the input values"
 	},
 
-	"math min": {
+	"math.max": {
+		"prefix": "max",
+		"body": [
+			"math.max(${1:x}, ${2:...})"
+		],
+		"description": "Returns the numeric maximum of the input values"
+	},
+
+	"min": {
 		"prefix": "min",
 		"body": [
-			"min(${0:x}, ${1:...})"
+			"min(${1:x}, ${2:...})"
 		],
 		"description": "Returns the numeric minimum of the input values"
 	},
 
-	"math rad": {
+	"math.min": {
+		"prefix": "min",
+		"body": [
+			"math.min(${1:x}, ${2:...})"
+		],
+		"description": "Returns the numeric minimum of the input values"
+	},
+
+	"rad": {
 		"prefix": "rad",
 		"body": [
 			"rad(${0:x})"
@@ -377,23 +558,63 @@
 		"description": "Returns the radian equivalent of the degree value"
 	},
 
-	"math random": {
+	"math.rad": {
+		"prefix": "rad",
+		"body": [
+			"math.rad(${0:x})"
+		],
+		"description": "Returns the radian equivalent of the degree value"
+	},
+
+	"random": {
 		"prefix": "random",
 		"body": [
-			"random(${0:lower,} ${1:upper})"
+			"random()"
+		],
+		"description": "Returns a random number"
+	},
+
+	"random (bounded)": {
+		"prefix": "random",
+		"body": [
+			"random(${1:lower}, ${2:upper})"
 		],
 		"description": "Returns a random number (optionally bounded integer value)"
 	},
 
-	"fast random": {
-		"prefix": "fastrandom",
+	"math.random": {
+		"prefix": "random",
 		"body": [
-			"fastrandom(${0:lower,} ${1:upper})"
+			"math.random()"
 		],
-		"description": "Returns a random number (can't be used in secure enviorment but are faster than random and math.random)"
+		"description": "Returns a random number (optionally bounded integer value)"
 	},
 
-	"math sin": {
+	"math.random (bounded)": {
+		"prefix": "random",
+		"body": [
+			"math.random(${1:lower}, ${2:upper})"
+		],
+		"description": "Returns a random number (optionally bounded integer value)"
+	},
+
+	"fastrandom": {
+		"prefix": "random",
+		"body": [
+			"fastrandom()"
+		],
+		"description": "Returns a random number (faster than random and math.random but can't be used in secure enviorment)"
+	},
+
+	"fastrandom (bounded)": {
+		"prefix": "random",
+		"body": [
+			"fastrandom(${1:lower}, ${2:upper})"
+		],
+		"description": "Returns a random number (faster than random and math.random but can't be used in secure enviorment)"
+	},
+
+	"sin": {
 		"prefix": "sin",
 		"body": [
 			"sin(${0:x})"
@@ -401,7 +622,15 @@
 		"description": "Returns the sine of the degree value"
 	},
 
-	"math sqrt": {
+	"math.sin": {
+		"prefix": "sin",
+		"body": [
+			"math.sin(${0:x})"
+		],
+		"description": "Returns the sine of the degree value"
+	},
+
+	"sqrt": {
 		"prefix": "sqrt",
 		"body": [
 			"sqrt(${0:x})"
@@ -409,10 +638,26 @@
 		"description": "Return the square root of value"
 	},
 
-	"math tan": {
+	"math.sqrt": {
+		"prefix": "sqrt",
+		"body": [
+			"math.sqrt(${0:x})"
+		],
+		"description": "Return the square root of value"
+	},
+
+	"tan": {
 		"prefix": "tan",
 		"body": [
 			"tan(${0:x})"
+		],
+		"description": "Returns the tangent of the degree value"
+	},
+
+	"math.tan": {
+		"prefix": "tan",
+		"body": [
+			"math.tan(${0:x})"
 		],
 		"description": "Returns the tangent of the degree value"
 	},
@@ -422,7 +667,7 @@
 		"body": [
 			"return ${0:value}"
 		],
-		"description": "Return values"
+		"description": "Return value(s)"
 	},
 
 	"print": {
@@ -436,7 +681,8 @@
 	"Database (savedvariables)": {
 		"prefix": "svar",
 		"body": [
-			"${1:Database name}DB = $1DB or {};"
+			"${1:name}DB = $1DB or {}",
+			""
 		],
 		"description": "Create a global database variable to use for savedvariables"
 	},
@@ -444,7 +690,7 @@
 	"Create Frame": {
 		"prefix": "frame",
 		"body": [
-			"local ${1:frame var name} = CreateFrame('Frame' ${2:, 'frame name'}${3:, parent frame})"
+			"local ${1:frame} = CreateFrame('Frame'${2:, 'frameName'}${3:, parentFrame})"
 		],
 		"description": "Create a standard frame"
 	},
@@ -452,7 +698,7 @@
 	"Create Button": {
 		"prefix": "button",
 		"body": [
-			"local ${1:button var name} = CreateFrame('Button' ${2:, 'button name'}${3:, parent frame})"
+			"local ${1:button} = CreateFrame('Button'${2:, 'buttonName'}${3:, parentFrame})"
 		],
 		"description": "Create a standard button"
 	},
@@ -460,7 +706,7 @@
 	"Frame Texture": {
 		"prefix": "texture",
 		"body": [
-			"local ${1:texture var name} = ${2:parent var name}:CreateTexture(nil, 'BACKGROUND')"
+			"local ${1:texture} = ${2:parentFrame}:CreateTexture(${3:'textureName'}${4:, 'LAYER'})"
 		],
 		"description": "Create a texture to apply on a frame/button"
 	},
@@ -468,25 +714,26 @@
 	"Frame Text": {
 		"prefix": "text",
 		"body": [
-			"local ${1:text var name} = ${2:parent var name}:CreateFontString(nil, 'ARTWORK')"
+			"local ${1:text} = ${2:parentFrame}:CreateFontString(${3:'stringName'}${4:, 'LAYER'})"
 		],
 		"description": "Create text to apply on a frame/button"
 	},
 
-	"SetScript Function": {
-		"prefix": "scriptfun",
+	"SetScript to function definition": {
+		"prefix": "script",
 		"body": [
-			"${1:frame}:SetScript(${2:'event name'}, function(self, event, ...)",
-				"${0:...body...}",
-			"end)"
+			"${1:frame}:SetScript(${2:'event_name'}, function(self, event, ...)",
+			"\t$0",
+			"end)",
+			""
 		],
 		"description": "Create a self running function script"
 	},
 
-	"SetScript": {
+	"SetScript to function": {
 		"prefix": "script",
 		"body": [
-			"${1:frame}:SetScript(${2:'event name'}, ${3:function name})"
+			"${1:frame}:SetScript(${2:'event_name'}, ${3:function_name})"
 		],
 		"description": "Create a script to run a function"
 	},
@@ -494,10 +741,11 @@
 	"Slash Command": {
 		"prefix": "slash",
 		"body": [
-			"SLASH_${1:NAME ALL CAPS}1 = '/slashcommand'",
+			"SLASH_${1:NAME_ALL_CAPS}1 = '/${2:slashcommand}'",
 			"SlashCmdList['$1'] = function()",
-				"${0:...body...}",
-			"end"
+			"\t$0",
+			"end",
+			""
 		],
 		"description": "Create a slash command"
 	},
@@ -506,12 +754,13 @@
 		"prefix": "ldb",
 		"body": [
 			"local ${1:ldb} = LibStub:GetLibrary('LibDataBroker-1.1')",
-			"local ${2:dataobj} = ldb:NewDataObject(${3:'Addon Name'}, {",
-			"	type = ${4:'data source'},",
-			"	icon = ${5:'Interface\\Icons\\'},",
-			"	label = ${6:'Addon Label'}",
-			"	text = ${7:'Addon Text'}",
-			"})"
+			"local ${2:dataobj} = ldb:NewDataObject(${3:'AddonName'}, {",
+			"\ttype = ${4:'data source'},",
+			"\ticon = ${5:'Interface\\Icons\\'},",
+			"\tlabel = ${6:'Addon Label'}",
+			"\ttext = ${7:'Addon Text'}",
+			"})",
+			""
 		],
 		"description": "Declare your addon as being an LDB type data broker"
 	}

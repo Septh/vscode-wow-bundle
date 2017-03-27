@@ -1,15 +1,17 @@
 {
 	"WoW TOC": {
-		"prefix": "wow",
+		"prefix": "toc",
 		"body": [
 			"## Interface: ${1:70100}",
-			"## Title: ${2:Addon Name}",
-			"## Notes: ${0:Small Addon Description}",
-			"## Author: ${3:Your Name}",
-			"## Version: ${4:@project-version@}",
+			"## Title: ${2:AddonName}",
+			"## Notes: ${3:Small Addon Description}",
+			"## Author: ${4:Your Name}",
+			"## Version: ${5:@project-version@}",
 			"",
-			"$2.lua"
+			"${2}.xml",
+			"${2}.lua",
+			""
 		],
-		"description": "Basic WoW TOC"
+		"description": "Basic WoW TOC file definition"
 	}
 }
