@@ -1,3 +1,9 @@
+## 1.2.0
+- [language.lua] Added some more identifiers to match up WoW 7.2.0
+- [snippets] New: 80+ code snippets, courtesy of m4xc4v413r4
+- [themes] Incorporated the latest (1.11) VS Code default themes  
+- [general] Cleaned up a few directory
+
 ## 1.1.11
 - [language.lua] Added some more identifiers to match up WoW 7.1.5
 

@@ -8,8 +8,9 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 ## Features
 
+* **Full WoW 7.2.x API**
+* **New since 1.2.0: A bunch of useful code snippets, thanks to [m4xc4v413r4](https://github.com/m4xc4v413r4)**
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
-* **Full Blizzard's 7.1.5 API**
 * Extensive widgets and Lua library support
 * `.toc` file colorization
 * Four new, dedicated color themes based on VS Code's default themes: Light+, Dark+, Monokai and Monokai Dimmed
@@ -88,7 +89,7 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 ## TODOs (and mayhaps)
 
 1. ~~Fix above issues~~
-2. Add code snippets
+2. ~~Add code snippets~~
 3. Support XML declarations too (low on my priority list, though)
 4. ~~Support VS Code light themes?~~ ~~Support all standard VS Code themes~~ I'm done with themes - If you need more, just ask, I'll consider it
 5. Linting anyone?

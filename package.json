@@ -14,38 +14,23 @@
 		"vscode": "^1.9.0"
 	},
 	"categories": [
-		"Languages",
-		"Snippets",
-		"Themes"
+		"Languages", "Snippets", "Themes"
 	],
 	"keywords": [
-		"WoW",
-		"World of Warcraft",
-		"Blizzard",
-		"FrameXML",
-		"Lua"
+		"WoW", "World of Warcraft", "Blizzard", "FrameXML", "Lua"
 	],
 	"contributes": {
 		"languages": [
 			{
 				"id": "lua",
-				"extensions": [
-					".lua"
-				],
-				"aliases": [
-					"Lua"
-				],
+				"extensions": [ ".lua" ],
+				"aliases": [ "Lua"  ],
 				"configuration": "./languages/lua-language-configuration.json"
 			},
 			{
 				"id": "toc",
-				"extensions": [
-					".toc"
-				],
-				"aliases": [
-					"Toc",
-					"TOC"
-				],
+				"extensions": [ ".toc" ],
+				"aliases": [ "Toc", "TOC" ],
 				"configuration": "./languages/toc-language.configuration.json"
 			}
 		],
