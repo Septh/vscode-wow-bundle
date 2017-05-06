@@ -5,6 +5,8 @@
 
 This World of Warcraft addon developer toolset for VS Code includes an improved Lua language grammar with WoW API knowledge, a .toc file grammar, colorization for both .lua source and .toc files, and more.
 
+**Notice:** wow-bundle is NOT a generic Lua colorizer, it is closely bound to WoW specificities and may not be adapted to other environments.
+
 
 ## Features
 
@@ -18,7 +20,7 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 ### Grammars
 
-#### Lua 5.1 language
+#### > Lua 5.1 language
 
 wow-bundle replaces VS Code's built-in Lua language grammar. Changes worth noticing are:
 
@@ -26,49 +28,42 @@ wow-bundle replaces VS Code's built-in Lua language grammar. Changes worth notic
 * **Full metamethods** support
 * **Quoted string constants** as used or returned by the `collectgarbage()`, `date()` and `type()` functions and the `__mode()` metamethod
 * Better **character escapes** inside strings: Unicode entities, decimal and hexadecimal values and control chars
-* **Deprecated features** warning: `table.foreach`/`foreachi`, `table.getn`/`setn`, `string.gfind()`...
 
-#### World of Warcraft API
 
-wow-bundle's Lua grammar also tags a bunch of WoW-related stuff with these comprehensive scopes:
+#### > World of Warcraft API
 
-* ~~**support.function.wow-language.lua** - Blizzard's extensions to the Lua language like `wipe()`, `strjoin()`, etc.~~ No more since 1.1.0, see change log.
-* **support.function.wow-api.lua** - World of Warcraft API functions, with 2 sub-scopes:
-	* **support.function.wow-api.nocombat.lua** - API functions that can't be called while in combat
-	* **support.function.wow-api.protected.lua** - API functions that can be called only from secure code
-* **support.function.wow-library.lua** - Library functions written in Lua (mostly used by UI code)
-* **support.variable.object.wow-libray.lua** - Global objects like `UIParent`, `GameFontNormal` and such
-* **support.variable.value.wow-library.lua** - Global variables like `HIGHLIGHT_FONT_COLOR_CODE`, `UIDROPDOWNMENU_INIT_MENU` and such
-* **support.class.method.wow-api.lua** - Widgets methods like `:AddLine()`, `:SetTexture()` and such
-* **support.constant.string-parameter.wow-api.lua** - Common function parameters like `'CheckButton'`, `'BOTTOMLEFT'`, `'OVERLAY'`, `'player'` and such
-* **support.constant.script-handler.wow-api.lua** - Widgets event handler names like `'OnEnter'`, `'OnShow'` and such
-* **support.constant.event-name.wow-api.lua** - Game events like `'PLAYER_ENTERING_WORLD'`, `'VARIABLES_LOADED'` and such
-* **invalid.removed.lua** and **invalid.deprecated.lua** - Removed and/or deprecated stuff in the API
+wow-bundle's Lua grammar also tags a bunch of WoW-related stuff:
 
-These scopes make it super-easy to colorize everyting WoW-related. See **Colorization** below for details.
+* **Blizzard's extensions to the Lua language** like `wipe()`, `strjoin()`, etc.
+* **World of Warcraft API functions**, with support for functions that can't be called while in combat and functions that can be called only from secure code
+* **WoW Library functions** written in Lua (mostly used by UI code)
+* **Global objects** like `UIParent`, `GameFontNormal` and such
+* **Global variables** like `HIGHLIGHT_FONT_COLOR_CODE`, `UIDROPDOWNMENU_INIT_MENU` and such
+* **Widgets methods** like `:AddLine()`, `:SetTexture()` and such
+* **Common function parameters** like `'CheckButton'`, `'BOTTOMLEFT'`, `'OVERLAY'`, `'player'` and such
+* **Widgets event handler names** like `'OnEnter'`, `'OnShow'` and such
+* **Game events** like `'PLAYER_ENTERING_WORLD'`, `'VARIABLES_LOADED'` and such
+* Removed and/or deprecated stuff in the API
 
 ![lua](images/lua.png)
 
 
 #### Toc files
 
-Also included is a simple grammar for `.toc` files with the following scopes:
-
-* **keyword.control.toc** - keywords like `## Interface`, `## Author` and such
-* **keyword.control.x.toc** - X-keywords like `## X-Date`, `## X-Website` and such
+Also included is a simple grammar for `.toc` files with support for keywords (like `## Interface`, `## Author` and such) and X-keywords (like `## X-Date`, `## X-Website` and such)
 
 ![toc](images/toc.png)
 
 
 ### Colorization
 
-All VS Code themes should word fine with these scopes as long as they follow [the standard scope naming convention](https://manual.macromates.com/en/language_grammars).
+All VS Code themes should word fine with wow-bundle as long as they follow [the standard scope naming convention](https://manual.macromates.com/en/language_grammars).
 
-However, for further colorization granularity, wow-bundle also includes four specific theme based on VS Code's default themes and called **Light+ (WoW)**, **Dark+ (WoW)**, **Monokai (WoW)** and **Monokai Dimmed (Wow)**. To choose one of these themes, open the Color Theme picker with **File** > **Preferences** > **Color Theme** (or **Code** > **Preferences** > **Color Theme** on Mac).
+However, for further colorization granularity, wow-bundle also includes four specific theme based on VS Code's default themes and called **Light+ (WoW)**, **Dark+ (WoW)**, **Monokai (WoW)** and **Monokai Dimmed (WoW)**. To choose one of these themes, open the Color Theme picker with **File** > **Preferences** > **Color Theme** (or **Code** > **Preferences** > **Color Theme** on Mac).
 
 ![themes](images/themes.gif)
 
-wow-bundle's themes only colorizes the scopes described above and does not interfere with VS Code default colors for Lua or any other language you may use.
+wow-bundle's themes do not interfere with VS Code default colors for Lua or any other language you may use.
 
 >New since 1.0.1: I do however add italics to ALL comments ~~and underline to invalid/deprecated keywords~~.
 

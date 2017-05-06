@@ -20,7 +20,7 @@
 		{
 			"scope": "support.function.metamethod.lua",
 			"settings": {
-				"fontStyle": "italic"
+				"foreground": "#c586c0"
 			}
 		},
 		{
