@@ -13,7 +13,7 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 * **Full WoW 7.2.x API**
 * **New since 1.2.0: A bunch of useful code snippets, thanks to [m4xc4v413r4](https://github.com/m4xc4v413r4)**
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
-* Extensive widgets and Lua library support
+* Extensive FrameXML widgets and Lua library support
 * `.toc` file colorization
 * Four new, dedicated color themes based on VS Code's default themes: Light+, Dark+, Monokai and Monokai Dimmed
 
@@ -34,7 +34,7 @@ wow-bundle replaces VS Code's built-in Lua language grammar. Changes worth notic
 
 wow-bundle's Lua grammar also tags a bunch of WoW-related stuff:
 
-* **Blizzard's extensions to the Lua language** like `wipe()`, `strjoin()`, etc.
+* **Blizzard's extensions to the Lua language** like `[table.]wipe()`, `strjoin()`, etc.
 * **World of Warcraft API functions**, with support for functions that can't be called while in combat and functions that can be called only from secure code
 * **WoW Library functions** written in Lua (mostly used by UI code)
 * **Global objects** like `UIParent`, `GameFontNormal` and such
@@ -48,7 +48,7 @@ wow-bundle's Lua grammar also tags a bunch of WoW-related stuff:
 ![lua](images/lua.png)
 
 
-#### Toc files
+#### > Toc files
 
 Also included is a simple grammar for `.toc` files with support for keywords (like `## Interface`, `## Author` and such) and X-keywords (like `## X-Date`, `## X-Website` and such)
 

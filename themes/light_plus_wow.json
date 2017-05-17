@@ -1,6 +1,6 @@
 {
 	"name": "Light+ (wow-bundle)",
-	"include": "./theme-defaults/light_plus.json",
+	"include": "./theme-defaults/themes/light_plus.json",
 	"settings": [
 		// Comments -- just add italics to the current style
 		{
@@ -24,19 +24,25 @@
 			}
 		},
 		{
-			"scope": "keyword.operator.lua, keyword.operator.logical.lua",
+			"scope": "keyword.operator.lua",
 			"settings": {
 				"foreground": "#000000"
 			}
 		},
 		{
-			"scope": "variable.language.lua, support.variable.lua",
+			"scope": "keyword.operator.logical.lua",
 			"settings": {
 				"foreground": "#000000"
 			}
 		},
 		{
-			"scope": "constant.language.lua, support.constant.lua",
+			"scope": ["variable.language.lua", "support.variable.lua"],
+			"settings": {
+				"foreground": "#000000"
+			}
+		},
+		{
+			"scope": [ "constant.language.lua", "constant.language.quoted.lua", "support.constant.lua", "support.constant.quoted.lua"],
 			"settings": {
 				"foreground": "#09885a"
 			}
@@ -44,8 +50,14 @@
 		{
 			"scope": "constant.character.escape.lua",
 			"settings": {
-				"foreground": "#cc1b1b",
-				"fontStyle": "bold"
+				"foreground": "#cc1b1b"
+			}
+		},
+		{
+			"scope": "invalid.deprecated.lua",
+			"settings": {
+				"foreground": "#0000ff",
+				"fontStyle": "underline"
 			}
 		},
 
@@ -77,7 +89,7 @@
 
 		// World of Warcraft API colors
 		{
-			"comment": "Catches everything not defined below",
+			"comment": "This catches everything not defined below",
 			"scope": [
 				"support.function.wow-api",                  "support.function.wow-library",
 				"support.variable.object.wow-api",           "support.variable.object.wow-library",
@@ -95,24 +107,30 @@
 		},
 
 		{
-			"name": "WoW API functions",
+			"name": "WoW C API functions",
 			"scope": "support.function.wow-api",
 			"settings": {
 				"foreground": "#cc6600"
 			}
 		},
 		{
-			"scope": [
-				"support.function.wow-api.protected",
-				"support.function.wow-api.nocombat"
-			],
+			"scope": [ "support.function.wow-api.protected", "support.function.wow-api.nocombat" ],
 			"settings": {
-				"foreground": "#994c00"
+				// "foreground": "#994c00",
+				"fontStyle": "underline"
 			}
 		},
 
 		{
-			"name": "WoW Library (FrameXML)",
+			"name": "Widgets methods",
+			"scope": "support.class.method.wow-api",
+			"settings": {
+				"foreground": "#cc6600"
+			}
+		},
+
+		{
+			"name": "WoW Library (Lua functions)",
 			"scope": "support.function.wow-library",
 			"settings": {
 				"foreground": "#b37a2b"
@@ -132,13 +150,6 @@
 		},
 
 		{
-			"scope": "support.class.method.wow-api",
-			"settings": {
-				"foreground": "#cc6600"
-			}
-		},
-
-		{
 			"name": "WoW API Constants",
 			"scope": [
 				"support.constant.wow-api",
@@ -152,18 +163,10 @@
 		},
 
 		{
-			"name": "Removed/deprecated stuff",
-			"scope": "invalid.deprecated",
+			"name": "Removed stuff",
+			"scope": "invalid.removed.lua",
 			"settings": {
 				"foreground": "#f44747"
-			}
-		},
-		{
-			"name": "Removed/deprecated stuff",
-			"scope": "invalid.removed",
-			"settings": {
-				"foreground": "#f44747",
-				"fontStyle": "underline"
 			}
 		}
 	]
