@@ -2,7 +2,7 @@
 	"name": "wow-bundle",
 	"displayName": "WoW Bundle",
 	"description": "World of Warcraft addon developer toolset for VS Code",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"icon": "images/wow-icon.png",
 	"publisher": "Septh",
 	"license": "MIT",

@@ -1,9 +1,12 @@
+## 1.2.3
+- [language.lua] Updated to match WoW 7.2.5 build 24076
+
 ## 1.2.2
 - [language.lua] More identifiers. Again.
 - [themes] Incorporated the latest (1.12.2) VS Code default themes
 
 ## 1.2.1
-- [language.lua] More closely match WoW's Lua 5.1 environement: functions like `tinsert()`, `table.getn()`, `table.foreach()`... actually exist in WoW so we don't tag them as removed or deprecated anymore.
+- [language.lua] More closely match WoW's Lua 5.1 environement: functions like `tinsert()`, `table.getn()`, `table.foreach()`... actually exist in WoW so we don't tag them as invalid or deprecated anymore.
 - [language.lua] Fixed a typo in `'RightButton'`
 - [language.lua] Added a few more identifiers
 - [general] Reworked and simplified [Readme.md](Readme.md)
