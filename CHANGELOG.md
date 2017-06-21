@@ -1,5 +1,8 @@
+## 1.2.4
+- [language.lua] Updated to match WoW 7.2.5 build 24330.
+
 ## 1.2.3
-- [language.lua] Updated to match WoW 7.2.5 build 24076
+- [language.lua] Updated to match WoW 7.2.5 build 24076.
 
 ## 1.2.2
 - [language.lua] More identifiers. Again.
