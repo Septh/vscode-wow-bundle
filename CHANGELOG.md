@@ -1,3 +1,6 @@
+## 1.2.5
+- [language.lua] Updated to match WoW 7.3.0 build 25021.
+
 ## 1.2.4
 - [language.lua] Updated to match WoW 7.2.5 build 24330.
 

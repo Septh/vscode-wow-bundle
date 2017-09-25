@@ -5,12 +5,16 @@
 
 This World of Warcraft addon developer toolset for VS Code includes an improved Lua language grammar with WoW API knowledge, a .toc file grammar, colorization for both .lua source and .toc files, and more.
 
-**Notice:** wow-bundle is NOT a generic Lua colorizer, it is closely bound to WoW specificities and may not be adapted to other environments.
+**Notice:** wow-bundle is NOT a generic Lua colorizer, it is closely bound to WoW specificities and may not be adapted to other Lua environments.
+
+## Warning
+
+ * With WoW 7.3, Blizzard removed the 3 files I used to maintain wow-bundle (namely `GlobalAPI.lua`, `WidgetAPI.lua` and `Events.lua` from the `Helix` directory). Therefore, I cannot guarantee any longer that the bundle is 100% accurate with respect to the lastest WoW API.
 
 
 ## Features
 
-* **Full WoW 7.2.x API**
+* **Full (I hope...) WoW 7.3.x API**
 * **New since 1.2.0: A bunch of useful code snippets, thanks to [m4xc4v413r4](https://github.com/m4xc4v413r4)**
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
 * Extensive FrameXML widgets and Lua library support
