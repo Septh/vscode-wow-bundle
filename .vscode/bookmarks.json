@@ -4,13 +4,5 @@
 	"onDidAddBookmarkEmitter": {},
 	"onDidRemoveBookmarkEmitter": {},
 	"onDidUpdateBookmarkEmitter": {},
-	"bookmarks": [
-		{
-			"fsPath": "$ROOTPATH$\\languages\\grammars\\wow-lua.tmLanguage",
-			"bookmarks": [
-				934,
-				2548
-			]
-		}
-	]
+	"bookmarks": []
 }

@@ -13,7 +13,7 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>^(##)\s*(Author|DefaultState|Dependencies|Interface|Load(?:OnDemand|With|Managers)|Notes(?:\-.{4})?|OptionalDeps|RequiredDeps|SavedVariables(?:PerCharacter)?|Secure|Title(?:\-.{4})?|Version)(\:)\s*(.*)$</string>
+			<string>^(##)\s*(Author|DefaultState|Dependencies|Interface|Load(?:OnDemand|With|Managers)|Notes(?:\-.{4})?|OptionalDeps|OptionalDependencies|RequiredDeps|RequiredDependencies|SavedVariables(?:PerCharacter)?|Secure|Title(?:\-.{4})?|Version)(\:)\s*(.*)$</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>

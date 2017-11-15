@@ -22,5 +22,15 @@
 		["(", ")"],
 		["\"", "\""],
 		["'", "'"]
-	]
+	],
+	"folding": {
+		"markers": {
+			"start": "^\\s*(?:(?:local\\s+)?function|if|for)\\b|{[ \\t]*$|\\[=*\\[",
+			"end": "\\bend\\b|^\\s*}|\\]=*\\]"
+		}
+	},
+	"indentationRules": {
+		"increaseIndentPattern": "((\\b(else|function|then|do|repeat)\\b((?!\\b(end|until)\\b).)*)|(\\{\\s*))$",
+		"decreaseIndentPattern": "^\\s*((\\b(elseif|else|end|until)\\b)|(\\})|(\\)))"
+	}
 }
