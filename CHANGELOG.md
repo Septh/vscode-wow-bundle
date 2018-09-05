@@ -1,3 +1,6 @@
+## 1.2.6
+- [language.lua] Updated to (hopefully) match WoW 8.0 build 27547.
+
 ## 1.2.5
 - [language.lua] Updated to (hopefully) match WoW 7.3.2 build 25549.
 - [language.lua] Added support for intendation rules to lua-language-configuration.json

@@ -14,7 +14,7 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 ## Features
 
-* **Full (I hope...) WoW 7.3.x API**
+* **Full (I hope...) WoW 8.0 API**
 * **New since 1.2.0: A bunch of useful code snippets, thanks to [m4xc4v413r4](https://github.com/m4xc4v413r4)**
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
 * Extensive FrameXML widgets and Lua library support
