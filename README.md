@@ -14,12 +14,12 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 ## Features
 
-* **Full (I hope...) WoW 8.0 API**
-* **New since 1.2.0: A bunch of useful code snippets, thanks to [m4xc4v413r4](https://github.com/m4xc4v413r4)**
+* **Full (I hope...) WoW 8.0.1 (Build 27791) API**
+* Includes a bunch of useful code snippets, thanks to [m4xc4v413r4](https://github.com/m4xc4v413r4)
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
 * Extensive FrameXML widgets and Lua library support
 * `.toc` file colorization
-* Four new, dedicated color themes based on VS Code's default themes: Light+, Dark+, Monokai and Monokai Dimmed
+* Four dedicated color themes based on VS Code's default themes: Light+, Dark+, Monokai and Monokai Dimmed
 
 
 ### Grammars
@@ -78,7 +78,6 @@ wow-bundle's themes do not interfere with VS Code default colors for Lua or any 
 
 These are the currently known issues with wow-bundle. Should you whish to collaborate to the projet and help resolve these issues, you're welcome to submit a PR on Github.
 
-* ~~The WoW API isn't fully complete yet, some 7.0.3 functions, methods and probably other things are still missing - I'll add them when time permits.~~ - Full 7.1 support since v1.1.0
 * Because Blizzard's FrameXML code exposes hundreds of global functions, objects and variables, it is impossible to support them all. Therefore, only a selection of the most frequently used identifiers is supported. Please open an issue on Github if you need to add more.
 * ~~Game events and widgets script handlers are still shown as regular strings. I'm looking for a way to make them stand appart.~~ - Fixed in 1.0.4
 

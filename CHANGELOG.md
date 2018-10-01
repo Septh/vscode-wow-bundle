@@ -1,3 +1,8 @@
+## 1.2.7
+- [language.lua] Added some more idenfiers.
+- [language.lua] Fixed some minor glitches.
+- [language.lua] Added support for folding regions in lua code with `--#region` and `--#endregion`
+
 ## 1.2.6
 - [language.lua] Updated to (hopefully) match WoW 8.0 build 27547.
 
