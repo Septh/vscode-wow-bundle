@@ -1,7 +1,8 @@
 {
+	"$schema": "vscode://schemas/color-theme",
 	"name": "Light+ (wow-bundle)",
 	"include": "./theme-defaults/themes/light_plus.json",
-	"settings": [
+	"tokenColors": [
 		// Comments -- just add italics to the current style
 		{
 			"scope": "comment",
@@ -12,52 +13,54 @@
 
 		// Lua colors ONLY - except for comments above, we dont mess with other languages
 		{
-			"scope": "support.function.lua",
+			"scope": [
+				"keyword.control.lua", "keyword.operator.logical.lua", "storage.modifier.lua",
+				"support.function.lua"
+			],
 			"settings": {
 				"foreground": "#0000ff"
 			}
 		},
 		{
-			"scope": "support.function.metamethod.lua",
+			"scope": [
+				"support.function.metamethod.lua"
+			],
 			"settings": {
 				"fontStyle": "italic"
 			}
 		},
 		{
-			"scope": "keyword.operator.lua",
+			"scope": [
+				"keyword.operator.lua"
+			],
 			"settings": {
 				"foreground": "#000000"
 			}
 		},
 		{
-			"scope": "keyword.operator.logical.lua",
+			"scope": [
+				"entity.name.function.lua",
+				"entity.name.table.lua", "entity.name.member.lua", "entity.name.method.lua"
+			],
+			"settings": {
+				"foreground": "#795E26"
+			}
+		},
+		{
+			"scope": [
+				"variable.language.lua", "constant.language.lua", "constant.language.quoted.lua",
+				"support.constant.lua"
+			],
 			"settings": {
 				"foreground": "#000000"
 			}
 		},
 		{
-			"scope": ["variable.language.lua", "support.variable.lua"],
-			"settings": {
-				"foreground": "#000000"
-			}
-		},
-		{
-			"scope": [ "constant.language.lua", "constant.language.quoted.lua", "support.constant.lua", "support.constant.quoted.lua"],
-			"settings": {
-				"foreground": "#09885a"
-			}
-		},
-		{
-			"scope": "constant.character.escape.lua",
+			"scope": [
+				"constant.character.escape.lua"
+			],
 			"settings": {
 				"foreground": "#cc1b1b"
-			}
-		},
-		{
-			"scope": "invalid.deprecated.lua",
-			"settings": {
-				"foreground": "#0000ff",
-				"fontStyle": "underline"
 			}
 		},
 
@@ -89,41 +92,24 @@
 
 		// World of Warcraft API colors
 		{
-			"comment": "This catches everything not defined below",
+			"name": "WoW C API functions",
+			"scope": "support.function.api.lua",
+			"settings": {
+				"foreground": "#cc6600"
+			}
+		},
+		{
 			"scope": [
-				"support.function.wow-api",                  "support.function.wow-library",
-				"support.variable.object.wow-api",           "support.variable.object.wow-library",
-				"support.variable.value.wow-api",            "support.variable.value.wow-library",
-				"support.constant.wow-api",                  "support.constant.wow-library",
-				"support.constant.string-parameter.wow-api", "support.constant.string-parameter.wow-library",
-				"support.constant.script-handler.wow-api",   "support.constant.script-handler.wow-library",
-				"support.constant.event-name.wow-api",       "support.constant.event-name.wow-library",
-				"support.class.wow-api",                     "support.class.wow-library",
-				"support.class.method.wow-api",              "support.class.method.wow-library"
+				"support.function.api.lua.protected", "support.function.api.lua.nocombat"
 			],
 			"settings": {
-				"foreground": "#cc6600"
-			}
-		},
-
-		{
-			"name": "WoW C API functions",
-			"scope": "support.function.wow-api",
-			"settings": {
-				"foreground": "#cc6600"
-			}
-		},
-		{
-			"scope": [ "support.function.wow-api.protected", "support.function.wow-api.nocombat" ],
-			"settings": {
-				// "foreground": "#994c00",
 				"fontStyle": "underline"
 			}
 		},
 
 		{
 			"name": "Widgets methods",
-			"scope": "support.class.method.wow-api",
+			"scope": "support.method.api.lua",
 			"settings": {
 				"foreground": "#cc6600"
 			}
@@ -131,40 +117,38 @@
 
 		{
 			"name": "WoW Library (Lua functions)",
-			"scope": "support.function.wow-library",
+			"scope": "support.function.library.lua",
 			"settings": {
 				"foreground": "#b37a2b"
 			}
 		},
 		{
-			"scope": "support.variable.object.wow-library",
+			"scope": "support.variable.object.library.lua",
 			"settings": {
 				"foreground": "#e6bf00"
 			}
 		},
 		{
-			"scope": "support.variable.value.wow-library",
+			"scope": "support.variable.value.library.lua",
 			"settings": {
-				"foreground": "#b39b68"			// Same as entity.name.selector
+				"foreground": "#b39b68"
 			}
 		},
 
 		{
 			"name": "WoW API Constants",
 			"scope": [
-				"support.constant.wow-api",
-				"support.constant.string-parameter.wow-api",
-				"support.constant.script-handler.wow-api",
-				"support.constant.event-name.wow-api"
+				"support.constant.api.lua",
+				"support.constant.quoted.api.lua", "support.constant.quoted.handler.api.lua", "support.constant.quoted.event.api.lua"
 			],
 			"settings": {
-				"foreground": "#4ec9b0"			// Same as support.type
+				"foreground": "#4ec9b0"
 			}
 		},
 
 		{
 			"name": "Removed stuff",
-			"scope": "invalid.removed.lua",
+			"scope": [ "invalid.removed.lua", "invalid.illegal.lua" ],
 			"settings": {
 				"foreground": "#f44747"
 			}

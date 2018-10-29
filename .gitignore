@@ -1,0 +1,13 @@
+/node_modules/
+
+# built files
+/extension/*.js
+/extension/*.map
+/extension/webview/*.html
+/extension/webview/*.css
+/extension/webview/*.js
+/extension/webview/*.map
+/out/
+
+# vsce
+*.vsix

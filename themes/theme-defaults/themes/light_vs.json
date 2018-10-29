@@ -6,8 +6,7 @@
 		{
 			"scope": ["meta.embedded", "source.groovy.embedded"],
 			"settings": {
-				"foreground": "#000000ff",
-				"background":"#ffffffff"
+				"foreground": "#000000ff"
 			}
 		},
 		{
@@ -141,8 +140,8 @@
 		},
 		{
 			"scope": [
-				"beginning.punctuation.definition.quote.markdown",
-				"beginning.punctuation.definition.list.markdown"
+				"punctuation.definition.quote.begin.markdown",
+				"punctuation.definition.list.begin.markdown"
 			],
 			"settings": {
 				"foreground": "#0451a5"
@@ -150,12 +149,6 @@
 		},
 		{
 			"scope": "markup.inline.raw",
-			"settings": {
-				"foreground": "#800000"
-			}
-		},
-		{
-			"scope": "meta.selector",
 			"settings": {
 				"foreground": "#800000"
 			}
@@ -217,9 +210,9 @@
 		},
 		{
 			"scope": [
-				"string.comment.buffered.block.jade",
-				"string.quoted.jade",
-				"string.interpolated.jade",
+				"string.comment.buffered.block.pug",
+				"string.quoted.pug",
+				"string.interpolated.pug",
 				"string.unquoted.plain.in.yaml",
 				"string.unquoted.plain.out.yaml",
 				"string.unquoted.block.yaml",
@@ -291,7 +284,9 @@
 			}
 		},
 		{
-			"scope": "support.type.property-name.json",
+			"scope": [
+				"support.type.property-name.json"
+			],
 			"settings": {
 				"foreground": "#0451a5"
 			}
@@ -320,6 +315,7 @@
 				"keyword.operator.expression",
 				"keyword.operator.cast",
 				"keyword.operator.sizeof",
+				"keyword.operator.instanceof",
 				"keyword.operator.logical.python"
 			],
 			"settings": {
