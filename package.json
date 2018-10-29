@@ -2,7 +2,7 @@
 	"name": "wow-bundle",
 	"displayName": "WoW Bundle",
 	"description": "World of Warcraft addon developer toolset for VS Code",
-	"version": "1.2.7",
+	"version": "1.3.0",
 	"icon": "images/wow-icon.png",
 	"publisher": "Septh",
 	"license": "MIT",
@@ -17,7 +17,7 @@
 		"Programming Languages", "Snippets", "Themes"
 	],
 	"keywords": [
-		"WoW", "World of Warcraft", "Blizzard", "FrameXML", "Lua"
+		"Lua", "WoW", "World of Warcraft", "Blizzard", "FrameXML", "TOC", "addon"
 	],
 	"contributes": {
 		"languages": [
@@ -31,19 +31,19 @@
 				"id": "toc",
 				"extensions": [ ".toc" ],
 				"aliases": [ "Toc", "TOC" ],
-				"configuration": "./languages/toc-language.configuration.json"
+				"configuration": "./languages/toc-language-configuration.json"
 			}
 		],
 		"grammars": [
 			{
 				"language": "lua",
 				"scopeName": "source.lua",
-				"path": "./languages/grammars/wow-lua.tmLanguage"
+				"path": "./languages/grammars/lua.tmLanguage.json"
 			},
 			{
 				"language": "toc",
 				"scopeName": "source.toc",
-				"path": "./languages/grammars/wow-toc.tmLanguage"
+				"path": "./languages/grammars/toc.tmLanguage.json"
 			}
 		],
 		"snippets": [

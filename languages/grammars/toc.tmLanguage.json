@@ -1,0 +1,31 @@
+{
+    "name": "toc",
+    "fileTypes": [ "toc" ],
+    "scopeName": "source.toc",
+    "uuid": "C22B105F-216F-4779-9E20-7C881A2B0C99",
+
+    "patterns": [
+        {
+            "match": "^(##)\\s*(Author|DefaultState|Dependencies|Interface|Load(?:OnDemand|With|Managers)|Notes(?:\\-[a-z]{2}[A-Z]{2})?|OptionalDeps|OptionalDependencies|RequiredDeps|RequiredDependencies|SavedVariables(?:PerCharacter)?|Secure|Title(?:\\-[a-z]{2}[A-Z]{2})?|Version)\\s*(:)\\s*(.*)$",
+            "captures": {
+                "1": { "name": "keyword.operator.toc" },
+                "2": { "name": "keyword.control.toc"  },
+                "3": { "name": "keyword.operator.toc" },
+                "4": { "name": "string.unquoted.toc"  }
+            }
+        },
+        {
+            "match": "^(##)\\s*(X\\-[^:\\s]+)\\s*(\\:)\\s*(.*)$",
+            "captures": {
+                "1": { "name": "keyword.operator.toc"  },
+                "2": { "name": "keyword.control.x.toc" },
+                "3": { "name": "keyword.operator.toc"  },
+                "4": { "name": "string.unquoted.toc"   }
+            }
+        },
+        {
+            "match": "(^#[^#]+)",
+            "name": "comment.toc"
+        }
+    ]
+}

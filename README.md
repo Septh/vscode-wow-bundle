@@ -5,7 +5,11 @@
 
 This World of Warcraft addon developer toolset for VS Code includes an improved Lua language grammar with WoW API knowledge, a .toc file grammar, colorization for both .lua source and .toc files, and more.
 
-**Notice:** wow-bundle is NOT a generic Lua colorizer, it is closely bound to WoW specificities and may not be adapted to other Lua environments.
+
+## Notice
+
+* **wow-bundle is NOT a generic Lua colorizer, it is closely bound to WoW specificities and is not adapted to other Lua environments.** Therefore, you may want to disable this extension when working on non-WoW Lua projects.
+
 
 ## Warning
 
@@ -14,7 +18,7 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 ## Features
 
-* **Full (I hope...) WoW 8.0.1 (Build 27791) API**
+* **Full (I hope...) WoW 8.0.1 (Build 28153) API**
 * Includes a bunch of useful code snippets, thanks to [m4xc4v413r4](https://github.com/m4xc4v413r4)
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
 * Extensive FrameXML widgets and Lua library support
@@ -28,9 +32,9 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 wow-bundle replaces VS Code's built-in Lua language grammar. Changes worth noticing are:
 
-* **OO-style string functions** support, ie. both `string.upper(mystring)` and `mystring:upper()` are supported
+* **OO-style string functions** support, ie. `string.upper(mystring)`, `mystring:upper()` and even `("somestring"):upper()` are supported!
 * **Full metamethods** support
-* **Quoted string constants** as used or returned by the `collectgarbage()`, `date()` and `type()` functions and the `__mode()` metamethod
+* **Quoted string constants** as consumed or returned by the `collectgarbage()`, `date()` and `type()` functions and the `__mode()` metamethod
 * Better **character escapes** inside strings: Unicode entities, decimal and hexadecimal values and control chars
 
 
@@ -39,7 +43,7 @@ wow-bundle replaces VS Code's built-in Lua language grammar. Changes worth notic
 wow-bundle's Lua grammar also tags a bunch of WoW-related stuff:
 
 * **Blizzard's extensions to the Lua language** like `[table.]wipe()`, `strjoin()`, etc.
-* **World of Warcraft API functions**, with support for functions that can't be called while in combat and functions that can be called only from secure code
+* **World of Warcraft API functions**, with (poor, honestly) support for functions that can't be called while in combat and functions that can be called only from secure code
 * **WoW Library functions** written in Lua (mostly used by UI code)
 * **Global objects** like `UIParent`, `GameFontNormal` and such
 * **Global variables** like `HIGHLIGHT_FONT_COLOR_CODE`, `UIDROPDOWNMENU_INIT_MENU` and such
@@ -69,7 +73,13 @@ However, for further colorization granularity, wow-bundle also includes four spe
 
 wow-bundle's themes do not interfere with VS Code default colors for Lua or any other language you may use.
 
->New since 1.0.1: I do however add italics to ALL comments ~~and underline to invalid/deprecated keywords~~.
+>New since 1.0.1: I do however add italics to ALL comments ~~and underline to invalid/deprecated keywords~~. Should you whish to disable this feature, set the following setting into VS Code settings:
+
+    "editor.tokenColorCustomizations": {
+        "comments": {
+            "fontStyle": ""
+        }
+    }
 
 >New since 1.0.7: No more underline for invalids, not everybody likes it.
 
@@ -98,7 +108,4 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 
 ## Release notes
 
-See [Changelog.md](CHANGELOG.md)
-
-[wow-bundle]: https://github.com/Septh/vscode-wow-bundle
-[VS Code]: https://code.visualstudio.com/
+See [Changelog.md](CHANGELOG.md).
