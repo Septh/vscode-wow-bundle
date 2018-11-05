@@ -2,7 +2,7 @@
 	"WoW TOC": {
 		"prefix": "toc",
 		"body": [
-			"## Interface: ${1:70100}",
+			"## Interface: ${1:80000}",
 			"## Title: ${2:AddonName}",
 			"## Notes: ${3:Small Addon Description}",
 			"## Author: ${4:Your Name}",

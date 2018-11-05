@@ -1,0 +1,5 @@
+.rpt2_cache/
+.vscode/
+node_modules/
+.gitignore
+*.vsix

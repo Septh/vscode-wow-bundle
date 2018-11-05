@@ -756,7 +756,7 @@
 			"local ${1:ldb} = LibStub:GetLibrary('LibDataBroker-1.1')",
 			"local ${2:dataobj} = ldb:NewDataObject(${3:'AddonName'}, {",
 			"\ttype = ${4:'data source'},",
-			"\ticon = ${5:'Interface\\Icons\\'},",
+			"\ticon = ${5:'Interface\\\\\\Icons'},",
 			"\tlabel = ${6:'Addon Label'}",
 			"\ttext = ${7:'Addon Text'}",
 			"})",

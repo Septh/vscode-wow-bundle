@@ -1,7 +1,6 @@
 # wow-bundle for VS Code
 
-[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![GitHub](https://img.shields.io/github/release/Septh/vscode-wow-bundle.svg?style=flat-square)](https://github.com/Septh/vscode-wow-bundle/releases)
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) [![GitHub](https://img.shields.io/github/release/Septh/vscode-wow-bundle.svg?style=flat-square)](https://github.com/Septh/vscode-wow-bundle/releases)
 
 This World of Warcraft addon developer toolset for VS Code includes an improved Lua language grammar with WoW API knowledge, a .toc file grammar, colorization for both .lua source and .toc files, and more.
 
@@ -13,7 +12,7 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 
 ## Warning
 
- * With WoW 7.3, Blizzard removed the 3 files I used to maintain wow-bundle (namely `GlobalAPI.lua`, `WidgetAPI.lua` and `Events.lua` from the `Helix` directory). Therefore, I cannot guarantee any longer that the bundle is 100% accurate with respect to the lastest WoW API.
+* With WoW 7.3, Blizzard removed the 3 files I used to maintain wow-bundle (namely `GlobalAPI.lua`, `WidgetAPI.lua` and `Events.lua` from the `Helix` directory). Therefore, I cannot guarantee any longer that the bundle is 100% accurate with respect to the lastest WoW API.
 
 
 ## Features
@@ -21,9 +20,8 @@ This World of Warcraft addon developer toolset for VS Code includes an improved 
 * **Full (I hope...) WoW 8.0.1 (Build 28153) API**
 * Includes a bunch of useful code snippets, thanks to [m4xc4v413r4](https://github.com/m4xc4v413r4)
 * Improved Lua 5.1 grammar with World of Warcraft's built-in Lua interpreter specificities
-* Extensive FrameXML widgets and Lua library support
+* Extensive FrameXML widgets and library support
 * `.toc` file colorization
-* Four dedicated color themes based on VS Code's default themes: Light+, Dark+, Monokai and Monokai Dimmed
 
 
 ### Grammars
@@ -51,37 +49,23 @@ wow-bundle's Lua grammar also tags a bunch of WoW-related stuff:
 * **Common function parameters** like `'CheckButton'`, `'BOTTOMLEFT'`, `'OVERLAY'`, `'player'` and such
 * **Widgets event handler names** like `'OnEnter'`, `'OnShow'` and such
 * **Game events** like `'PLAYER_ENTERING_WORLD'`, `'VARIABLES_LOADED'` and such
-* Removed and/or deprecated stuff in the API
+* **Removed and/or deprecated stuff** in the API
 
 ![lua](images/lua.png)
 
 
 #### > Toc files
 
-Also included is a simple grammar for `.toc` files with support for keywords (like `## Interface`, `## Author` and such) and X-keywords (like `## X-Date`, `## X-Website` and such)
+Also included is a simple grammar for `.toc` files with support for keywords (like `## Interface`, `## Author` and such) and X-keywords (like `## X-Date`, `## X-Website` and such).
 
 ![toc](images/toc.png)
 
 
-### Colorization
+### Colors
 
 All VS Code themes should word fine with wow-bundle as long as they follow [the standard scope naming convention](https://manual.macromates.com/en/language_grammars).
 
-However, for further colorization granularity, wow-bundle also includes four specific theme based on VS Code's default themes and called **Light+ (WoW)**, **Dark+ (WoW)**, **Monokai (WoW)** and **Monokai Dimmed (WoW)**. To choose one of these themes, open the Color Theme picker with **File** > **Preferences** > **Color Theme** (or **Code** > **Preferences** > **Color Theme** on Mac).
-
-![themes](images/themes.gif)
-
-wow-bundle's themes do not interfere with VS Code default colors for Lua or any other language you may use.
-
->New since 1.0.1: I do however add italics to ALL comments ~~and underline to invalid/deprecated keywords~~. Should you whish to disable this feature, set the following setting into VS Code settings:
-
-    "editor.tokenColorCustomizations": {
-        "comments": {
-            "fontStyle": ""
-        }
-    }
-
->New since 1.0.7: No more underline for invalids, not everybody likes it.
+However, for further colorization granularity, you need to edit VS Code settings. See [Customize.md](Customize.md) for further information.
 
 
 ## Known Issues
@@ -99,7 +83,7 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 1. ~~Fix above issues~~
 2. ~~Add code snippets~~
 3. Support XML declarations too (low on my priority list, though)
-4. ~~Support VS Code light themes?~~ ~~Support all standard VS Code themes~~ I'm done with themes - If you need more, just ask, I'll consider it
+4. ~~Support VS Code light themes?~~ ~~Support all standard VS Code themes~~ ~~I'm done with themes - If you need more, just ask, I'll consider it~~
 5. Linting anyone?
 6. Or maybe code formating?
 7. IntelliSense support would be great too (I have no idea where to start, though)
@@ -108,4 +92,4 @@ Found an issue not listed here? Head up to Github and [open an issue](https://gi
 
 ## Release notes
 
-See [Changelog.md](CHANGELOG.md).
+See [Changelog.md](Changelog.md).

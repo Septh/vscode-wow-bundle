@@ -3,15 +3,7 @@
 	"name": "Monokai (wow-bundle)",
 	"include": "./theme-monokai/themes/monokai-color-theme.json",
 	"tokenColors": [
-		// Comments -- just add italics to the current style
-		{
-			"scope": "comment",
-			"settings": {
-				"fontStyle": "italic"
-			}
-		},
-
-		// Lua colors ONLY - except for comments above, we dont mess with other languages
+		// Lua colors
 		{
 			"scope": [
 				"keyword.control.lua", "keyword.operator.logical.lua", "storage.modifier.lua",

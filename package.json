@@ -2,9 +2,13 @@
 	"name": "wow-bundle",
 	"displayName": "WoW Bundle",
 	"description": "World of Warcraft addon developer toolset for VS Code",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"icon": "images/wow-icon.png",
 	"publisher": "Septh",
+	"author": {
+		"name": "Stephan Schreiber",
+		"url": "https://github.com/Septh"
+	},
 	"license": "MIT",
 	"galleryBanner": {
 		"color": "#FFFFFF",
@@ -14,24 +18,24 @@
 		"vscode": "^1.26.0"
 	},
 	"categories": [
-		"Programming Languages", "Snippets", "Themes"
+		"Programming Languages", "Snippets"
 	],
 	"keywords": [
-		"Lua", "WoW", "World of Warcraft", "Blizzard", "FrameXML", "TOC", "addon"
+		"Lua", "WoW", "World of Warcraft", "addon", "FrameXML"
 	],
 	"contributes": {
 		"languages": [
 			{
 				"id": "lua",
 				"extensions": [ ".lua" ],
-				"aliases": [ "Lua"  ],
-				"configuration": "./languages/lua-language-configuration.json"
+				"aliases": [ "Lua (WoW addon)" ],
+				"configuration": "./languages/lua.language-configuration.json"
 			},
 			{
 				"id": "toc",
 				"extensions": [ ".toc" ],
-				"aliases": [ "Toc", "TOC" ],
-				"configuration": "./languages/toc-language-configuration.json"
+				"aliases": [ "Toc (WoW addon)" ],
+				"configuration": "./languages/toc.language-configuration.json"
 			}
 		],
 		"grammars": [
@@ -49,33 +53,11 @@
 		"snippets": [
 			{
 				"language": "lua",
-				"path": "./languages/snippets/lua.json"
+				"path": "./languages/snippets/lua.snippets.json"
 			},
 			{
 				"language": "toc",
-				"path": "./languages/snippets/toc.json"
-			}
-		],
-		"themes": [
-			{
-				"label": "Dark+ (WoW)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/dark_plus_wow.json"
-			},
-			{
-				"label": "Light+ (WoW)",
-				"uiTheme": "vs",
-				"path": "./themes/light_plus_wow.json"
-			},
-			{
-				"label": "Monokai (WoW)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/monokai_wow.json"
-			},
-			{
-				"label": "Monokai Dimmed (WoW)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/monokai_dimmed_wow.json"
+				"path": "./languages/snippets/toc.snippets.json"
 			}
 		]
 	},

@@ -3,15 +3,7 @@
 	"name": "Dark+ (wow-bundle)",
 	"include": "./theme-defaults/themes/dark_plus.json",
 	"tokenColors": [
-		// Comments -- just add italics to the current style
-		{
-			"scope": "comment",
-			"settings": {
-				"fontStyle": "italic"
-			}
-		},
-
-		// Lua colors ONLY - except for comments above, we dont mess with other languages
+		// Lua colors
 		{
 			"scope": [
 				"keyword.control.lua", "keyword.operator.logical.lua", "storage.modifier.lua",
@@ -61,32 +53,6 @@
 			],
 			"settings": {
 				"foreground": "#e6bc85"
-			}
-		},
-
-		// Word of Warcraft .toc file colors
-		{
-			"scope": "keyword.operator.toc",
-			"settings": {
-				"foreground": "#9cdcfe"
-			}
-		},
-		{
-			"scope": "keyword.control.toc",
-			"settings": {
-				"foreground": "#c586c0"
-			}
-		},
-		{
-			"scope": "keyword.control.x.toc",
-			"settings": {
-				"foreground": "#a671a1"
-			}
-		},
-		{
-			"scope": "variable.parameter.toc",
-			"settings": {
-				"foreground": "#ce9178"
 			}
 		},
 
@@ -151,6 +117,32 @@
 			"scope": [ "invalid.removed.lua", "invalid.illegal.lua" ],
 			"settings": {
 				"foreground": "#f44747"
+			}
+		},
+
+		// Word of Warcraft .toc file colors
+		{
+			"scope": "keyword.operator.toc",
+			"settings": {
+				"foreground": "#9cdcfe"
+			}
+		},
+		{
+			"scope": "keyword.control.toc",
+			"settings": {
+				"foreground": "#c586c0"
+			}
+		},
+		{
+			"scope": "keyword.control.x.toc",
+			"settings": {
+				"foreground": "#a671a1"
+			}
+		},
+		{
+			"scope": "variable.parameter.toc",
+			"settings": {
+				"foreground": "#ce9178"
 			}
 		}
 	]
