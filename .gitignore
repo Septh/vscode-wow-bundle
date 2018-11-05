@@ -1,2 +1,5 @@
-.vscode
-tools
+node_modules/
+out/
+themes/
+tools/
+*.vsix

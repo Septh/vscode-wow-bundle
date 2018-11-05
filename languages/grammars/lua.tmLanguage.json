@@ -1,8 +1,6 @@
 {
-    "name": "lua",
-    "fileTypes": [ "lua" ],
+    "name": "Lua (WoW addon)",
     "scopeName": "source.lua",
-    "uuid": "93E017CC-6F27-11D9-90EB-000D93589AF7",
 
     "patterns": [
         {
@@ -192,11 +190,11 @@
                 },
                 {
                     "name": "constant.language.lua",
-                    "match": "\\b(_G|_VERSION|false|nil|true)\\b"
+                    "match": "\\b(false|nil|true)\\b"
                 },
                 {
                     "name": "variable.language.lua",
-                    "match": "\\b(_|self)\\b"
+                    "match": "\\b(_|_G|_VERSION|self)\\b"
                 },
                 {
                     "name": "invalid.illegal.lua",
@@ -370,7 +368,7 @@
                 {
                     "comment": "Lua 5.1 keywords and functions not present in WoW",
                     "match": "\\b(dofile|load(?:file)?|module|require)\\b",
-                    "name": "invalid.removed.lua"
+                    "name": "invalid.illegal.lua"
                 },
                 {
                     "comment": "Blizzard functions removed over time",
@@ -381,36 +379,36 @@
                     "comment": "Not in WoW",
                     "match": "\\b(debug)\\b(?:(\\.)(debug|getfenv|gethook|getinfo|getlocal|getmetatable|getregistry|getupvalue|setfenv|sethook|setlocal|setmetatable|setupvalue|traceback)\\b)?",
                     "captures": {
-                        "1": { "name": "invalid.removed.lua"  },
+                        "1": { "name": "invalid.illegal.lua"  },
                         "2": { "name": "keyword.operator.lua" },
-                        "3": { "name": "invalid.removed.lua"  }
+                        "3": { "name": "invalid.illegal.lua"  }
                     }
                 },
                 {
                     "comment": "Not in WoW",
                     "match": "\\b(io)\\b(?:(\\.)(close|flush|input|lines|open|output|popen|read|stderr|stdin|stdout|tmpfile|type|write)\\b)?",
                     "captures": {
-                        "1": { "name": "invalid.removed.lua"  },
+                        "1": { "name": "invalid.illegal.lua"  },
                         "2": { "name": "keyword.operator.lua" },
-                        "3": { "name": "invalid.removed.lua"  }
+                        "3": { "name": "invalid.illegal.lua"  }
                     }
                 },
                 {
                     "comment": "Not in WoW",
                     "match": "\\b(os)\\b(?:(\\.)(clock|date|difftime|execute|exit|getenv|remove|rename|setlocale|time|tmpname)\\b)?",
                     "captures": {
-                        "1": { "name": "invalid.removed.lua"  },
+                        "1": { "name": "invalid.illegal.lua"  },
                         "2": { "name": "keyword.operator.lua" },
-                        "3": { "name": "invalid.removed.lua"  }
+                        "3": { "name": "invalid.illegal.lua"  }
                     }
                 },
                 {
                     "comment": "Not in WoW",
                     "match": "\\b(package)\\b(?:(\\.)(cpath|loaded|loaders|loadlib|path|preload|seeall)\\b)?",
                     "captures": {
-                        "1": { "name": "invalid.removed.lua"  },
+                        "1": { "name": "invalid.illegal.lua"  },
                         "2": { "name": "keyword.operator.lua" },
-                        "3": { "name": "invalid.removed.lua"  }
+                        "3": { "name": "invalid.illegal.lua"  }
                     }
                 },
                 {

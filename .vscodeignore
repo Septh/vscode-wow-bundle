@@ -1,0 +1,8 @@
+.vscode/**
+themes/**
+tools/**
+.gitignore
+package-lock.json
+tsconfig.json
+tslint.json
+*.vsix
