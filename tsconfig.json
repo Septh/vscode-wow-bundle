@@ -1,0 +1,33 @@
+{
+	"compilerOptions": {
+		"allowJs": false,
+		"checkJs": false,
+
+		// Options gérées par rollup-plugin-typescript2
+		// "moduleResolution": "node",
+		// "rootDir": "src",
+		// "outDir": "out",
+
+		"target": "es2017",		// target = Electron
+		"module": "es2015",		// Génère import plutôt que require()
+		"plugins": [
+			{ "name": "typescript-tslint-plugin" }
+		],
+
+		/* Checkings */
+		"strict": true,
+		"strictNullChecks": false,	// Trop galère à gérer :(
+		"noUnusedLocals": true,
+		"noImplicitReturns": true,
+		"noUnusedParameters": true,
+
+		/* Output */
+		"preserveConstEnums": false,
+		"removeComments": true,
+		"sourceMap": true,
+	},
+	"typeAcquisition": {
+		"enable": true,
+		"include": [ "vscode", "angular", "rxjs" ]
+	}
+}

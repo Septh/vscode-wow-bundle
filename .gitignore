@@ -1,5 +1,13 @@
-node_modules/
-out/
-themes/
-tools/
+# npm
+**/node_modules/
+
+# rollup-plugin-typescript2
+.rpt2_cache/
+
+# built files
+dist/main.js
+dist/webview/index.js
+**/*.map
+
+#vsce
 *.vsix

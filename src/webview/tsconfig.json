@@ -1,0 +1,13 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"lib": [
+			"es2017", "dom"
+		],
+		"moduleResolution": "node"
+	},
+	"files": [
+		"index.ts",
+		"../../node_modules/rxjs/index.d.ts"
+	]
+}

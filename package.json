@@ -1,8 +1,10 @@
 {
+	"private": true,
+	"preview": true,
 	"name": "wow-bundle",
 	"displayName": "WoW Bundle",
 	"description": "World of Warcraft addon developer toolset for VS Code",
-	"version": "1.4.0",
+	"version": "2.0.0",
 	"icon": "images/wow-icon.png",
 	"publisher": "Septh",
 	"author": {
@@ -10,64 +12,125 @@
 		"url": "https://github.com/Septh"
 	},
 	"license": "MIT",
+	"homepage": "https://marketplace.visualstudio.com/items?itemName=Septh.wow-bundle",
 	"galleryBanner": {
-		"color": "#FFFFFF",
+		"color": "#ffffff",
 		"theme": "light"
 	},
-	"engines": {
-		"vscode": "^1.26.0"
-	},
 	"categories": [
-		"Programming Languages", "Snippets"
+		"Programming Languages",
+		"Snippets"
 	],
 	"keywords": [
-		"Lua", "WoW", "World of Warcraft", "addon", "FrameXML"
+		"Lua",
+		"WoW",
+		"World of Warcraft",
+		"addon",
+		"FrameXML"
+	],
+	"engines": {
+		"vscode": "^1.29.0"
+	},
+	"main": "dist/main",
+	"activationEvents": [
+		"onLanguage:lua",
+		"workspaceContains:*.toc",
+		"onCommand:wowbundle.showSettings",
+		"onCommand:wowbundle.hideSettings"
 	],
 	"contributes": {
 		"languages": [
 			{
-				"id": "lua",
-				"extensions": [ ".lua" ],
-				"aliases": [ "Lua (WoW adddon)" ],
-				"configuration": "./languages/lua.language-configuration.json"
+				"id": "wow-lua",
+				"extensions": [
+					".wow.lua"
+				],
+				"aliases": [
+					"Lua (WoW addon)"
+				],
+				"configuration": "./languages/wow-lua.language-configuration.json"
 			},
 			{
-				"id": "toc",
-				"extensions": [ ".toc" ],
-				"aliases": [ "Toc (WoW addon)" ],
-				"configuration": "./languages/toc.language-configuration.json"
+				"id": "wow-toc",
+				"extensions": [
+					".toc"
+				],
+				"aliases": [
+					"Toc (WoW addon)"
+				],
+				"configuration": "./languages/wow-toc.language-configuration.json"
 			}
 		],
 		"grammars": [
 			{
-				"language": "lua",
-				"scopeName": "source.lua",
-				"path": "./languages/grammars/lua.tmLanguage.json"
+				"language": "wow-lua",
+				"scopeName": "source.wow.lua",
+				"path": "./languages/grammars/wow-lua.tmLanguage.json"
 			},
 			{
-				"language": "toc",
-				"scopeName": "source.toc",
-				"path": "./languages/grammars/toc.tmLanguage.json"
+				"language": "wow-toc",
+				"scopeName": "source.wow.toc",
+				"path": "./languages/grammars/wow-toc.tmLanguage.json"
 			}
 		],
 		"snippets": [
 			{
-				"language": "lua",
-				"path": "./languages/snippets/lua.snippets.json"
+				"language": "wow-lua",
+				"path": "./languages/snippets/wow-lua.snippets.json"
 			},
 			{
-				"language": "toc",
-				"path": "./languages/snippets/toc.snippets.json"
+				"language": "wow-toc",
+				"path": "./languages/snippets/wow-toc.snippets.json"
+			}
+		],
+		"commands": [
+			{
+				"category": "WoW Bundle",
+				"command": "wowbundle.showSettings",
+				"title": "Edit Lua and Toc colors"
+			},
+			{
+				"category": "WoW Bundle",
+				"command": "wowbundle.hideSettings",
+				"title": "Hide settings panel"
 			}
 		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Septh/vscode-wow-bundle"
 	},
 	"bugs": {
 		"url": "https://github.com/Septh/vscode-wow-bundle/issues"
 	},
-	"homepage": "https://marketplace.visualstudio.com/items?itemName=Septh.wow-bundle",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Septh/vscode-wow-bundle"
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"vscode:prepublish": "npm run clean && npm run compile",
+		"compile": "rollup --config",
+		"watch": "rollup --config --watch",
+		"clean": "trash ./dist/main.js* ./dist/webview/index.js*",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"dependencies": {
+		"rxjs": "^6.3.3"
+	},
+	"devDependencies": {
+		"@types/angular": "^1.6.51",
+		"@types/angular-sanitize": "^1.3.7",
+		"@types/node": "^10.12.12",
+		"rollup": "^0.67.3",
+		"rollup-plugin-cleanup": "^3.0.0",
+		"rollup-plugin-commonjs": "^9.2.0",
+		"rollup-plugin-node-resolve": "^3.4.0",
+		"rollup-plugin-sourcemaps": "^0.4.2",
+		"rollup-plugin-typescript2": "^0.18.0",
+		"trash": "^4.3.0",
+		"trash-cli": "^1.4.0",
+		"tslib": "^1.9.3",
+		"tslint": "^5.11.0",
+		"typescript": "^3.2.1",
+		"typescript-tslint-plugin": "^0.1.2",
+		"vscode": "^1.1.26"
 	},
 	"__metadata": {
 		"id": "191fe3c2-f05c-45f3-baa8-a046773863c9",

@@ -1,0 +1,45 @@
+{
+    "extends": "tslint:recommended",
+    "linterOptions": {
+        "exclude": [
+            "node_modules/**/*"
+        ]
+    },
+    "rules": {
+        "semicolon": [ true, "never" ],
+        "trailing-comma": [ true, { "multiline": "ignore", "singleline": "never", "esSpecCompliant": true } ],
+        "quotemark": [ true, "single", "avoid-escape" ],
+        "whitespace": true,
+        "no-trailing-whitespace": false,
+        "align": true,
+        "no-consecutive-blank-lines": false,
+        "ordered-imports": false,
+        "max-line-length": false,
+        "one-line": true,
+        "one-variable-per-declaration": false,
+
+        // "arrow-parens": false,
+        "object-literal-shorthand": false,
+        "object-literal-key-quotes": [true, "as-needed"],
+        "object-literal-sort-keys": false,
+        "variable-name": false,
+        "class-name": false,
+        "interface-name": false,
+        "no-empty-interface": false,
+        "member-access": false,
+        "member-ordering": false,
+        "unified-signatures": true,
+        "no-namespace": false,
+        "max-classes-per-file": false,
+
+        "no-empty": false,
+        "no-console": false,
+        "new-parens": true,
+        "arrow-parens": false,
+        "no-arg": true,
+        "no-bitwise": false,
+        "no-conditional-assignment": false,
+        "interface-over-type-literal": false
+    },
+    "jsRules": {}
+}

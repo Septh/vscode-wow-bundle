@@ -1,0 +1,29 @@
+{
+	"name": "Toc (WoW addon)",
+	"scopeName": "source.wow.toc",
+
+	"patterns": [
+		{
+			"match": "^(##)\\s+(Author|DefaultState|Dependencies|Interface|Load(?:OnDemand|With|Managers)|Notes(?:\\-[a-z]{2}[A-Z]{2})?|OptionalDeps|OptionalDependencies|RequiredDeps|RequiredDependencies|SavedVariables(?:PerCharacter)?|Secure|Title(?:\\-[a-z]{2}[A-Z]{2})?|Version)\\s*(:)\\s*(.*)$",
+			"captures": {
+				"1": { "name": "keyword.operator.wow.toc" },
+				"2": { "name": "keyword.control.wow.toc"  },
+				"3": { "name": "keyword.operator.wow.toc" },
+				"4": { "name": "variable.other.wow.toc"   }
+			}
+		},
+		{
+			"match": "^(##)\\s+(X\\-[^:\\s]+)\\s*(\\:)\\s*(.*)$",
+			"captures": {
+				"1": { "name": "keyword.operator.wow.toc"  },
+				"2": { "name": "keyword.control.x.wow.toc" },
+				"3": { "name": "keyword.operator.wow.toc"  },
+				"4": { "name": "variable.other.wow.toc"    }
+			}
+		},
+		{
+			"match": "^#[^#].*$",
+			"name": "comment.wow.toc"
+		}
+	]
+}

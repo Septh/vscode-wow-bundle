@@ -1,0 +1,12 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"lib": [
+			"es2017"
+		],
+	},
+	"files": [
+		"main.ts",
+		"../node_modules/vscode/vscode.d.ts"
+	]
+}

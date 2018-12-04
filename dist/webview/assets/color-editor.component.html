@@ -1,0 +1,7 @@
+<button class="swatch" ng-disabled="$ctrl.disabled" ng-click="$ctrl.showPicker()">
+    <span ng-style="{ 'background-color': $ctrl.cssSafeColor }"></span>
+</button>
+<input type="text" ng-disabled="$ctrl.disabled" ng-model="$ctrl.color" ng-model-options="$ctrl.$modelOptions" ng-pattern="$ctrl.$pattern" ng-change="$ctrl.colorChanged()" spellcheck="false" placeholder="Color" maxlength="9">
+<!-- <button class="revert" ng-disabled="$ctrl.disabled" ng-click="$ctrl.revert()">R</button> -->
+<button class="clear" ng-disabled="$ctrl.disabled" ng-click="$ctrl.clear()"><span>X</span></button>
+<!-- <pre>color = {{ $ctrl | json }}</pre> -->

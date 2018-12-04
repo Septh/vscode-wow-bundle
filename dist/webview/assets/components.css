@@ -1,0 +1,69 @@
+
+/* wb-rule-editor */
+wb-rule-editor {
+    display: block;
+}
+
+
+/* wb-color-editor */
+wb-color-editor {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    place-content: flex-start;
+}
+
+wb-color-editor > input[type="text"] {
+    min-width: 10rem;
+    max-width: 10rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+wb-color-editor > input[type="text"].ng-invalid {
+    color: red;
+}
+
+wb-color-editor > button {
+    border: 1px solid black;
+    background-color: white;
+    padding: 0;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    place-content: center;
+}
+
+wb-color-editor > button + button {
+    border-left: none;
+}
+
+wb-color-editor > :disabled {
+    cursor: auto;
+}
+
+wb-color-editor > button.swatch > span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+wb-color-editor > button.revert,
+wb-color-editor > button.clear {
+    font-size: 80%;
+    line-height: 80%;
+}
+
+
+/* wb-style-editor */
+wb-fontstyle-editor {
+    display: block;
+}
+
+wb-fontstyle-editor > label + label {
+    margin-left: 1em;
+}
