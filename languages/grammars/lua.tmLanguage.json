@@ -1,6 +1,5 @@
 {
-    "name": "lua",
-    "fileTypes": [ "lua" ],
+    "name": "Lua",
     "scopeName": "source.lua",
     "uuid": "93E017CC-6F27-11D9-90EB-000D93589AF7",
 
@@ -49,7 +48,31 @@
                 },
                 {
                     "name": "comment.line.double-dash.lua",
-                    "match": "(--)(?!\\[\\[).*$\\n?"
+                    "match": "(--)(?!\\[\\[).*$"
+                }
+            ]
+        },
+
+        "function-declaration-body": {
+            "comment": "(badly named, but in sync with Lua 5.1 grammar (see https://www.lua.org/manual/5.1/manual.html#8)",
+            "patterns": [
+                {
+                    "begin": "\\s*(\\()",
+                    "beginCaptures": {
+                        "1": { "name": "keyword.operator.lua" }
+                    },
+                    "end": "\\s*(\\))",
+                    "endCaptures": {
+                        "1": { "name": "keyword.operator.lua" }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#function-declaration-parameters"
+                        }
+                    ]
+                },
+                {
+                    "include": "#block"
                 }
             ]
         },
@@ -167,6 +190,7 @@
                 }
             ]
         },
+
         "function-declaration-parameters": {
             "patterns": [
                 {
@@ -258,6 +282,7 @@
                 }
             ]
         },
+
         "string-character-escapes": {
             "patterns": [
                 {
@@ -278,6 +303,7 @@
                 }
             ]
         },
+
         "string-patterns": {
             "comment": "TODO - Lua patterns",
             "patterns": [
@@ -365,6 +391,7 @@
                 }
             ]
         },
+
         "stdlib-invalid": {
             "patterns": [
                 {
@@ -455,6 +482,7 @@
                 }
             ]
         },
+
         "wow-api-functions": {
             "patterns": [
                 {
@@ -671,6 +699,7 @@
                 }
             ]
         },
+
         "wow-api-namespaces": {
             "patterns": [
                 {
@@ -1726,6 +1755,7 @@
                 }
             ]
         },
+
         "wow-api-objects": {
             "patterns": [
                 {
@@ -1738,6 +1768,7 @@
                 }
             ]
         },
+
         "wow-api-methods": {
             "patterns": [
                 {
@@ -1750,6 +1781,7 @@
                 }
             ]
         },
+
         "wow-api-constants": {
             "patterns": [
                 {
@@ -1781,10 +1813,12 @@
                 }
             ]
         },
+
         "wow-quoted-handlers": {
             "match": "(['\"])(On(?:AnimFinished|AttributeChanged|Char(?:Composition)?|Click|ColorSelect|CooldownDone|CursorChanged|Disable|DoubleClick|Drag(?:Start|Stop)|EditFocus(?:Gained|Lost)|Enable|Enter(?:Pressed)?|EscapePressed|Event|Finished|Hide|HorizontalScroll|Hyperlink(?:Click|Enter|Leave)|InputLanguageChanged|Key(?:Down|Up)|Leave|Load|Loop|MessageScrollChanged|MinMaxChanged|Mouse(?:Down|Up|Wheel)|MovieFinished|Movie(?:Hide|Show)Subtitle|Pause|Play|ReceiveDrag|ScrollRangeChanged|Show|SizeChanged|SpacePressed|Stop|TabPressed|Text(?:Changed|Set)|Tooltip(?:AddMoney|Cleared|Set(?:Achievement|DefaultAnchor|EquipmentSet|FrameStack|Item|Quest|Spell|Unit))|Update(?:Model)?|ValueChanged|VerticalScroll)|PostClick|PreClick)\\1",
             "name": "support.constant.quoted.handler.api.lua"
         },
+
         "wow-quoted-events": {
             "patterns": [
                 {

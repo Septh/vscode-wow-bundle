@@ -6,7 +6,7 @@
 This World of Warcraft addon developer toolset for VS Code includes an improved Lua language grammar with WoW API knowledge, a .toc file grammar, colorization for both .lua source and .toc files, and more.
 
 
-## Notice
+## Disclaimer
 
 * **wow-bundle is NOT a generic Lua colorizer, it is closely bound to WoW specificities and is not adapted to other Lua environments.** Therefore, you may want to disable this extension when working on non-WoW Lua projects.
 

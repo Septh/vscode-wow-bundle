@@ -1,3 +1,7 @@
+## 1.3.1
+- [**language.lua**] Updated to (hopefully) match WoW 8.1 build 28833.
+- [**language.lua**] Fixed some minor glitches.
+
 ## 1.3.0
 - [**general**] Converted both Lua and TOC grammars from PLIST to JSON format.
 - [**language.lua**] Updated to (hopefully) match WoW 8.0.1 build 28153 (most notably caught up a bunch of C_* namespaces I somehow missed in the previous release).

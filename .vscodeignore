@@ -1,0 +1,14 @@
+.vscode/
+extension/*.map
+extension/webview/*.map
+node_modules/
+out/
+src/
+tools/
+.gitignore
+.vscodeignore
+package-lock.json
+rollup.config.js
+tsconfig.json
+tslint.json
+*.vsix
