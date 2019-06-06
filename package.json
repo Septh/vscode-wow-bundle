@@ -1,77 +1,112 @@
 {
-	"name": "wow-bundle",
-	"displayName": "WoW Bundle",
-	"description": "World of Warcraft addon developer toolset for VS Code",
-	"version": "1.4.0",
-	"icon": "images/wow-icon.png",
-	"publisher": "Septh",
-	"author": {
-		"name": "Stephan Schreiber",
-		"url": "https://github.com/Septh"
-	},
-	"license": "MIT",
-	"galleryBanner": {
-		"color": "#FFFFFF",
-		"theme": "light"
-	},
-	"engines": {
-		"vscode": "^1.26.0"
-	},
-	"categories": [
-		"Programming Languages", "Snippets"
-	],
-	"keywords": [
-		"Lua", "WoW", "World of Warcraft", "addon", "FrameXML"
-	],
-	"contributes": {
-		"languages": [
-			{
-				"id": "lua",
-				"extensions": [ ".lua" ],
-				"aliases": [ "Lua (WoW addon)" ],
-				"configuration": "./languages/lua.language-configuration.json"
-			},
-			{
-				"id": "toc",
-				"extensions": [ ".toc" ],
-				"aliases": [ "Toc (WoW addon)" ],
-				"configuration": "./languages/toc.language-configuration.json"
-			}
-		],
-		"grammars": [
-			{
-				"language": "lua",
-				"scopeName": "source.lua",
-				"path": "./languages/grammars/lua.tmLanguage.json"
-			},
-			{
-				"language": "toc",
-				"scopeName": "source.toc",
-				"path": "./languages/grammars/toc.tmLanguage.json"
-			}
-		],
-		"snippets": [
-			{
-				"language": "lua",
-				"path": "./languages/snippets/lua.snippets.json"
-			},
-			{
-				"language": "toc",
-				"path": "./languages/snippets/toc.snippets.json"
-			}
-		]
-	},
-	"bugs": {
-		"url": "https://github.com/Septh/vscode-wow-bundle/issues"
-	},
-	"homepage": "https://marketplace.visualstudio.com/items?itemName=Septh.wow-bundle",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Septh/vscode-wow-bundle"
-	},
-	"__metadata": {
-		"id": "191fe3c2-f05c-45f3-baa8-a046773863c9",
-		"publisherId": "887d8eeb-f941-478d-a425-6fc5a1ec5c4b",
-		"publisherDisplayName": "Septh"
-	}
+    "name": "wow-bundle",
+    "displayName": "WoW Bundle",
+    "description": "World of Warcraft addon developer toolset for VS Code",
+    "version": "1.4.0",
+    "icon": "images/wow-icon.png",
+    "publisher": "Septh",
+    "author": {
+        "name": "Stephan Schreiber",
+        "url": "https://github.com/Septh"
+    },
+    "license": "MIT",
+    "galleryBanner": {
+        "color": "#FFFFFF",
+        "theme": "light"
+    },
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "keywords": [
+        "Lua",
+        "WoW",
+        "World of Warcraft",
+        "addon",
+        "FrameXML"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "lua",
+                "extensions": [
+                    ".lua"
+                ],
+                "aliases": [
+                    "Lua (WoW addon)"
+                ],
+                "configuration": "./languages/lua.language-configuration.json"
+            },
+            {
+                "id": "toc",
+                "extensions": [
+                    ".toc"
+                ],
+                "aliases": [
+                    "Toc (WoW addon)"
+                ],
+                "configuration": "./languages/toc.language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "lua",
+                "scopeName": "source.lua",
+                "path": "./languages/grammars/lua.tmLanguage.json"
+            },
+            {
+                "language": "toc",
+                "scopeName": "source.toc",
+                "path": "./languages/grammars/toc.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "lua",
+                "path": "./languages/snippets/lua.snippets.json"
+            },
+            {
+                "language": "toc",
+                "path": "./languages/snippets/toc.snippets.json"
+            }
+        ],
+        "themes": [
+            {
+                "label": "Dark+ (WoW)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/dark_plus_wow.json"
+            },
+            {
+                "label": "Light+ (WoW)",
+                "uiTheme": "vs",
+                "path": "./themes/light_plus_wow.json"
+            },
+            {
+                "label": "Monokai (WoW)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/monokai_wow.json"
+            },
+            {
+                "label": "Monokai Dimmed (WoW)",
+                "uiTheme": "vs-dark",
+                "path": "./themes/monokai_dimmed_wow.json"
+            }
+        ]
+    },
+    "bugs": {
+        "url": "https://github.com/Septh/vscode-wow-bundle/issues"
+    },
+    "homepage": "https://marketplace.visualstudio.com/items?itemName=Septh.wow-bundle",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Septh/vscode-wow-bundle"
+    },
+    "__metadata": {
+        "id": "191fe3c2-f05c-45f3-baa8-a046773863c9",
+        "publisherId": "887d8eeb-f941-478d-a425-6fc5a1ec5c4b",
+        "publisherDisplayName": "Septh"
+    }
 }

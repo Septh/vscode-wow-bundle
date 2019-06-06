@@ -1,10 +1,4 @@
-# npm
-**/node_modules/
-
-# rollup-plugin-typescript2
+node_modules
 .rpt2_cache/
-
 tools
-
-#vsce
 *.vsix
