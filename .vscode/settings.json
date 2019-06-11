@@ -1,3 +1,6 @@
 {
-    "debug.internalConsoleOptions": "neverOpen"
+    "debug.internalConsoleOptions": "neverOpen",
+    "cSpell.ignoreWords": [
+        "regexes"
+    ]
 }

@@ -3,6 +3,22 @@
 	"name": "Dark+ (wow-bundle)",
 	"include": "./theme-defaults/themes/dark_plus.json",
 	"tokenColors": [
+		{
+			"scope": [
+				"event.wow"
+			],
+			"settings": {
+				"foreground": "#4ec9b0"
+			}
+		},
+		{
+			"scope": [
+				"api.wow"
+			],
+			"settings": {
+				"foreground": "#ff8000"
+			}
+		},
 		// Lua colors
 		{
 			"scope": [

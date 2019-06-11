@@ -31,45 +31,47 @@
     "contributes": {
         "languages": [
             {
-                "id": "lua",
+                "id": "lua-wow",
                 "extensions": [
-                    ".lua"
+                    ".wow.lua"
                 ],
                 "aliases": [
-                    "Lua (WoW addon)"
+                    "Lua (WoW AddOn)"
                 ],
                 "configuration": "./languages/lua.language-configuration.json"
             },
             {
-                "id": "toc",
+                "id": "toc-wow",
                 "extensions": [
                     ".toc"
                 ],
                 "aliases": [
-                    "Toc (WoW addon)"
+                    "Toc (WoW AddOn)"
                 ],
                 "configuration": "./languages/toc.language-configuration.json"
             }
         ],
         "grammars": [
             {
-                "language": "lua",
-                "scopeName": "source.lua",
-                "path": "./languages/grammars/lua.tmLanguage.json"
+                "scopeName": "source.wow",
+                "path": "./languages/grammars/lua-wow.tmLanguage.json",
+                "injectTo": [
+                    "source.lua"
+                ]
             },
             {
-                "language": "toc",
+                "language": "toc-wow",
                 "scopeName": "source.toc",
                 "path": "./languages/grammars/toc.tmLanguage.json"
             }
         ],
         "snippets": [
             {
-                "language": "lua",
+                "language": "lua-wow",
                 "path": "./languages/snippets/lua.snippets.json"
             },
             {
-                "language": "toc",
+                "language": "toc-wow",
                 "path": "./languages/snippets/toc.snippets.json"
             }
         ],
@@ -108,5 +110,13 @@
         "id": "191fe3c2-f05c-45f3-baa8-a046773863c9",
         "publisherId": "887d8eeb-f941-478d-a425-6fc5a1ec5c4b",
         "publisherDisplayName": "Septh"
-    }
+    },
+    "devDependencies": {
+        "cheerio": "^1.0.0-rc.3",
+        "clui": "^0.3.6",
+        "fs-jetpack": "^2.2.2",
+        "luaparse": "^0.2.1",
+        "single-line-log": "^1.1.2"
+    },
+    "dependencies": {}
 }
