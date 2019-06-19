@@ -1,0 +1,12 @@
+## Interface: 80100
+## Title: #dump-api
+## Notes: Dumps the global API to saved variables
+## Notes-frFR: Dumpe l'APi globale de WoW
+## Version: 1.0.0
+## Author: Septh
+## OptionalDependencies: !Swatter
+## SavedVariables: GlobalAPI
+## DefaultState: disabled
+
+db.lua
+main.lua
