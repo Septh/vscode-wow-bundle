@@ -1,0 +1,106 @@
+
+/* wb-rule-editor */
+wb-rule-editor {
+    display: block;
+}
+
+wb-rule-editor > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 0.5rem;
+    align-items: center;
+}
+
+wb-rule-editor > div > label {
+    grid-column: 1;
+    display: inline-flex;
+    place-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+wb-rule-editor > div > label > input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+wb-rule-editor > div > wb-color-editor,
+wb-rule-editor > div > wb-fontstyle-editor {
+    grid-column: 2;
+}
+
+
+/* wb-color-editor */
+wb-color-editor {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    place-content: flex-start;
+}
+
+wb-color-editor > input[type="text"] {
+    flex: 0 0 10rem;
+    line-height: 1.5rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+wb-color-editor > input[type="text"].ng-invalid {
+    color: red;
+}
+
+wb-color-editor > button {
+    flex: 0 0 auto;
+    border: 1px solid black;
+    background-color: white;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    place-content: center;
+}
+
+wb-color-editor > :disabled {
+    cursor: auto;
+}
+
+wb-color-editor > button + button {
+    border-left: none;
+}
+
+wb-color-editor > button.swatch > span {
+    display: inline-block;
+    width: 80%;
+    height: 80%;
+}
+
+wb-color-editor > button.revert,
+wb-color-editor > button.clear {
+    display: inline-block;
+    font-size: 80%;
+    line-height: 80%;
+}
+
+
+/* wb-style-editor */
+wb-fontstyle-editor {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    place-content: flex-start;
+}
+
+wb-fontstyle-editor > label {
+    display: inline-flex;
+    place-items: center;
+}
+
+wb-fontstyle-editor > label > input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+wb-fontstyle-editor > label + label {
+    margin-left: 1em;
+}

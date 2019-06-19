@@ -11,13 +11,13 @@ export const wbColorEditorComponent: Utils.NGRegistrable = {
 class ColorEditorController implements ng.IController {
 
     // Bindinds
-    color: string
-    disabled: boolean
-    onUpdate: Utils.ExpressionBinding
+    public color?: string
+    public disabled?: boolean
+    public onUpdate!: Utils.ExpressionBinding
 
     // Autres
-    $pattern: RegExp = Utils.HEX_COLOR_REGEX
-    $modelOptions: ng.INgModelOptions = {
+    public $pattern: RegExp = Utils.HEX_COLOR_REGEX
+    public $modelOptions: ng.INgModelOptions = {
         // updateOn: 'default',
         // debounce: { default: 500 },
         allowInvalid: true
@@ -36,25 +36,27 @@ class ColorEditorController implements ng.IController {
     }
 
     // Constructeur
-    static readonly $inject = [ '$element' ]
+    public static readonly $inject = [ '$element' ]
     constructor(private $element: JQLite) {}
 
     // Ajuste la taille des boutons à celle de l'input (width = height)
-    $postLink() {
+    public $postLink() {
         const input = this.$element.find('input')
-        const style = getComputedStyle(input[0])
+        const inputStyle = getComputedStyle(input[0])
 
         // On ne peut pas lire directement height, car si le composant est caché
         // (par exemple dans un <details> fermé), sa hauteur vaut 'auto'. D'où l'addition des propriétés
-        // et le passage par calc() pour éviter d'interpréter les unités css.
-        const size = [ 'line-height', 'border-bottom-width', 'border-top-width', 'padding-bottom', 'padding-top' ]
-            .map( prop => style.getPropertyValue(prop) )
+        // et le passage par calc() pour éviter d'interpréter nous-mêmes les unités css.
+        // NB: l'input DOIT avoir ses propriétés initialisées à des valeurs numériques (pas de mot-clé genre 'inherit'),
+        //     ce qui est fait dans le css de ce composant.
+        const inputSize = [ 'line-height', 'border-bottom-width', 'border-top-width', 'padding-bottom', 'padding-top' ]
+            .map( prop => inputStyle.getPropertyValue(prop) )
             .join(' + ')
-        this.$element.find('button').css('width', `calc(${size})`)
+        this.$element.find('button').css('width', `calc(${inputSize})`)
     }
 
     // Met à jour notre modèle quand celui du parent change
-    $onChanges(changes: ng.IOnChangesObject) {
+    public $onChanges(changes: ng.IOnChangesObject) {
         if (changes.disabled) {
             this.disabled = changes.disabled.currentValue
         }
@@ -64,18 +66,18 @@ class ColorEditorController implements ng.IController {
     }
 
     // Met à jour notre modèle quand celui des enfants a changé
-    clear() {
+    public clear() {
         this.color = ''
         this.colorChanged()
     }
 
-    colorChanged()
+    public colorChanged()
     {
         this.notifyParent()
     }
 
     // Met à jour le modèle parent quand le nôtre a changé, mais seulement s'il est valide
-    notifyParent() {
+    public notifyParent() {
         this.onUpdate({ color: this.color })
     }
 }

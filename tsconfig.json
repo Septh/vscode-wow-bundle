@@ -1,33 +1,45 @@
 {
-	"compilerOptions": {
-		"allowJs": false,
-		"checkJs": false,
+    "compilerOptions": {
+        // Plugins
+        "plugins": [
+            { "name": "typescript-tslint-plugin" }
+        ],
 
-		// Options gérées par rollup-plugin-typescript2
-		// "moduleResolution": "node",
-		// "rootDir": "src",
-		// "outDir": "out",
+        // Input
+        "allowJs": false,
+        "checkJs": false,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": false,
+        "esModuleInterop": false,
+        "lib": [
+            "es2018", "dom"
+        ],
 
-		"target": "es2017",		// target = Electron
-		"module": "es2015",		// Génère import plutôt que require()
-		"plugins": [
-			{ "name": "typescript-tslint-plugin" }
-		],
+        // Output
+        "target": "es2018",
+        "alwaysStrict": true,
+        "removeComments": true,
+        "preserveConstEnums": false,
 
-		/* Checkings */
-		"strict": true,
-		"strictNullChecks": false,	// Trop galère à gérer :(
-		"noUnusedLocals": true,
-		"noImplicitReturns": true,
-		"noUnusedParameters": true,
+        // Type checkings
+        "strict": true, // Enables the following:
+        // "noImplicitAny": true,
+        // "noImplicitThis": true,
+        // "alwaysStrict": true,
+        // "strictBindCallApply": true,
+        // "strictNullChecks": true,
+        // "strictFunctionTypes": true,
+        // "strictPropertyInitialization": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": false,
 
-		/* Output */
-		"preserveConstEnums": false,
-		"removeComments": true,
-		"sourceMap": true,
-	},
-	"typeAcquisition": {
-		"enable": true,
-		"include": [ "vscode", "angular", "rxjs" ]
-	}
+        // rollup-plugin-ts overrides/removes the following, however it's handy
+        // to keep them in, in case we need to "tsc -p ." to check things out
+        // and for correct type checking in VS Code.
+        "outDir": "./out",
+        "module": "esnext",
+        "sourceMap": true
+    }
 }

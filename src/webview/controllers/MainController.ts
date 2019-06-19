@@ -2,8 +2,8 @@
 import * as angular from 'angular'
 import * as Utils from '../utils'
 import { ISettingsService } from '../services/settings.service'
-import { EThemeNames, ICategoryDescription, IEditableRule, IEditableSettings, IEditableThemes, settingsCategories } from '../settings'
-import { VSCode } from '../../shared'
+import { EThemeNames, IEditableRule, IEditableSettings, IEditableTheme, settingsCategories } from '../settings'
+import { DefaultTheme } from '../../shared'
 
 export const wbMainController: Utils.NGRegistrable = {
     register: (parent: ng.IModule) => parent.controller('MainController', MainController)
@@ -21,7 +21,7 @@ interface IThemeSelectOption {
     order: number       // ""      ""
 }
 
-type TThemeSelectOptionGroup = {
+interface TThemeSelectOptionGroup {
     [ kind: string ]: { label: string, order: number }
 }
 
@@ -49,34 +49,29 @@ interface ITemplateRule {
 class MainController {
 
     // Catégories des réglages
-    categories: ICategoryDescription[]
-    selectedCategory: number
-    selectedSection: number
+    public categories = settingsCategories
+    public selectedCategory = 0
+    public selectedSection = 0
 
     // Les réglages et les thèmes actuels
-    editableSettings: IEditableSettings
-    editableThemes: IEditableThemes
-    currentTheme: string
+    public editableSettings?: IEditableSettings
+    public editableThemes?: IEditableTheme[]
+    public currentTheme?: string
 
     // Gestion du thème sélectionné
-    themeSelectOptions: IThemeSelectOption[]    // Options du <select>
-    selectedTheme: {
+    public themeSelectOptions?: IThemeSelectOption[]    // Options du <select>
+    public selectedTheme: {
         name: string                            // Le nom du thème entre [crochets]
         rules: IEditableRule[]                  // Ses réglages
         scopes: IRulesMap                       // Son map { scope: règle }
     }
 
     // Les règles passées au template
-    namedThemeRules: ITemplateRule[]
+    public namedThemeRules: ITemplateRule[] = []
 
     // Constructeur
-    static readonly $inject = [ 'settings.service', '$scope' ]
+    public static readonly $inject = [ 'settings.service', '$scope' ]
     constructor(private SettingsService: ISettingsService, private $scope: ng.IScope) {
-
-        // Initialise les catégories
-        this.categories = settingsCategories
-        this.selectedCategory = 0
-        this.selectedSection  = 0
 
         // Force buildThemeSelectOptions() à commencer avec le thème courant
         this.selectedTheme = {
@@ -95,7 +90,7 @@ class MainController {
     // Ne se produit qu'une fois à l'ouverture du Webview puisqu'il faut redémarrer
     // VS Code pour installer / désinstaller un thème. Mais on fait comme si
     // la liste pouvait changer à tout instant.
-    private vscodeThemesChanged(newThemes: IEditableThemes) {
+    private vscodeThemesChanged(newThemes: IEditableTheme[]) {
         this.$scope.$applyAsync( () => {
             this.editableThemes = newThemes
             this.buildThemeSelectOptions()
@@ -127,12 +122,12 @@ class MainController {
         if (this.editableThemes && this.currentTheme) {
 
             // Commence avec les options 'global' et 'current'
-            let current = this.editableThemes.find(t => t.id === this.currentTheme)
+            let current: IEditableTheme | undefined = this.editableThemes.find(t => t.id === this.currentTheme)
             if (!current) {
                 current = {
-                   id:    VSCode.DefaultTheme.id,
-                   label: VSCode.DefaultTheme.label,
-                   type:  VSCode.DefaultTheme.uiTheme
+                   id:    DefaultTheme.id!,
+                   label: DefaultTheme.label,
+                   type:  DefaultTheme.uiTheme
                }
             }
 
@@ -184,9 +179,9 @@ class MainController {
             for (const rule of this.selectedTheme.rules) {
                 if (!rule.flags) {
                     rule.flags = {
-                        setForeground: Utils.isColor(rule.settings.foreground),
-                        setBackground: Utils.isColor(rule.settings.background),
-                        setFontStyle:  Utils.isStyle(rule.settings.fontStyle)
+                        setForeground: Utils.isColor(rule.settings.foreground!),
+                        setBackground: Utils.isColor(rule.settings.background!),
+                        setFontStyle:  Utils.isStyle(rule.settings.fontStyle!)
                     }
                 }
                 this.selectedTheme.scopes[rule.scope] = rule
@@ -195,13 +190,13 @@ class MainController {
     }
 
     // Appelé par le <select> quand un thème a été sélectionné
-    selectedThemeChanged() {
+    public selectedThemeChanged() {
         this.buildSelectedThemeRulesMap()
         this.sectionChanged(this.selectedCategory, this.selectedSection)
     }
 
     // Appelé quand on change de catégorie/section affichée
-    sectionChanged(category: number, section: number) {
+    public sectionChanged(category: number, section: number) {
         this.selectedCategory = category
         this.selectedSection  = section
         this.namedThemeRules  = []
@@ -232,7 +227,7 @@ class MainController {
             // Crée sa version étendue pour le template
             this.namedThemeRules.push({
                 name: ruleInfo.name,
-                description: ruleInfo.description,
+                description: ruleInfo.description!,
                 rule
             })
         }
@@ -240,7 +235,7 @@ class MainController {
 
     // Appelé quand une règle est modifiée dans le <wb-rule-editor>
     // (rappel: le composant n'a que la partie IEditableRule de la règle)
-    ruleChanged(rule: IEditableRule, index: number) {
+    public ruleChanged(rule: IEditableRule, index: number) {
 
         // Met à jour notre modèle interne pour cette règle
         this.namedThemeRules[index].rule = rule
@@ -253,8 +248,8 @@ class MainController {
     }
 
     // Permet d'afficher les règles générées
-    showDebug: boolean = false
-    showDebugFiltered: boolean = true
+    public showDebug: boolean = false
+    public showDebugFiltered: boolean = true
     get generatedRules() {
         let settings: any = this.SettingsService.getRawSettings()
         if (this.showDebugFiltered) {

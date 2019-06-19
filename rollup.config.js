@@ -1,29 +1,37 @@
 'use strict';
 
-import typescript from 'rollup-plugin-typescript2'
+import * as path from 'path'
+import externals from 'rollup-plugin-node-externals'
 import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
-import cleanup from 'rollup-plugin-cleanup'
-import sourcemaps from 'rollup-plugin-sourcemaps'
+import typescript from '@wessberg/rollup-plugin-ts'
+import { terser } from 'rollup-plugin-terser'
+import fileSize from 'rollup-plugin-filesize'
+
+const isProd = false
 
 const extensionConfig = {
-	input: 'src/main.ts',
+	input: 'src/extension/main.ts',
 	output: {
+		file: 'extension/main.js',
 		format: 'cjs',
-		file: 'dist/main.js',
 		sourcemap: true,
 	},
 	plugins: [
-		resolve(),
-		typescript({
-			// verbosity: 3,
-			tsconfig: 'src/tsconfig.json'
+		externals(),
+		typescript(),
+		terser({
+			ecma: 7,
+			sourcemap: true,
+			mangle: isProd,
+			compress: isProd,
+			output: {
+				beautify: true,
+				indent_level: 2,
+				comments: false,
+				semicolons: false
+			}
 		}),
-		cleanup(),
-		sourcemaps(),
-	],
-	external: [
-		'vscode', 'path', 'fs'
+		fileSize({ showMinifiedSize: false, showGzippedSize: false, showBrotliSize: false }),
 	]
 }
 
@@ -31,26 +39,39 @@ const webviewConfig = {
 	input: 'src/webview/index.ts',
 	output: {
 		format: 'iife',
-		file: 'dist/webview/index.js',
+		file: 'extension/webview/index.js',
 		name: 'wowBundle',
 		globals: {
 			angular: 'angular',
 			ng: 'angular'
 		},
 		sourcemap: true,
+		// sourcemapPathTransform: p => { const pp = path.join(__dirname, 'extension', 'webview', p); console.log('%o => %o', p, pp); return pp }
 	},
 	plugins: [
-		commonjs(),
-		resolve(),
-		typescript({
-			// verbosity: 3,
-			tsconfig: 'src/webview/tsconfig.json'
+		externals({
+			// Explicitly mark angular as external as it is not in our depepencies
+			include: 'angular'
 		}),
-		cleanup(),
-		sourcemaps()
-	],
-	external: [
-		'angular'
+		resolve({
+			// RxJs's package.json 'module' entry points to an ES5 version of the lib.
+			// We prefer the ES2015 version, accessible via the, well, 'es2015' entry.
+			mainFields: [ 'es2015', 'module', 'jsnext' ]
+		}),
+		typescript(),
+		terser({
+			ecma: 8,
+			sourcemap: true,
+			mangle: isProd,
+			compress: isProd,
+			output: {
+				beautify: true,
+				indent_level: 2,
+				comments: false,
+				semicolons: false
+			}
+		}),
+		fileSize({ showMinifiedSize: false, showGzippedSize: false, showBrotliSize: false }),
 	]
 }
 

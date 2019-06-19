@@ -13,11 +13,11 @@ export const wbRuleEditorComponent: Utils.NGRegistrable = {
 class RuleEditorController implements ng.IController {
 
     // Bindings (données du composant parent)
-    rule: IEditableRule
-    onUpdate: Utils.ExpressionBinding
+    public rule!: IEditableRule
+    public onUpdate!: Utils.ExpressionBinding
 
     // Met à jour notre modèle quand celui du parent change
-    $onChanges(changes: ng.IOnChangesObject) {
+    public $onChanges(changes: ng.IOnChangesObject) {
         if (changes.rule) {
 
             // Copie le nouveau réglage
@@ -26,30 +26,27 @@ class RuleEditorController implements ng.IController {
     }
 
     // Met à jour notre modèle quand celui des enfants change
-    foregroundChanged(foreground: string) {
+    public foregroundChanged(foreground: string) {
         this.rule.settings.foreground = foreground
         this.notifyParent()
     }
 
-    backgroundChanged(background: string) {
+    public backgroundChanged(background: string) {
         this.rule.settings.background = background
         this.notifyParent()
     }
 
-    fontStyleChanged(fontStyle: string) {
+    public fontStyleChanged(fontStyle: string) {
         this.rule.settings.fontStyle = fontStyle
         this.notifyParent()
     }
 
-    flagsChanged() {
-        // if (this.rule.flags.setForeground && !this.rule.settings.foreground) { this.rule.settings.foreground = '' }
-        // if (this.rule.flags.setBackground && !this.rule.settings.background) { this.rule.settings.background = '' }
-        // if (this.rule.flags.setFontStyle  && !this.rule.settings.fontStyle)  { this.rule.settings.fontStyle = ''  }
+    public flagsChanged() {
         this.notifyParent()
     }
 
     // Met à jour le modèle parent quand le nôtre a changé
-    notifyParent() {
+    public notifyParent() {
         this.onUpdate({ rule: this.rule })
     }
 }

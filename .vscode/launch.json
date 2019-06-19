@@ -12,7 +12,11 @@
             ],
             "outFiles": [
                 "${workspaceFolder}/dist/**/*.js"
-            ]
+            ],
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**/*.js"
+            ],
         }
     ]
 }

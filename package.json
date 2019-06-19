@@ -22,16 +22,16 @@
 		"Snippets"
 	],
 	"keywords": [
-		"Lua",
-		"WoW",
 		"World of Warcraft",
+		"WoW",
 		"addon",
+		"toc",
 		"FrameXML"
 	],
 	"engines": {
 		"vscode": "^1.30.0"
 	},
-	"main": "dist/main.js",
+	"main": "extension/main.js",
 	"activationEvents": [
 		"onLanguage:lua",
 		"workspaceContains:*.toc",
@@ -41,6 +41,16 @@
 	"contributes": {
 		"languages": [
 			{
+				"id": "wow-lua",
+				"extensions": [
+					".wow-lua"
+				],
+				"aliases": [
+					"Lua (WoW addon)"
+				],
+				"configuration": "./extension/languages/wow-lua.language-configuration.json"
+			},
+			{
 				"id": "wow-toc",
 				"extensions": [
 					".toc"
@@ -48,7 +58,7 @@
 				"aliases": [
 					"Toc (WoW addon)"
 				],
-				"configuration": "./languages/wow-toc.language-configuration.json"
+				"configuration": "./extension/languages/wow-toc.language-configuration.json"
 			}
 		],
 		"grammars": [
@@ -57,22 +67,22 @@
 				"injectTo": [
 					"source.lua"
 				],
-				"path": "./languages/grammars/wow-lua.tmLanguage.json"
+				"path": "./extension/languages/grammars/wow-lua.tmLanguage.json"
 			},
 			{
 				"language": "wow-toc",
 				"scopeName": "source.wow.toc",
-				"path": "./languages/grammars/wow-toc.tmLanguage.json"
+				"path": "./extension/languages/grammars/wow-toc.tmLanguage.json"
 			}
 		],
 		"snippets": [
 			{
 				"language": "wow-lua",
-				"path": "./languages/snippets/wow-lua.snippets.json"
+				"path": "./extension/languages/snippets/wow-lua.snippets.json"
 			},
 			{
 				"language": "wow-toc",
-				"path": "./languages/snippets/wow-toc.snippets.json"
+				"path": "./extension/languages/snippets/wow-toc.snippets.json"
 			}
 		],
 		"commands": [
@@ -96,14 +106,15 @@
 		"url": "https://github.com/Septh/vscode-wow-bundle/issues"
 	},
 	"scripts": {
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"vscode:prepublish": "npm run clean && npm run compile",
 		"compile": "rollup --c",
-		"watch": "rollup --cw",
-		"clean": "trash ./dist/main.js* ./dist/webview/index.js*",
-		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+		"watch": "rollup -cw",
+		"clean": "trash ./extension/main.js* ./extension/webview/index.js* ./out",
+		"grammar": "node tools/1-parse-blizzard-interface-code.js && node tools/2-make-grammar.js",
+		"vscode:prepublish": "npm run clean && npm run compile",
+		"postinstall": "node ./node_modules/vscode/bin/install"
 	},
 	"dependencies": {
+		"angularjs-store": "^4.0.0",
 		"rxjs": "^6.5.2"
 	},
 	"devDependencies": {
@@ -116,15 +127,14 @@
 		"fs-jetpack": "^2.2.2",
 		"luaparse": "^0.2.1",
 		"rollup": "^1.15.6",
-		"rollup-plugin-cleanup": "^3.1.1",
 		"rollup-plugin-commonjs": "^10.0.0",
+		"rollup-plugin-filesize": "^6.1.1",
 		"rollup-plugin-node-externals": "^2.0.0",
 		"rollup-plugin-node-resolve": "^5.0.3",
-		"rollup-plugin-sourcemaps": "^0.4.2",
+		"rollup-plugin-terser": "^5.0.0",
 		"single-line-log": "^1.1.2",
 		"trash": "^6.0.0",
 		"trash-cli": "^3.0.0",
-		"tslib": "^1.10.0",
 		"tslint": "^5.17.0",
 		"typescript": "^3.5.2",
 		"typescript-tslint-plugin": "^0.5.0",

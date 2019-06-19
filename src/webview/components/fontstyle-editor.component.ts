@@ -23,39 +23,39 @@ const UNDERLINE_REGEX = /\bunderline\b/i
 class FontStyleEditorController implements ng.IController {
 
     // Bindinds
-    style: string
-    disabled: boolean
-    onUpdate: Utils.ExpressionBinding
+    public style?: string
+    public disabled?: boolean
+    public onUpdate!: Utils.ExpressionBinding
 
     // Autres
-    styles: TFontStyles = {
+    public styles: TFontStyles = {
         bold: false,
         italic: false,
         underline: false
     }
 
     // Met à jour notre modèle quand celui du parent change
-    $onChanges(changes: ng.IOnChangesObject) {
+    public $onChanges(changes: ng.IOnChangesObject) {
         if (changes.disabled) {
             this.disabled = changes.disabled.currentValue
         }
         if (changes.style) {
             this.style = changes.style.currentValue
 
-            this.styles.bold = BOLD_REGEX.test(this.style)
-            this.styles.italic = ITALIC_REGEX.test(this.style)
-            this.styles.underline = UNDERLINE_REGEX.test(this.style)
+            this.styles.bold = BOLD_REGEX.test(this.style!)
+            this.styles.italic = ITALIC_REGEX.test(this.style!)
+            this.styles.underline = UNDERLINE_REGEX.test(this.style!)
         }
     }
 
     // Met à jour notre modèle quand celui des enfants change
-    styleChanged() {
+    public styleChanged() {
         this.style = Object.keys(this.styles).filter( k => this.styles[k as TStyleName] ).join(' ')
         this.notifyParent()
     }
 
     // Met à jour le modèle parent quand le nôtre a changé
-    notifyParent() {
+    public notifyParent() {
         this.onUpdate({ fontStyle: this.style })
     }
 }

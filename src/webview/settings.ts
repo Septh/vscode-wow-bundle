@@ -40,21 +40,20 @@ export interface IEditableTheme {
     type: string
 }
 
-export type IEditableThemes = IEditableTheme[]
-
 const THEME_BRACKETS_REGEX = /^\[([^\]]*)\]$/u   // $1 => nom sans les crochets
+const noMatch = [ '', '' ]
 export const EThemeNames = {
     NONE:    '[]',
     GLOBAL:  '[global]',
     DEFAULT: '[Default Dark+]',
 
-    bracketed: (name: string) => `[${name}]`,
-    unbracketed: (name: string) => THEME_BRACKETS_REGEX.exec(name)[1],
+    bracketed:   (name: string) => `[${name}]`,
+    unbracketed: (name: string) => (THEME_BRACKETS_REGEX.exec(name) || noMatch)[1],
     isBracketed: (name: string) => THEME_BRACKETS_REGEX.test(name)
 }
 
 /*
- * Catégories des réglages pour l'UI
+ * Catégories des réglages pour l'IU
  */
 
 // Décrit les scopes éditables
@@ -75,6 +74,7 @@ export interface ICategoryDescription {
 }
 
 // Les personnalisations, classées par catégories
+// TODO: Localize this
 export const settingsCategories: ICategoryDescription[] = [
     {
         title: 'Lua language',

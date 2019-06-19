@@ -1,13 +1,13 @@
 
 import * as angular from 'angular'
 import * as Utils from '../utils'
-import { WebviewMessage, WebviewMessageCommand, VSCodeSettings, VSCodeThemes } from '../../shared'
+import { WebviewMessage, WebviewMessageCommand, VSCodeSettings, IVSCodeTheme } from '../../shared'
 import { fromEvent, Observable } from 'rxjs'
 import { map, filter, share, distinctUntilChanged, startWith } from 'rxjs/operators'
 
 export interface IExtensionService {
     readonly vscodeSettings$: Observable<VSCodeSettings>
-    readonly vscodeThemes$: Observable<VSCodeThemes>
+    readonly vscodeThemes$: Observable<IVSCodeTheme[]>
     readonly vscodeCurrentTheme$: Observable<string>
     putRawSettings(settings: VSCodeSettings): void
     messageToHost(message: WebviewMessage): void
@@ -44,7 +44,7 @@ interface WebviewApi {
 
 // Valeurs initiales des réglages
 const initialSettings: VSCodeSettings = {}
-const initialThemes: VSCodeThemes = []
+const initialThemes: IVSCodeTheme[] = []
 const initialCurrentTheme: string = ''
 
 class ExtensionService implements IExtensionService {
@@ -53,11 +53,11 @@ class ExtensionService implements IExtensionService {
     private vscode: WebviewApi = acquireVsCodeApi()
 
     // Les données reçues de l'extension côté VS Code
-    vscodeSettings$: Observable<VSCodeSettings>
-    vscodeThemes$: Observable<VSCodeThemes>
-    vscodeCurrentTheme$: Observable<string>
+    public readonly vscodeSettings$: Observable<VSCodeSettings>
+    public readonly vscodeThemes$: Observable<IVSCodeTheme[]>
+    public readonly vscodeCurrentTheme$: Observable<string>
 
-    static readonly $inject = [ '$window' ]
+    public static readonly $inject = [ '$window' ]
     constructor(private $window: ng.IWindowService) {
 
         // Crée les observables
@@ -68,31 +68,31 @@ class ExtensionService implements IExtensionService {
 
         this.vscodeSettings$ = message$.pipe(
             filter(msg => msg.command === WebviewMessageCommand.CMD_EXTENSION_SETTINGS),
-            map(msg => msg.settings),
+            map(msg => msg.settings!),
             distinctUntilChanged(angular.equals),   // Evite de se reprendre nos propres modifs dans la gueule
             startWith(initialSettings),
         )
 
         this.vscodeThemes$ = message$.pipe(
             filter(msg => msg.command === WebviewMessageCommand.CMD_EXTENSION_THEMES),
-            map(msg => msg.themes),
+            map(msg => msg.themes!),
             startWith(initialThemes)
         )
 
         this.vscodeCurrentTheme$ = message$.pipe(
             filter(msg => msg.command === WebviewMessageCommand.CMD_EXTENSION_CURRENT_THEME),
-            map(msg => msg.currentTheme),
+            map(msg => msg.currentTheme!),
             startWith(initialCurrentTheme)
         )
     }
 
     // Envoie un message à l'extension
-    messageToHost(message: WebviewMessage) {
+    public messageToHost(message: WebviewMessage) {
         this.vscode.postMessage(message)
     }
 
     // Renvoie les réglages à l'extension
-    putRawSettings(settings: VSCodeSettings) {
+    public putRawSettings(settings: VSCodeSettings) {
         this.messageToHost({
             command: WebviewMessageCommand.CMD_WEBVIEW_UPDATE_SETTINGS,
             settings

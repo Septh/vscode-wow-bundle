@@ -1,0 +1,187 @@
+
+@import './assets/components.css';
+
+pre {
+    color: var(--vscode-textPreformat-foreground);
+    background-color: var(--vscode-textBlockQuote-background);
+    border: 1px solid var(--vscode-textBlockQuote-border);
+    padding: 0.5rem;
+    margin: 0;
+    overflow: scroll;
+}
+
+code {
+    font-style: normal;
+}
+
+select {
+    font-family: var(--vscode-font-family);
+    font-size: var(--vscode-font-size);
+    color: var(--vscode-settings-dropdownForeground);
+    background-color: var(--vscode-settings-dropdownBackground);
+    border-color: var(--vscode-settings-dropdownBorder);
+}
+
+select:focus, select:active,
+button:focus, button:active,
+input:focus, input:active {
+    outline-color: var(--vscode-focusBorder);
+}
+
+
+
+
+input[type="checkbox"] {
+    color: var(--vscode-settings-checkboxForeground);
+    background-color: var(--vscode-settings-checkboxBackground);
+    border-color: var(--vscode-settings-checkboxBorder);
+}
+
+input[type="text"] {
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-settings-textInputBackground);
+    border-color: var(--vscode-settings-textInputBorder);
+}
+
+wb-color-editor button,
+wb-color-editor input[type="text"]
+{
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-settings-textInputBackground);
+}
+
+wb-color-editor input[type="text"].ng-invalid {
+    color: var(--vscode-editorError-foreground);
+}
+
+wb-color-editor button:disabled {
+    color: var(--vscode-settings-textInputBackground);
+}
+
+summary {
+    cursor: pointer;
+}
+
+details:focus,
+summary:focus {
+    outline: none;
+}
+
+/* settings-editor */
+.settings-editor {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    /* overflow: hidden; */
+}
+
+/* settings-header */
+.settings-editor > .settings-header {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.settings-editor > .settings-header > .theme-selector {
+    min-height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.settings-editor > .settings-header > .theme-selector > label > select {
+    padding: 0.25rem 0.5rem;
+    margin: 0 0 0 0.5rem;
+}
+
+.settings-editor > .settings-header > .theme-selector > .debug-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.settings-editor > .settings-header > .usage {
+    font-style: italic;
+    padding: 0.5rem 0;
+}
+
+.settings-editor > .settings-header > .usage:not([open]) {
+    color: var(--vscode-descriptionForeground);
+}
+
+.settings-editor > .settings-header > .usage > p {
+    margin: 0.5rem;
+    margin-top: 0;
+}
+
+/* settings-body */
+.settings-editor > .settings-body {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+}
+
+.settings-editor > .settings-body > .toc {
+    flex: 0 0 150px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-right: 1px solid var(--vscode-descriptionForeground);
+}
+
+.settings-editor > .settings-body > .toc > .category {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+}
+
+.settings-editor > .settings-body > .toc > .category + .category {
+    margin-top: 1rem;
+}
+
+.settings-editor > .settings-body > .toc > .category > .title {
+    font-weight: bold;
+    font-size: 120%;
+    padding: 0 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.settings-editor > .settings-body > .toc > .category > button {
+    line-height: 150%;
+    color: inherit;
+    background: none;
+    padding: 0.125rem 0.5rem;
+    border: none;
+}
+
+.settings-editor > .settings-body > .rules {
+    flex: 1 1 auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.settings-editor > .settings-body > .rules > .rule + .rule {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--vscode-descriptionForeground);
+}
+
+.settings-editor > .settings-body > .rules > .rule > .summary {
+    margin-bottom: 0.5em;
+}
+
+.settings-editor > .settings-body > .rules > .rule > .summary > .name {
+    font-weight: bold;
+    font-size: 120%;
+    word-wrap: normal;
+}
+
+.settings-editor > .settings-body > .rules > .rule > .summary > .description {
+    color: var(--vscode-descriptionForeground);
+    font-style: italic;
+    margin-left: 0.5rem;
+    word-wrap: break-word;
+}
+
+/* Debug */
+.settings-editor > .settings-body > .debug {
+    flex: 0 0 400px;
+}

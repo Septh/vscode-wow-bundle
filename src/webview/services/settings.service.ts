@@ -2,14 +2,14 @@
 import * as angular from 'angular'
 import * as Utils from '../utils'
 import { IExtensionService } from './extension.service'
-import { IEditableSettings, IEditableRule, EThemeNames, IEditableTheme, IEditableThemes } from '../settings'
-import { VSCode, VSCodeSettings, VSCodeThemes } from '../../shared'
+import { IEditableSettings, IEditableRule, EThemeNames, IEditableTheme } from '../settings'
+import { VSCodeSettings, IVSCodeTheme, ITokenColorizationRule } from '../../shared'
 import { Observable } from 'rxjs'
 import { startWith, map, tap } from 'rxjs/operators'
 
 export interface ISettingsService {
     readonly editorSettings$: Observable<IEditableSettings>
-    readonly installedThemes$: Observable<IEditableThemes>
+    readonly installedThemes$: Observable<IEditableTheme[]>
     readonly currentTheme$: Observable<string>
     putRule(bracketedThemeName: string, ruleToMerge: IEditableRule): void
 
@@ -25,25 +25,25 @@ export const wbSettingsService: Utils.NGRegistrable = {
  * Implémentation du service
  *****************************************************************************/
 const initialSettings: IEditableSettings = {}
-const initialThemes: IEditableThemes = []
+const initialThemes: IEditableTheme[] = []
 const initialCurrentTheme: string = ''
 
 class SettingsService implements ISettingsService {
 
-    editorSettings$: Observable<IEditableSettings>
-    installedThemes$: Observable<IEditableThemes>
-    currentTheme$: Observable<string>
+    public readonly editorSettings$: Observable<IEditableSettings>
+    public readonly installedThemes$: Observable<IEditableTheme[]>
+    public readonly currentTheme$: Observable<string>
 
     // Pour getRawSettings()
-    private rawSettings: VSCodeSettings
+    private rawSettings!: VSCodeSettings
 
     // Constructeur
-    static readonly $inject = [ 'extension.service' ]
+    public static readonly $inject = [ 'extension.service' ]
     constructor(private ExtensionService: IExtensionService) {
 
         // Transforme les réglages bruts en provenance de l'extension
         this.editorSettings$ = this.ExtensionService.vscodeSettings$.pipe(
-            tap( vscodeSettings => this.rawSettings = vscodeSettings),   // Sauve les réglages pour getRawSettings()
+            tap( vscodeSettings => this.rawSettings = vscodeSettings),
             map( vscodeSettings => this.normalizeSettings(vscodeSettings) ),
             startWith(initialSettings)
         )
@@ -64,7 +64,7 @@ class SettingsService implements ISettingsService {
     // - Ne prend en compte que les textMateRules[]
     // - Une règle = un scope
     // TODO: Filtrer les règles des autres langages, qui ne nous concernent pas
-    private normalizeRules(rawRules: VSCode.ITokenColorizationRule[]): IEditableRule[] {
+    private normalizeRules(rawRules: ITokenColorizationRule[]): IEditableRule[] {
 
         const editableRules: IEditableRule[] = []
 
@@ -89,7 +89,7 @@ class SettingsService implements ISettingsService {
 
         for (const [ key, value ] of Object.entries(vscodeSettings)) {
             if (key === 'textMateRules') {
-                editableSettings[EThemeNames.GLOBAL] = this.normalizeRules(value as VSCode.ITokenColorizationRule[] || [])
+                editableSettings[EThemeNames.GLOBAL] = this.normalizeRules(value as ITokenColorizationRule[] || [])
             }
             else if (EThemeNames.isBracketed(key)) {
                 editableSettings[key] = this.normalizeRules((value as VSCodeSettings).textMateRules || [])
@@ -104,7 +104,7 @@ class SettingsService implements ISettingsService {
     // - S'assure que tous les thèmes ont un label ET un id
     // Ne se produit qu'une fois, à l'ouverture du webview
     // (puisque la liste des thèmes ne peut pas changer sans redémarrer VS Code)
-    private normalizeThemes(vscodeThemes: VSCodeThemes): IEditableThemes {
+    private normalizeThemes(vscodeThemes: IVSCodeTheme[]): IEditableTheme[] {
 
         // Transmet les thèmes normalisés au contrôleur
         const installedThemes = vscodeThemes.map(rawTheme => {
@@ -112,7 +112,7 @@ class SettingsService implements ISettingsService {
                 id:    rawTheme.id || rawTheme.label,
                 label: rawTheme.label,
                 type:  rawTheme.uiTheme
-            } as IEditableTheme
+            }
         })
         return installedThemes
     }
@@ -123,33 +123,35 @@ class SettingsService implements ISettingsService {
     }
 
     // Dénormalise une règle
-    private denormalizeRule(editableRule: IEditableRule): VSCode.ITokenColorizationRule {
+    private denormalizeRule(editableRule: IEditableRule): ITokenColorizationRule | null {
 
-        let denormalized: VSCode.ITokenColorizationRule = null
+        let denormalized: ITokenColorizationRule | null = null
 
-        if ( (editableRule.flags.setForeground && Utils.isColor(editableRule.settings.foreground)) ||
-             (editableRule.flags.setBackground && Utils.isColor(editableRule.settings.background)) ||
-             editableRule.flags.setFontStyle) {
+        if (editableRule.flags) {
+            if ((editableRule.flags.setForeground && Utils.isColor(editableRule.settings.foreground)) ||
+                (editableRule.flags.setBackground && Utils.isColor(editableRule.settings.background)) ||
+                 editableRule.flags.setFontStyle) {
 
-            denormalized = {
-                scope: editableRule.scope,
-                settings: {}
-            }
+                denormalized = {
+                    scope: editableRule.scope,
+                    settings: {}
+                }
 
-            if (editableRule.name) {
-                denormalized.name = editableRule.name
-            }
+                if (editableRule.name) {
+                    denormalized.name = editableRule.name
+                }
 
-            if (editableRule.flags.setForeground) {
-                denormalized.settings.foreground = editableRule.settings.foreground
-            }
+                if (editableRule.flags.setForeground) {
+                    denormalized.settings.foreground = editableRule.settings.foreground
+                }
 
-            if (editableRule.flags.setBackground) {
-                denormalized.settings.background = editableRule.settings.background
-            }
+                if (editableRule.flags.setBackground) {
+                    denormalized.settings.background = editableRule.settings.background
+                }
 
-            if (editableRule.flags.setFontStyle) {
-                denormalized.settings.fontStyle = editableRule.settings.fontStyle
+                if (editableRule.flags.setFontStyle) {
+                    denormalized.settings.fontStyle = editableRule.settings.fontStyle
+                }
             }
         }
 
@@ -157,7 +159,7 @@ class SettingsService implements ISettingsService {
     }
 
     // Réintroduit une règle dans les réglages bruts
-    putRule(bracketedThemeName: string, ruleToMerge: IEditableRule) {
+    public putRule(bracketedThemeName: string, ruleToMerge: IEditableRule) {
 
         // S'assure qu'il existe une entrée pour ce thème
         let themeSettings: VSCodeSettings
@@ -204,7 +206,7 @@ class SettingsService implements ISettingsService {
             if (themeSettings.textMateRules.length === 0) {
                 delete themeSettings.textMateRules
             }
-            if (bracketedThemeName !== EThemeNames.GLOBAL && Object.keys(this.rawSettings[bracketedThemeName]).length === 0) {
+            if (bracketedThemeName !== EThemeNames.GLOBAL && Object.keys(this.rawSettings[bracketedThemeName] as any).length === 0) {
                 delete this.rawSettings[bracketedThemeName]
             }
         }
@@ -214,7 +216,7 @@ class SettingsService implements ISettingsService {
     }
 
     // Dev/debug
-    getRawSettings() {
+    public getRawSettings() {
         return this.rawSettings
     }
 }

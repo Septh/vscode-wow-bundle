@@ -7,8 +7,8 @@ import { wbSettingsService } from './services/settings.service'
 import { wbExtensionService } from './services/extension.service'
 import { wbMainController } from './controllers/MainController'
 
-// Crée la bibliothèque de composants
-const lib = angular.module('webview-components', [ 'ngSanitize' ])
+// Enregistre nos composants
+const lib = angular.module('webview-components', [ 'ngSanitize', 'color.picker' ])
 wbFontStyleEditorComponent.register(lib)
 wbColorEditorComponent.register(lib)
 wbRuleEditorComponent.register(lib)
@@ -19,7 +19,8 @@ wbExtensionService.register(app)
 wbSettingsService.register(app)
 wbMainController.register(app)
 
-// angular refuse de s'auto-initialiser parce qu'il ne connaît pas le protocole vscode-ressource:
+// angular refuse de s'auto-initialiser parce qu'il ne connaît pas le protocole vscode-ressource:,
+// donc on le bootstrape à la main.
 angular.element(document).ready( () => {
     angular.bootstrap(document, [ 'wowbundle' ], { strictDi: true })
 })
