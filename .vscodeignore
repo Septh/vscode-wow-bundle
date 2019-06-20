@@ -1,7 +1,7 @@
 .vscode/
-node_modules/
 extension/*.map
 extension/webview/*.map
+node_modules/
 out/
 src/
 tools/

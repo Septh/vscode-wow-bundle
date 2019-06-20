@@ -1,14 +1,24 @@
 'use strict';
 
-import * as path from 'path'
-import externals from 'rollup-plugin-node-externals'
-import resolve from 'rollup-plugin-node-resolve'
+import nodeExternals from 'rollup-plugin-node-externals'
+import nodeResolve from 'rollup-plugin-node-resolve'
 import typescript from '@wessberg/rollup-plugin-ts'
+import loadHtml from 'rollup-plugin-html'
+import postCss from 'rollup-plugin-postcss'
+import genHtml from 'rollup-plugin-gen-html'
 import { terser } from 'rollup-plugin-terser'
 import fileSize from 'rollup-plugin-filesize'
 
-const isProd = false
+// Plugin PostCSS
+import importCss from 'postcss-import'
 
+// Quick access to some terser options I want to play with
+const compress = false,
+	  mangle = false,
+	  comments = false,
+	  semicolons = false
+
+// Extension config - the easy one
 const extensionConfig = {
 	input: 'src/extension/main.ts',
 	output: {
@@ -17,24 +27,25 @@ const extensionConfig = {
 		sourcemap: true,
 	},
 	plugins: [
-		externals(),
+		nodeExternals(),
 		typescript(),
 		terser({
 			ecma: 7,
 			sourcemap: true,
-			mangle: isProd,
-			compress: isProd,
+			mangle,
+			compress,
 			output: {
 				beautify: true,
 				indent_level: 2,
-				comments: false,
-				semicolons: false
+				comments,
+				semicolons
 			}
 		}),
 		fileSize({ showMinifiedSize: false, showGzippedSize: false, showBrotliSize: false }),
 	]
 }
 
+// Wevbiew config - the bold one
 const webviewConfig = {
 	input: 'src/webview/index.ts',
 	output: {
@@ -45,30 +56,56 @@ const webviewConfig = {
 			angular: 'angular',
 			ng: 'angular'
 		},
-		sourcemap: true,
-		// sourcemapPathTransform: p => { const pp = path.join(__dirname, 'extension', 'webview', p); console.log('%o => %o', p, pp); return pp }
+		sourcemap: true
 	},
 	plugins: [
-		externals({
-			// Explicitly mark angular as external as it is not in our depepencies
+		nodeExternals({
+			// Explicitly mark angular as external as we use it with a <script> tag in index.html
 			include: 'angular'
 		}),
-		resolve({
+		nodeResolve({
 			// RxJs's package.json 'module' entry points to an ES5 version of the lib.
 			// We prefer the ES2015 version, accessible via the, well, 'es2015' entry.
 			mainFields: [ 'es2015', 'module', 'jsnext' ]
 		}),
 		typescript(),
+		postCss({
+			// Consolidate all our styles in index.css
+			inject: false,
+			extract: true,
+			sourceMap: true,
+			plugins: [
+				importCss()
+			]
+		}),
+		loadHtml({
+			// Import component templates as strings inside code.
+			// Make sure to include only templates and exclude index
+			include: [ 'src/webview/components/**/*.html' ],
+			exclude: [ 'src/webview/index.html' ],
+			htmlMinifierOptions: {
+				collapseWhitespace: true,
+				collapseBooleanAttributes: true,
+				conservativeCollapse: false,
+				removeComments: true
+			}
+		}),
+		genHtml({
+			// Generate index.html.
+			// Make sure to include only index and exclude templates
+			include: ['src/webview/index.html'],
+			exclude: ['src/webview/components/**/*.html']
+		}),
 		terser({
-			ecma: 8,
+			ecma: 7,
 			sourcemap: true,
-			mangle: isProd,
-			compress: isProd,
+			mangle,
+			compress,
 			output: {
 				beautify: true,
 				indent_level: 2,
-				comments: false,
-				semicolons: false
+				comments,
+				semicolons
 			}
 		}),
 		fileSize({ showMinifiedSize: false, showGzippedSize: false, showBrotliSize: false }),

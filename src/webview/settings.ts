@@ -14,7 +14,7 @@ export interface IEditableSettings {
 
 // Version éditable d'une règle TextMate
 export interface IEditableRule {
-    name?: string   // Inutilisé ici, mais gardé dans les réglages
+    name?: string   // Inutilisé ici, mais gardé si présent dans les réglages
     scope: string   // Pas de tableau ici, 1 règle = 1 scope
     settings: {
         foreground?: string
@@ -133,17 +133,17 @@ export const settingsCategories: ICategoryDescription[] = [
                         scope: 'constant.language.quoted.wow.lua'
                     },
                     {
-                        name: 'Reserved: language variables',
+                        name: 'Lua special variables',
                         description: 'The special <code>self</code>, <code>_</code>, <code>_G</code> and <code>_VERSION</code> identifiers',
                         scope: 'variable.language.wow.lua'
                     },
                     {
-                        name: 'Reserved: language constants',
+                        name: 'Lua special constants',
                         description: 'The special <code>true</code>, <code>false</code> and <code>nil</code> identifiers',
                         scope: 'constant.language.wow.lua'
                     },
                     {
-                        name: 'Reserved: math constants',
+                        name: 'Math constants',
                         description: 'The special <code>huge</code> and <code>pi</code> identifiers from the math library',
                         scope: 'support.constant.wow.lua'
                     },
@@ -153,15 +153,15 @@ export const settingsCategories: ICategoryDescription[] = [
                 title: 'Strings',
                 rules: [
                     {
-                        name: 'Single-quoted strings',
+                        name: 'Single-quoted',
                         scope: 'string.quoted.single.wow.lua'
                     },
                     {
-                        name: 'Double quoted strings',
+                        name: 'Double quoted',
                         scope: 'string.quoted.double.wow.lua'
                     },
                     {
-                        name: 'Multiline strings',
+                        name: 'Multiline',
                         description: 'Those between <code>[[</code> double-brackets <code>]]</code>',
                         scope: 'string.quoted.other.wow.lua'
                     },
@@ -237,7 +237,7 @@ export const settingsCategories: ICategoryDescription[] = [
                 rules: [
                     {
                         name: 'Functions',
-                        description: 'Top-level functions and namespaces',
+                        description: 'Global functions and namespaces',
                         scope: 'support.function.api.wow.lua'
                     },
                     {
@@ -277,17 +277,17 @@ export const settingsCategories: ICategoryDescription[] = [
                 rules: [
                     {
                         name: 'Functions',
-                        // description: 'Things like "ToggleSpellBook()", "UIFrameFade()", etc.',
+                        description: 'Global functions written in Lua',
                         scope: 'support.function.library.wow.lua'
                     },
                     {
                         name: 'Objects',
-                        description: '<code>UIParent</code>, <code>GameFontNormal</code>, etc.',
+                        description: 'A selection of global objects like <code>UIParent</code>, <code>GameFontNormal</code>, etc.',
                         scope: 'support.variable.object.library.wow.lua'
                     },
                     {
                         name: 'Constants',
-                        description: '<code>SOUNDKIT.IG_QUEST_LOG_OPEN</code>, <code>SILVER_PER_GOLD</code>, etc.',
+                        description: 'A selection of global values like <code>SOUNDKIT.IG_QUEST_LOG_OPEN</code>, <code>SILVER_PER_GOLD</code>, etc.',
                         scope: 'support.variable.value.library.wow.lua'
                     },
                 ]

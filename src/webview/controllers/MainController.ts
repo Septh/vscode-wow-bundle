@@ -3,15 +3,14 @@ import * as angular from 'angular'
 import * as Utils from '../utils'
 import { ISettingsService } from '../services/settings.service'
 import { EThemeNames, IEditableRule, IEditableSettings, IEditableTheme, settingsCategories } from '../settings'
-import { DefaultTheme } from '../../shared'
+import { IVSCodeThemeContribution } from '../../shared';
 
-export const wbMainController: Utils.NGRegistrable = {
-    register: (parent: ng.IModule) => parent.controller('MainController', MainController)
+// Le thème par défaut dans VS Code
+const DefaultTheme: IVSCodeThemeContribution = {
+    id: 'Default Dark+',
+    label: 'Dark+ (default dark)',
+    uiTheme: 'vs-dark'
 }
-
-/*****************************************************************************
- * Implémentation du contrôleur
- *****************************************************************************/
 
 // Les <option> pour le <select>
 interface IThemeSelectOption {
@@ -21,11 +20,8 @@ interface IThemeSelectOption {
     order: number       // ""      ""
 }
 
-interface TThemeSelectOptionGroup {
-    [ kind: string ]: { label: string, order: number }
-}
-
-const themeSelectOptionGroups: TThemeSelectOptionGroup = {
+// TODO: Localiser tout ça
+const themeSelectOptionGroups: Record<string, { label: string, order: number }> = {
     ['global']:   { label: 'All themes (global settings)', order: 1 },
     ['default']:  { label: 'Default theme',                order: 2 },   // Inutilisé, finalement..
     ['current']:  { label: 'Current theme',                order: 3 },
@@ -35,9 +31,7 @@ const themeSelectOptionGroups: TThemeSelectOptionGroup = {
 }
 
 // Map { scope: règle } pour le thème sélectionné
-interface IRulesMap {
-    [ scopeName: string ]: IEditableRule
-}
+type IRuleMap = Record<string, IEditableRule>
 
 // Les règles telles qu'on les passe au template HTML
 interface ITemplateRule {
@@ -46,7 +40,10 @@ interface ITemplateRule {
     rule: IEditableRule
 }
 
-class MainController {
+/*****************************************************************************
+ * Implémentation du contrôleur
+ *****************************************************************************/
+class MainControllerImpl {
 
     // Catégories des réglages
     public categories = settingsCategories
@@ -59,11 +56,11 @@ class MainController {
     public currentTheme?: string
 
     // Gestion du thème sélectionné
-    public themeSelectOptions?: IThemeSelectOption[]    // Options du <select>
+    public themeSelectOptions?: IThemeSelectOption[]
     public selectedTheme: {
-        name: string                            // Le nom du thème entre [crochets]
-        rules: IEditableRule[]                  // Ses réglages
-        scopes: IRulesMap                       // Son map { scope: règle }
+        name: string            // Le nom du thème entre [crochets]
+        rules: IEditableRule[]  // Ses réglages
+        scopes: IRuleMap        // Son map { scope: règle }
     }
 
     // Les règles passées au template
@@ -249,7 +246,7 @@ class MainController {
 
     // Permet d'afficher les règles générées
     public showDebug: boolean = false
-    public showDebugFiltered: boolean = true
+    public showDebugFiltered: boolean = false
     get generatedRules() {
         let settings: any = this.SettingsService.getRawSettings()
         if (this.showDebugFiltered) {
@@ -270,4 +267,11 @@ class MainController {
         }
         return label
     }
+}
+
+/*****************************************************************************
+ * Exporte le registrar pour ce contrôleur
+ *****************************************************************************/
+export const MainController: Utils.NGRegistrar = {
+    register: (parent: ng.IModule) => parent.controller('MainController', MainControllerImpl)
 }

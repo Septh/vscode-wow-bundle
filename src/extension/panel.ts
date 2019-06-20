@@ -2,7 +2,11 @@
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import * as vscode from 'vscode'
-import { WebviewMessage, WebviewMessageCommand, IVSCodeTheme, VSCodeSettings } from '../shared'
+import {
+    IVSCodeThemeContribution, IVSCodeTokenColorCustomizationsSettings,
+    IWebviewMessage, IWebviewMessageCommand,
+    IExtensionMessage, IExtensionMessageCommand
+} from '../shared'
 
 class SettingsEditor {
 
@@ -13,14 +17,14 @@ class SettingsEditor {
     constructor(private context: vscode.ExtensionContext) {}
 
     // Collecte les données à éditer
-    private collectThemes() {
+    private collectInstalledThemes(): IVSCodeThemeContribution[] {
 
-        const themes: IVSCodeTheme[] = []
+        const themes: IVSCodeThemeContribution[] = []
 
         for (const extension of vscode.extensions.all) {
-            const manifest = extension.packageJSON || {}
-            if (manifest.contributes && manifest.contributes.themes) {
-                for (const theme of manifest.contributes.themes) {
+            const pkg = extension.packageJSON || {}
+            if (pkg.contributes && pkg.contributes.themes) {
+                for (const theme of pkg.contributes.themes) {
                     themes.push(theme)
                 }
             }
@@ -29,46 +33,46 @@ class SettingsEditor {
         return themes
     }
 
-    private collectCurrentTheme() {
-        return vscode.workspace.getConfiguration('workbench').get<string>('colorTheme')
+    private collectCurrentTheme(): string {
+        return vscode.workspace.getConfiguration('workbench').get<string>('colorTheme')!
     }
 
-    private collectSettings() {
-        return vscode.workspace.getConfiguration('editor').get<VSCodeSettings>('tokenColorCustomizations')
+    private collectCurrentSettings(): IVSCodeTokenColorCustomizationsSettings {
+        return vscode.workspace.getConfiguration('editor').get<IVSCodeTokenColorCustomizationsSettings>('tokenColorCustomizations', {})
     }
 
     // Envoie un message au webview
-    private messageToWebview(msg: WebviewMessage) {
+    private messageToWebview(msg: IExtensionMessage) {
         if (this.panel) {
             this.panel.webview.postMessage(msg)
         }
     }
 
     // Traite les messages reçus du webview
-    private onWebviewMessage(msg: WebviewMessage) {
+    private onWebviewMessage(msg: IWebviewMessage) {
 
         switch (msg.command) {
-            case WebviewMessageCommand.CMD_WEBVIEW_LOG:
+            case IWebviewMessageCommand.LOG:
                 console.info('[webview log]', ...msg.data)
                 break
 
-            case WebviewMessageCommand.CMD_WEBVIEW_READY:
+            case IWebviewMessageCommand.READY:
                 // Le webview est prêt, on répond avec les thèmes et les réglages
                 this.messageToWebview({
-                    command: WebviewMessageCommand.CMD_EXTENSION_THEMES,
-                    themes: this.collectThemes(),
+                    command: IExtensionMessageCommand.THEMES,
+                    themes: this.collectInstalledThemes()
                 })
                 this.messageToWebview({
-                    command: WebviewMessageCommand.CMD_EXTENSION_CURRENT_THEME,
+                    command: IExtensionMessageCommand.CURRENT_THEME,
                     currentTheme: this.collectCurrentTheme(),
                 })
                 this.messageToWebview({
-                    command: WebviewMessageCommand.CMD_EXTENSION_SETTINGS,
-                    settings: this.collectSettings()
+                    command: IExtensionMessageCommand.SETTINGS,
+                    settings: this.collectCurrentSettings()
                 })
                 break
 
-            case WebviewMessageCommand.CMD_WEBVIEW_UPDATE_SETTINGS:
+            case IWebviewMessageCommand.SETTINGS_UPDATED:
                 vscode.workspace.getConfiguration('editor').update('tokenColorCustomizations', msg.settings, true)
                 break
         }
@@ -79,15 +83,15 @@ class SettingsEditor {
 
         if (evt.affectsConfiguration('workbench.colorTheme')) {
             this.messageToWebview({
-                command: WebviewMessageCommand.CMD_EXTENSION_CURRENT_THEME,
+                command: IExtensionMessageCommand.CURRENT_THEME,
                 currentTheme: this.collectCurrentTheme()
             })
         }
 
         if (evt.affectsConfiguration('editor.tokenColorCustomizations')) {
             this.messageToWebview({
-                command: WebviewMessageCommand.CMD_EXTENSION_SETTINGS,
-                settings: this.collectSettings()
+                command: IExtensionMessageCommand.SETTINGS,
+                settings: this.collectCurrentSettings() || {}
             })
         }
     }
@@ -115,7 +119,6 @@ class SettingsEditor {
                        .replace(/<base href="(.*?)">/ui, `<base href="${webviewUri.with({ scheme: 'vscode-resource' }).toString(true)}/">`)
             }
             catch(e) {
-                // TODO: Afficher un message d'erreur plus parlant...
                 vscode.window.showErrorMessage(e.message)
 
                 html = /* html */ `
@@ -123,6 +126,7 @@ class SettingsEditor {
                     <html lang="en">
                     <head>
                         <meta charset="utf-8">
+                        <meta http-equiv="Content-Security-Policy" content="default-src 'none';">
                         <title>WoW Bundle Token Colors Editor</title>
                     </head>
                     <body>
@@ -136,8 +140,8 @@ class SettingsEditor {
             this.panel = vscode.window.createWebviewPanel('wow-bundle-settings-editor', 'WoW Bundle Settings Editor', vscode.ViewColumn.Active, {
                 enableScripts: true,
                 // enableCommandUris: false,
-                // localResourceRoots: [ webviewUri ],    // Limite le webview à son répertoire
-                retainContextWhenHidden: true   // TODO: à virer
+                localResourceRoots: [ webviewUri ],     // Limite le webview à son répertoire
+                retainContextWhenHidden: true           // TODO: à virer
             })
 
             // 3. Ecoute les événements qui nous intéressent

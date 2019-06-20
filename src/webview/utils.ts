@@ -17,14 +17,9 @@ export function isObject(x?: any): boolean {
     return typeof x === 'object' && !!x && x.constructor === Object
 }
 
-/*
+/**
  * Types et fonctions utiles pour Angular
  */
-export interface NGRegistrable {
+export interface NGRegistrar {
     register(parent: ng.IModule): ng.IModule
 }
-
-// Définit la fonction pour les bindings de type '&' :
-// - HTML parent  : <composant on-update="$ctrl.valueChanged(param)">
-// - TS composant : this.onUpdate( { param: valeur } )
-export type ExpressionBinding = (param: { [paramName: string]: any }) => void

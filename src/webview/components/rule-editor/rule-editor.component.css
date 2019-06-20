@@ -1,0 +1,18 @@
+
+/* wb-rule-editor */
+wb-rule-editor {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 0.5rem;
+    align-items: center;
+}
+
+wb-rule-editor > label {
+    grid-column: 1;
+    padding-right: 1rem;
+}
+
+wb-rule-editor > wb-color-editor,
+wb-rule-editor > wb-fontstyle-editor {
+    grid-column: 2;
+}

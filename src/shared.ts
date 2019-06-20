@@ -1,5 +1,5 @@
 
-/*
+/**
  * Formats des réglages tels que reçus de VSCode
  * Copié/collé de \vscode\src\vs\workbench\services\themes\common\workbenchThemeService.ts
  */
@@ -27,49 +27,66 @@ export interface ITokenColorCustomizations {
     textMateRules?: ITokenColorizationRule[]
 }
 
+// Simplifie l'accès aux thèmes dans les réglages
+export type IVSCodeTokenColorCustomizationsSettings = Record<string, ITokenColorizationRule[] | ITokenColorCustomizations>
+
 /*
  * Format des thèmes dans VSCode
+ * (version simplifiée, avec seulement les champs qui nous intéressent)
  */
-// Version simplifiée, avec seulement les champs qui nous intéressent
-export interface IVSCodeTheme {
+export interface IVSCodeThemeContribution {
     id?: string     // Certains vieux thèmes n'ont pas d'id
     label: string   // Mais tous ont un label
     uiTheme: 'vs' | 'vs-dark' | 'hc-black',
-    // path?: string
 }
 
-export const DefaultTheme: IVSCodeTheme = {
-    id: 'Default Dark+',
-    label: 'Dark+ (default dark)',
-    uiTheme: 'vs-dark'
-}
-
-// Simplifie l'accès aux thèmes dans les réglages
-export interface VSCodeSettings extends ITokenColorCustomizations {
-    [themeName: string]: ITokenColorizationRule[] | ITokenColorCustomizations | undefined
-}
-
-/*
- * Communication extension <-> webview
+/**
+ * Format des messages envoyés par le webview à l'extension
  */
+export type IWebviewMessage = IWebviewMessageLog | IWebviewMessageReady | IWebviewMessageUpdateSettings
 
-// Format des messages échangés entre l'extension et le webview
-export const enum WebviewMessageCommand {
-    // webview -> extension
-    CMD_WEBVIEW_LOG = 'webview-log',
-    CMD_WEBVIEW_READY = 'webview-ready',
-    CMD_WEBVIEW_UPDATE_SETTINGS = 'webview-update-settings',
-
-    // extension -> webview
-    CMD_EXTENSION_SETTINGS = 'extension-settings',
-    CMD_EXTENSION_THEMES = 'extension-themes',
-    CMD_EXTENSION_CURRENT_THEME = 'extension-current-theme'
+export const enum IWebviewMessageCommand {
+    LOG = 'webview-log',
+    READY = 'webview-ready',
+    SETTINGS_UPDATED = 'webview-settings-updated'
 }
 
-export interface WebviewMessage {
-    command: WebviewMessageCommand
-    themes?: IVSCodeTheme[]
-    currentTheme?: string
-    settings?: VSCodeSettings
-    data?: any
+export interface IWebviewMessageLog {
+    command: IWebviewMessageCommand.LOG
+    data: any
+}
+
+export interface IWebviewMessageReady {
+    command: IWebviewMessageCommand.READY
+}
+
+export interface IWebviewMessageUpdateSettings {
+    command: IWebviewMessageCommand.SETTINGS_UPDATED
+    settings: IVSCodeTokenColorCustomizationsSettings
+}
+
+/**
+ * Format des messages envoyés par l'extension au webview
+ */
+export type IExtensionMessage = IExtensionMessageSettings | IExtensionMessageThemes | IExtensionMessageCurrentTheme
+
+export const enum IExtensionMessageCommand {
+    CURRENT_THEME = 'extension-current-theme',
+    THEMES = 'extension-themes',
+    SETTINGS = 'extension-settings'
+}
+
+export interface IExtensionMessageCurrentTheme {
+    command: IExtensionMessageCommand.CURRENT_THEME
+    currentTheme: string
+}
+
+export interface IExtensionMessageSettings {
+    command: IExtensionMessageCommand.SETTINGS
+    settings: IVSCodeTokenColorCustomizationsSettings
+}
+
+export interface IExtensionMessageThemes {
+    command: IExtensionMessageCommand.THEMES
+    themes: IVSCodeThemeContribution[]
 }

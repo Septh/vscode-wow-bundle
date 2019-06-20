@@ -1,60 +1,39 @@
 
 import * as angular from 'angular'
 import * as Utils from '../utils'
-import { WebviewMessage, WebviewMessageCommand, VSCodeSettings, IVSCodeTheme } from '../../shared'
 import { fromEvent, Observable } from 'rxjs'
 import { map, filter, share, distinctUntilChanged, startWith } from 'rxjs/operators'
+import {
+    IVSCodeTokenColorCustomizationsSettings, IVSCodeThemeContribution,
+    IExtensionMessage, IExtensionMessageCommand, IExtensionMessageSettings, IExtensionMessageThemes, IExtensionMessageCurrentTheme,
+    IWebviewMessage, IWebviewMessageCommand
+} from '../../shared'
 
 export interface IExtensionService {
-    readonly vscodeSettings$: Observable<VSCodeSettings>
-    readonly vscodeThemes$: Observable<IVSCodeTheme[]>
+    readonly vscodeSettings$: Observable<IVSCodeTokenColorCustomizationsSettings>
+    readonly vscodeThemes$: Observable<IVSCodeThemeContribution[]>
     readonly vscodeCurrentTheme$: Observable<string>
-    putRawSettings(settings: VSCodeSettings): void
-    messageToHost(message: WebviewMessage): void
-}
-
-export const wbExtensionService: Utils.NGRegistrable = {
-    register: (parent: ng.IModule) => {
-
-        // Crée le service
-        parent.service('extension.service', ExtensionService)
-
-        // Quand l'app démarre, prévient l'extension VS Code qu'on est prêt
-        parent.run( [ 'extension.service', (ext: IExtensionService) => {
-            ext.messageToHost( {
-                command: WebviewMessageCommand.CMD_WEBVIEW_READY
-            })
-        }])
-
-        return parent
-    }
+    putRawSettings(settings: IVSCodeTokenColorCustomizationsSettings): void
+    messageToHost(message: IWebviewMessage): void
 }
 
 /*****************************************************************************
  * Implémentation du service
  *****************************************************************************/
 
-// mini-API de VS Code accessible depuis le webview
-declare var acquireVsCodeApi: () => WebviewApi
-interface WebviewApi {
-    getState(): any
-    setState(state: any): void
-    postMessage(message: WebviewMessage): void
-}
-
 // Valeurs initiales des réglages
-const initialSettings: VSCodeSettings = {}
-const initialThemes: IVSCodeTheme[] = []
+const initialSettings: IVSCodeTokenColorCustomizationsSettings = {}
+const initialThemes: IVSCodeThemeContribution[] = []
 const initialCurrentTheme: string = ''
 
-class ExtensionService implements IExtensionService {
+class ExtensionServiceImpl implements IExtensionService {
 
     // Permet de communiquer avec l'extension côté VS Code
-    private vscode: WebviewApi = acquireVsCodeApi()
+    private vscode: IVSCodeWebviewApi = acquireVsCodeApi()
 
     // Les données reçues de l'extension côté VS Code
-    public readonly vscodeSettings$: Observable<VSCodeSettings>
-    public readonly vscodeThemes$: Observable<IVSCodeTheme[]>
+    public readonly vscodeSettings$: Observable<IVSCodeTokenColorCustomizationsSettings>
+    public readonly vscodeThemes$: Observable<IVSCodeThemeContribution[]>
     public readonly vscodeCurrentTheme$: Observable<string>
 
     public static readonly $inject = [ '$window' ]
@@ -62,40 +41,60 @@ class ExtensionService implements IExtensionService {
 
         // Crée les observables
         const message$ = fromEvent<MessageEvent>(this.$window, 'message').pipe(
-            map(evt => evt.data as WebviewMessage),
+            map(evt => evt.data as IExtensionMessage),
             share()
         )
 
         this.vscodeSettings$ = message$.pipe(
-            filter(msg => msg.command === WebviewMessageCommand.CMD_EXTENSION_SETTINGS),
-            map(msg => msg.settings!),
+            filter(msg => msg.command === IExtensionMessageCommand.SETTINGS),
+            map(msg => (msg as IExtensionMessageSettings).settings),
             distinctUntilChanged(angular.equals),   // Evite de se reprendre nos propres modifs dans la gueule
             startWith(initialSettings),
         )
 
         this.vscodeThemes$ = message$.pipe(
-            filter(msg => msg.command === WebviewMessageCommand.CMD_EXTENSION_THEMES),
-            map(msg => msg.themes!),
+            filter(msg => msg.command === IExtensionMessageCommand.THEMES),
+            map(msg => (msg as IExtensionMessageThemes).themes),
             startWith(initialThemes)
         )
 
         this.vscodeCurrentTheme$ = message$.pipe(
-            filter(msg => msg.command === WebviewMessageCommand.CMD_EXTENSION_CURRENT_THEME),
-            map(msg => msg.currentTheme!),
+            filter(msg => msg.command === IExtensionMessageCommand.CURRENT_THEME),
+            map(msg => (msg as IExtensionMessageCurrentTheme).currentTheme),
             startWith(initialCurrentTheme)
         )
     }
 
     // Envoie un message à l'extension
-    public messageToHost(message: WebviewMessage) {
+    public messageToHost(message: IWebviewMessage) {
         this.vscode.postMessage(message)
     }
 
     // Renvoie les réglages à l'extension
-    public putRawSettings(settings: VSCodeSettings) {
+    public putRawSettings(settings: IVSCodeTokenColorCustomizationsSettings) {
         this.messageToHost({
-            command: WebviewMessageCommand.CMD_WEBVIEW_UPDATE_SETTINGS,
+            command: IWebviewMessageCommand.SETTINGS_UPDATED,
             settings
         })
+    }
+}
+
+/*****************************************************************************
+ * Exporte le registrar pour ce service
+ *****************************************************************************/
+export const ExtensionService: Utils.NGRegistrar = {
+    register: (parent: ng.IModule) => {
+
+        // Crée le service
+        parent.service('extension.service', ExtensionServiceImpl)
+
+        // Quand l'app démarre, prévient l'extension VS Code qu'on est prêt
+        parent.run(['extension.service', (ext: IExtensionService) => {
+            ext.messageToHost({
+                command: IWebviewMessageCommand.READY
+            })
+        }])
+
+        return parent
     }
 }

@@ -1,13 +1,16 @@
 
-@import './assets/components.css';
+/* Nos composants */
+@import './components/color-editor/color-editor.component.css';
+@import './components/fontstyle-editor/fontstyle-editor.component.css';
+@import './components/rule-editor/rule-editor.component.css';
 
+/* Styles généraux */
 pre {
     color: var(--vscode-textPreformat-foreground);
     background-color: var(--vscode-textBlockQuote-background);
     border: 1px solid var(--vscode-textBlockQuote-border);
     padding: 0.5rem;
     margin: 0;
-    overflow: scroll;
 }
 
 code {
@@ -22,40 +25,41 @@ select {
     border-color: var(--vscode-settings-dropdownBorder);
 }
 
+input[type="checkbox"] {
+    color: var(--vscode-settings-checkboxForeground);
+    background-color: var(--vscode-settings-checkboxBackground);
+    border: 1px solid var(--vscode-settings-checkboxBorder);
+}
+
+button,
+input[type="text"] {
+    color: var(--vscode-settings-textInputForeground);
+    background-color: var(--vscode-settings-textInputBackground);
+    border: 1px solid var(--vscode-settings-checkboxBorder);
+}
+
+input[type="text"].ng-invalid {
+    color: var(--vscode-editorError-foreground);
+}
+
+button:disabled,
+input[type="text"]:disabled {
+    color: var(--vscode-settings-checkboxBorder);
+    background-color: var(--vscode-settings-textInputBackground) !important;
+}
+
 select:focus, select:active,
 button:focus, button:active,
 input:focus, input:active {
     outline-color: var(--vscode-focusBorder);
 }
 
-
-
-
-input[type="checkbox"] {
-    color: var(--vscode-settings-checkboxForeground);
-    background-color: var(--vscode-settings-checkboxBackground);
-    border-color: var(--vscode-settings-checkboxBorder);
+label {
+    display: inline-flex;
 }
 
-input[type="text"] {
-    color: var(--vscode-settings-textInputForeground);
-    background-color: var(--vscode-settings-textInputBackground);
-    border-color: var(--vscode-settings-textInputBorder);
-}
-
-wb-color-editor button,
-wb-color-editor input[type="text"]
-{
-    color: var(--vscode-settings-textInputForeground);
-    background-color: var(--vscode-settings-textInputBackground);
-}
-
-wb-color-editor input[type="text"].ng-invalid {
-    color: var(--vscode-editorError-foreground);
-}
-
-wb-color-editor button:disabled {
-    color: var(--vscode-settings-textInputBackground);
+label > input[type="checkbox"] {
+    margin-right: 0.5rem;
 }
 
 summary {
@@ -88,7 +92,7 @@ summary:focus {
     justify-content: space-between;
 }
 
-.settings-editor > .settings-header > .theme-selector > label > select {
+.settings-editor > .settings-header > .theme-selector > div > select {
     padding: 0.25rem 0.5rem;
     margin: 0 0 0 0.5rem;
 }
@@ -183,5 +187,6 @@ summary:focus {
 
 /* Debug */
 .settings-editor > .settings-body > .debug {
-    flex: 0 0 400px;
+    flex: 0 0 450px;
+    overflow: auto;
 }

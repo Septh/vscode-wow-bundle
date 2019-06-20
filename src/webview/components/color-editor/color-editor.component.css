@@ -1,0 +1,32 @@
+
+/* wb-color-editor */
+wb-color-editor {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    max-width: 210px;
+}
+
+wb-color-editor > div {
+    display: flex;
+}
+
+wb-color-editor > div > button {
+    z-index: 2;
+    flex: 0 0 auto;
+    display: block;
+    text-align: center;
+}
+
+wb-color-editor > div:first-of-type > button:not(:disabled) {
+    padding: 4px;
+    background-clip: content-box;
+}
+
+wb-color-editor > input {
+    flex: 1 1 auto;
+    width: 1%;
+    line-height: 1.5rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}

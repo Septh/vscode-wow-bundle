@@ -1,9 +1,8 @@
 
-import * as Utils from '../utils'
+import * as Utils from '../../utils'
+import { ComponentEventBinding } from '../bindings';
 
-export const wbFontStyleEditorComponent: Utils.NGRegistrable = {
-    register: (parent: ng.IModule) => parent.component('wbFontstyleEditor', FontStyleEditorComponentOptions)
-}
+import template from './fontstyle-editor.component.html'
 
 /*****************************************************************************
  * Implémentation du composant
@@ -23,9 +22,9 @@ const UNDERLINE_REGEX = /\bunderline\b/i
 class FontStyleEditorController implements ng.IController {
 
     // Bindinds
-    public style?: string
-    public disabled?: boolean
-    public onUpdate!: Utils.ExpressionBinding
+    public style!: string
+    public disabled!: boolean
+    public onUpdate!: ComponentEventBinding
 
     // Autres
     public styles: TFontStyles = {
@@ -60,6 +59,9 @@ class FontStyleEditorController implements ng.IController {
     }
 }
 
+/*****************************************************************************
+ * Exporte le registrar pour ce composant
+ *****************************************************************************/
 const FontStyleEditorComponentOptions: ng.IComponentOptions = {
     bindings: {
         style: '<fontstyle',
@@ -67,5 +69,9 @@ const FontStyleEditorComponentOptions: ng.IComponentOptions = {
         onUpdate: '&'
     },
     controller: FontStyleEditorController,
-    templateUrl: './assets/fontstyle-editor.component.html'
+    template
+}
+
+export const FontStyleEditorComponent: Utils.NGRegistrar = {
+    register: (parent: ng.IModule) => parent.component('wbFontstyleEditor', FontStyleEditorComponentOptions)
 }

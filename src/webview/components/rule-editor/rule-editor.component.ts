@@ -1,11 +1,10 @@
 
 import * as angular from 'angular'
-import * as Utils from '../utils'
-import { IEditableRule } from '../settings'
+import * as Utils from '../../utils'
+import { ComponentEventBinding } from '../bindings';
+import { IEditableRule } from '../../settings'
 
-export const wbRuleEditorComponent: Utils.NGRegistrable = {
-    register: (parent: ng.IModule) => parent.component('wbRuleEditor', RuleEditorComponentOptions)
-}
+import template from './rule-editor.component.html'
 
 /*****************************************************************************
  * Implémentation du composant
@@ -14,7 +13,7 @@ class RuleEditorController implements ng.IController {
 
     // Bindings (données du composant parent)
     public rule!: IEditableRule
-    public onUpdate!: Utils.ExpressionBinding
+    public onUpdate!: ComponentEventBinding
 
     // Met à jour notre modèle quand celui du parent change
     public $onChanges(changes: ng.IOnChangesObject) {
@@ -51,11 +50,18 @@ class RuleEditorController implements ng.IController {
     }
 }
 
+/*****************************************************************************
+ * Exporte le registrar pour ce composant
+ *****************************************************************************/
 const RuleEditorComponentOptions: ng.IComponentOptions = {
     bindings: {
         rule: '<',
         onUpdate: '&'
     },
     controller: RuleEditorController,
-    templateUrl: './assets/rule-editor.component.html'
+    template
+}
+
+export const RuleEditorComponent: Utils.NGRegistrar = {
+    register: (parent: ng.IModule) => parent.component('wbRuleEditor', RuleEditorComponentOptions)
 }

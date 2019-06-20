@@ -3,7 +3,7 @@ import * as angular from 'angular'
 import * as Utils from '../utils'
 import { IExtensionService } from './extension.service'
 import { IEditableSettings, IEditableRule, EThemeNames, IEditableTheme } from '../settings'
-import { VSCodeSettings, IVSCodeTheme, ITokenColorizationRule } from '../../shared'
+import { IVSCodeTokenColorCustomizationsSettings, IVSCodeThemeContribution, ITokenColorizationRule, ITokenColorCustomizations } from '../../shared'
 import { Observable } from 'rxjs'
 import { startWith, map, tap } from 'rxjs/operators'
 
@@ -14,11 +14,7 @@ export interface ISettingsService {
     putRule(bracketedThemeName: string, ruleToMerge: IEditableRule): void
 
     // Dev/debug
-    getRawSettings(): VSCodeSettings
-}
-
-export const wbSettingsService: Utils.NGRegistrable = {
-    register: (parent: ng.IModule) => parent.service('settings.service', SettingsService)
+    getRawSettings(): IVSCodeTokenColorCustomizationsSettings
 }
 
 /*****************************************************************************
@@ -28,14 +24,14 @@ const initialSettings: IEditableSettings = {}
 const initialThemes: IEditableTheme[] = []
 const initialCurrentTheme: string = ''
 
-class SettingsService implements ISettingsService {
+class SettingsServiceImpl implements ISettingsService {
 
     public readonly editorSettings$: Observable<IEditableSettings>
     public readonly installedThemes$: Observable<IEditableTheme[]>
     public readonly currentTheme$: Observable<string>
 
     // Pour getRawSettings()
-    private rawSettings!: VSCodeSettings
+    private rawSettings!: IVSCodeTokenColorCustomizationsSettings
 
     // Constructeur
     public static readonly $inject = [ 'extension.service' ]
@@ -82,7 +78,7 @@ class SettingsService implements ISettingsService {
         return editableRules
     }
 
-    private normalizeSettings(vscodeSettings: VSCodeSettings): IEditableSettings {
+    private normalizeSettings(vscodeSettings: IVSCodeTokenColorCustomizationsSettings): IEditableSettings {
 
         // Normalise les nouvelles règles
         const editableSettings: IEditableSettings = {}
@@ -92,7 +88,7 @@ class SettingsService implements ISettingsService {
                 editableSettings[EThemeNames.GLOBAL] = this.normalizeRules(value as ITokenColorizationRule[] || [])
             }
             else if (EThemeNames.isBracketed(key)) {
-                editableSettings[key] = this.normalizeRules((value as VSCodeSettings).textMateRules || [])
+                editableSettings[key] = this.normalizeRules((value as ITokenColorCustomizations).textMateRules || [])
             }
         }
 
@@ -104,7 +100,7 @@ class SettingsService implements ISettingsService {
     // - S'assure que tous les thèmes ont un label ET un id
     // Ne se produit qu'une fois, à l'ouverture du webview
     // (puisque la liste des thèmes ne peut pas changer sans redémarrer VS Code)
-    private normalizeThemes(vscodeThemes: IVSCodeTheme[]): IEditableTheme[] {
+    private normalizeThemes(vscodeThemes: IVSCodeThemeContribution[]): IEditableTheme[] {
 
         // Transmet les thèmes normalisés au contrôleur
         const installedThemes = vscodeThemes.map(rawTheme => {
@@ -162,7 +158,7 @@ class SettingsService implements ISettingsService {
     public putRule(bracketedThemeName: string, ruleToMerge: IEditableRule) {
 
         // S'assure qu'il existe une entrée pour ce thème
-        let themeSettings: VSCodeSettings
+        let themeSettings: IVSCodeTokenColorCustomizationsSettings
         if (bracketedThemeName === EThemeNames.GLOBAL) {
             themeSettings = this.rawSettings
         }
@@ -170,7 +166,7 @@ class SettingsService implements ISettingsService {
             if (!Utils.isObject(this.rawSettings[bracketedThemeName])) {
                 this.rawSettings[bracketedThemeName] = {}
             }
-            themeSettings = this.rawSettings[bracketedThemeName] as VSCodeSettings
+            themeSettings = this.rawSettings[bracketedThemeName] as IVSCodeTokenColorCustomizationsSettings
         }
 
         if (!Array.isArray(themeSettings.textMateRules)) {
@@ -219,4 +215,11 @@ class SettingsService implements ISettingsService {
     public getRawSettings() {
         return this.rawSettings
     }
+}
+
+/*****************************************************************************
+ * Exporte le registrar pour ce service
+ *****************************************************************************/
+export const SettingsService: Utils.NGRegistrar = {
+    register: (parent: ng.IModule) => parent.service('settings.service', SettingsServiceImpl)
 }

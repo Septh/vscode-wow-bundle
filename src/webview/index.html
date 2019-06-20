@@ -1,24 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src vscode-resource:; style-src vscode-resource: 'unsafe-inline';" />
     <title>WoW Bundle Token Colors Editor</title>
     <base href="/">
-    <!-- <link rel="stylesheet" href="lib/bootstrap-4.1.3/bootstrap-reboot.min.css"> -->
-    <link rel="stylesheet" href="lib/angular-color-picker-3.4.8/angularjs-color-picker.min.css">
-    <link rel="stylesheet" href="index.css">
 </head>
 <body ng-controller="MainController as $ctrl" ng-cloak>
     <form class="settings-editor" novalidate>
         <div class="settings-header">
             <div class="theme-selector">
-                <label>Edit tokenColorCustomizations for:
-                <select ng-model="$ctrl.selectedTheme.name" ng-change="$ctrl.selectedThemeChanged()"
-                        ng-options="option.value as option.label group by option.group for option in $ctrl.themeSelectOptions"></select>
-                </label>
+                <div>
+                    <span>Edit tokenColorCustomizations for:</span>
+                    <select ng-model="$ctrl.selectedTheme.name" ng-change="$ctrl.selectedThemeChanged()"
+                            ng-options="option.value as option.label group by option.group for option in $ctrl.themeSelectOptions"></select>
+                </div>
                 <div class="debug-options">
-                    <label><input type="checkbox" ng-model="$ctrl.showDebug"> Show generated textMateRules</label>
-                    <label ng-show="$ctrl.showDebug"><input type="checkbox" ng-model="$ctrl.showDebugFiltered"> Filter by selected theme</label>
+                    <label><input type="checkbox" ng-model="$ctrl.showDebug"> Show tokenColorCustomizations in settings.json</label>
+                    <label ng-show="$ctrl.showDebug"><input type="checkbox" ng-model="$ctrl.showDebugFiltered">For selected theme only</label>
                 </div>
             </div>
             <details class="usage">
@@ -50,7 +49,5 @@
     <script src="lib/angular-1.7.8/angular.min.js"></script>
     <script src="lib/angular-1.7.8/angular-sanitize.min.js"></script>
     <script src="lib/angular-1.7.8/angular-animate.min.js"></script>
-    <script src="lib/angular-color-picker-3.4.8/angularjs-color-picker.min.js"></script>
-    <script src="index.js"></script>
 </body>
 </html>

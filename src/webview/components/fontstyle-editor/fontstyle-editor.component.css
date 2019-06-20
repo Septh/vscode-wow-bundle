@@ -1,0 +1,21 @@
+
+/* wb-style-editor */
+wb-fontstyle-editor {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    place-content: flex-start;
+}
+
+wb-fontstyle-editor > label {
+    display: inline-flex;
+    place-items: center;
+}
+
+wb-fontstyle-editor > label > input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+wb-fontstyle-editor > label + label {
+    margin-left: 1em;
+}
