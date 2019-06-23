@@ -140,6 +140,7 @@ class SettingsEditor {
                 enableScripts: true,
                 // enableCommandUris: false,
                 localResourceRoots: [ webviewUri ],     // Limite le webview à son répertoire
+                // localResourceRoots: [vscode.Uri.file('D:\\Dev\\vscode\\wow-bundle').with({ scheme: 'vscode-resource' }) ],
                 retainContextWhenHidden: true           // TODO: à virer
             })
 

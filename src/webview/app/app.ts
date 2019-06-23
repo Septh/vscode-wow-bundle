@@ -1,6 +1,6 @@
 
 import * as angular from 'angular'
-import * as Utils from '../utils'
+import { isColor, isStyle } from '../utils'
 import { ISettingsService } from './services'
 import { EThemeNames, IEditableRule, IEditableSettings, IEditableTheme, settingsCategories } from '../settings'
 
@@ -21,7 +21,7 @@ interface IThemeSelectOption {
 
 // TODO: Localiser tout ça
 const themeSelectOptionGroups: Record<string, { label: string, order: number }> = {
-    ['global']: { label: 'All themes (global settings)', order: 1 },
+    ['global']: { label: 'Global settings', order: 1 },
     ['default']: { label: 'Default theme', order: 2 },   // Inutilisé, finalement..
     ['current']: { label: 'Current theme', order: 3 },
     ['vs']: { label: 'Light themes', order: 4 },
@@ -63,7 +63,7 @@ export class AppController implements ng.IController {
     public namedThemeRules: ITemplateRule[] = []
 
     // Constructeur
-    public static readonly $inject = ['settings.service', '$scope']
+    public static readonly $inject = [ 'settings.service', '$scope' ]
     constructor(private SettingsService: ISettingsService, private $scope: ng.IScope) {
 
         // Force buildThemeSelectOptions() à commencer avec le thème courant
@@ -81,7 +81,7 @@ export class AppController implements ng.IController {
 
     // Appelé quand la liste des thèmes installés et actifs dans VS Code a changé
     private vscodeThemesChanged(newThemes: IEditableTheme[]) {
-        console.log('vscodeThemesChanged(%o)', newThemes)
+        // console.log('[APP] Reçoit newThemes')
         this.$scope.$applyAsync(() => {
             this.editableThemes = newThemes
             this.buildThemeSelectOptions()
@@ -91,6 +91,7 @@ export class AppController implements ng.IController {
 
     // Appelé quand le thème courant a été changé dans VS Code
     private vscodeCurrentThemeChanged(newCurrentTheme: string) {
+        // console.log('[APP] Reçoit newCurrentTheme')
         this.$scope.$applyAsync(() => {
             this.currentTheme = newCurrentTheme
             this.buildThemeSelectOptions()
@@ -99,6 +100,7 @@ export class AppController implements ng.IController {
 
     // Appelé quand les réglages ont changé côté VS Code
     private vscodeSettingsChanged(newSettings: IEditableSettings) {
+        // console.log('[APP] Reçoit newSettings')
         this.$scope.$applyAsync(() => {
             this.editableSettings = newSettings
             this.selectedThemeChanged()
@@ -109,7 +111,7 @@ export class AppController implements ng.IController {
     private buildThemeSelectOptions() {
         this.themeSelectOptions = []
 
-        // Ne fait rien tant qu'on n'a pas reçu la liste des thèmes et le thème courant
+        // Ne fait rien tant qu'on n'a pas reçu la liste des thèmes ET le thème courant
         if (this.editableThemes && this.currentTheme) {
 
             // Commence avec les options 'global' et 'current'
@@ -124,7 +126,7 @@ export class AppController implements ng.IController {
 
             this.themeSelectOptions.push(
                 {
-                    label: 'Global settings',
+                    label: 'All themes',
                     value: EThemeNames.GLOBAL,
                     group: themeSelectOptionGroups.global.label,
                     order: themeSelectOptionGroups.global.order
@@ -170,9 +172,9 @@ export class AppController implements ng.IController {
             for (const rule of this.selectedTheme.rules) {
                 if (!rule.flags) {
                     rule.flags = {
-                        setForeground: Utils.isColor(rule.settings.foreground!),
-                        setBackground: Utils.isColor(rule.settings.background!),
-                        setFontStyle: Utils.isStyle(rule.settings.fontStyle!)
+                        setForeground: isColor(rule.settings.foreground!),
+                        setBackground: isColor(rule.settings.background!),
+                        setFontStyle: isStyle(rule.settings.fontStyle!)
                     }
                 }
                 this.selectedTheme.scopes[rule.scope] = rule

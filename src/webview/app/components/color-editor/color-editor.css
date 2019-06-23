@@ -3,22 +3,31 @@
 wb-color-editor {
     display: flex;
     flex-wrap: nowrap;
-    align-items: stretch;
     max-width: 210px;
 }
 
 wb-color-editor > div {
     display: flex;
+    flex: 0 0 auto;
 }
 
-wb-color-editor > div > button {
+wb-color-editor > input[type="text"] {
+    flex: 1 1 auto;
+}
+
+wb-color-editor button {
     z-index: 2;
     flex: 0 0 auto;
     display: block;
     text-align: center;
+    cursor: pointer;
 }
 
-wb-color-editor > div:first-of-type > button:not(:disabled) {
+wb-color-editor button:disabled {
+    cursor: auto;
+}
+
+wb-color-editor > div.swatch > button:not(:disabled) {
     padding: 4px;
     background-clip: content-box;
 }

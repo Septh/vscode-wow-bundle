@@ -1,7 +1,7 @@
 
 import * as angular from 'angular'
 import { fromEvent, Observable } from 'rxjs'
-import { map, filter, share, distinctUntilChanged, startWith } from 'rxjs/operators'
+import { map, filter, share, distinctUntilChanged } from 'rxjs/operators'
 import {
     IExtensionMessage, IExtensionMessageCommand, IExtensionMessageSettings, IExtensionMessageThemes, IExtensionMessageCurrentTheme,
     IWebviewMessage, IWebviewMessageCommand
@@ -21,10 +21,6 @@ export interface IExtensionService {
 /*****************************************************************************
  * Implémentation du service
  *****************************************************************************/
-const initialSettings: IVSCodeTokenColorCustomizationsSettings = {}
-const initialThemes: IThemeContribution[] = []
-const initialCurrentTheme: string = ''
-
 class ExtensionServiceImpl implements IExtensionService {
 
     // Permet de communiquer avec l'extension côté VS Code
@@ -37,6 +33,7 @@ class ExtensionServiceImpl implements IExtensionService {
 
     public static readonly $inject = [ '$window' ]
     constructor(private $window: ng.IWindowService) {
+        // console.log('extension.service()')
 
         // Crée les observables
         const message$ = fromEvent<MessageEvent>(this.$window, 'message').pipe(
@@ -47,20 +44,20 @@ class ExtensionServiceImpl implements IExtensionService {
         this.vscodeSettings$ = message$.pipe(
             filter(msg => msg.command === IExtensionMessageCommand.SETTINGS),
             map(msg => (msg as IExtensionMessageSettings).settings),
-            distinctUntilChanged(angular.equals),   // Evite de se reprendre nos propres modifs dans la gueule
-            startWith(initialSettings),
+            // tap((settings) => console.log('[EXTENSION] Reçoit "%s" > %s', IExtensionMessageCommand.SETTINGS, settings)),
+            distinctUntilChanged(angular.equals)    // Evite de se reprendre nos propres modifs dans la gueule
         )
 
         this.vscodeThemes$ = message$.pipe(
             filter(msg => msg.command === IExtensionMessageCommand.THEMES),
             map(msg => (msg as IExtensionMessageThemes).themes),
-            startWith(initialThemes)
+            // tap((themes) => console.log('[EXTENSION] Reçoit "%s" > %s', IExtensionMessageCommand.THEMES, themes))
         )
 
         this.vscodeCurrentTheme$ = message$.pipe(
             filter(msg => msg.command === IExtensionMessageCommand.CURRENT_THEME),
             map(msg => (msg as IExtensionMessageCurrentTheme).currentTheme),
-            startWith(initialCurrentTheme)
+            // tap((currentTheme) => console.log('[EXTENSION] Reçoit "%s" > %s', IExtensionMessageCommand.CURRENT_THEME, currentTheme))
         )
     }
 

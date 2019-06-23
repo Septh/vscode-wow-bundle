@@ -3,11 +3,23 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Attach to Chrome",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}/extension/webview",
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**/*.js"
+            ]
+        },
+        {
             "name": "Launch Extension",
             "type": "extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
             "args": [
+                "--disable-extensions",
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ],
             "outFiles": [
@@ -16,7 +28,7 @@
             "skipFiles": [
                 "<node_internals>/**",
                 "node_modules/**/*.js"
-            ],
+            ]
         }
     ]
 }

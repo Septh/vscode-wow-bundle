@@ -3,7 +3,7 @@
 </div>
 <input type="text" ng-disabled="$ctrl.disabled" ng-model="$ctrl.color" ng-model-options="$ctrl.colorModelOptions" ng-pattern="$ctrl.colorModelPattern" ng-change="$ctrl.colorChanged()" spellcheck="false" placeholder="Color" maxlength="9">
 <div class="actions">
-    <button ng-disabled="$ctrl.disabled" ng-click="$ctrl.revert()">R</button>
+    <!-- <button ng-disabled="$ctrl.disabled" ng-click="$ctrl.revert()">R</button> -->
     <button ng-disabled="$ctrl.disabled" ng-click="$ctrl.clear()" >X</button>
 </div>
 <div class="picker" ng-if="$ctrl.isPickerShown">

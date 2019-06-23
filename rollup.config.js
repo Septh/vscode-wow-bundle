@@ -10,11 +10,11 @@ import { terser } from 'rollup-plugin-terser'
 import fileSize from 'rollup-plugin-filesize'
 
 // Quick access to some terser options I want to play with
-const compress = true,
-	  mangle = true,
+const compress = false,
+	  mangle = false,
 	  comments = false,
 	  semicolons = false,
-	  beautify = false
+	  beautify = true
 
 // Extension config - the easy one
 const extensionConfig = {

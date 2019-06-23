@@ -4,7 +4,7 @@ import * as Utils from '../../utils'
 import { ExtensionService, IExtensionService } from './extension.service'
 import { IEditableSettings, IEditableRule, EThemeNames, IEditableTheme } from '../../settings'
 import { Observable } from 'rxjs'
-import { startWith, map, tap } from 'rxjs/operators'
+import { map, tap } from 'rxjs/operators'
 
 /*****************************************************************************
  * Interface du service
@@ -22,10 +22,6 @@ export interface ISettingsService {
 /*****************************************************************************
  * Implémentation du service
  *****************************************************************************/
-const initialSettings: IEditableSettings = {}
-const initialThemes: IEditableTheme[] = []
-const initialCurrentTheme: string = ''
-
 class SettingsServiceImpl implements ISettingsService {
 
     public readonly editorSettings$: Observable<IEditableSettings>
@@ -38,22 +34,23 @@ class SettingsServiceImpl implements ISettingsService {
     // Constructeur
     public static readonly $inject = [ ExtensionService.name ]
     constructor(private Extension: IExtensionService) {
+        // console.log('settings.service()')
 
         // Transforme les réglages bruts en provenance de l'extension
         this.editorSettings$ = this.Extension.vscodeSettings$.pipe(
+            // tap(() => console.log('[SETTINGS] Reçoit vscodeSettings$') ),
             tap( vscodeSettings => this.rawSettings = vscodeSettings),
-            map( vscodeSettings => this.normalizeSettings(vscodeSettings) ),
-            startWith(initialSettings)
+            map( vscodeSettings => this.normalizeSettings(vscodeSettings) )
         )
 
         this.installedThemes$ = this.Extension.vscodeThemes$.pipe(
-            map( vscodeThemes => this.normalizeThemes(vscodeThemes) ),
-            startWith(initialThemes)
+            // tap(() => console.log('[SETTINGS] Reçoit vscodeThemes$')),
+            map( vscodeThemes => this.normalizeThemes(vscodeThemes) )
         )
 
         this.currentTheme$ = this.Extension.vscodeCurrentTheme$.pipe(
-            map( vscodeCurrentTheme => this.normalizeCurrentTheme(vscodeCurrentTheme) ),
-            startWith(initialCurrentTheme)
+            // tap(() => console.log('[SETTINGS] Reçoit vscodeCurrentTheme$')),
+            map( vscodeCurrentTheme => this.normalizeCurrentTheme(vscodeCurrentTheme) )
         )
     }
 

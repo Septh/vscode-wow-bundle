@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src vscode-resource:; style-src vscode-resource: 'unsafe-inline';" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src vscode-resource:; style-src vscode-resource: 'unsafe-inline';" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline';">
     <title>WoW Bundle Token Colors Editor</title>
     <base href="/">
 </head>
 <body ng-cloak>
-    <wb-app></wb-app>
+    <provider store="store">
+        <wb-app></wb-app>
+    </provider>
+
     <!-- Scripts -->
     <script src="lib/angular-1.7.8/angular.min.js"></script>
     <script src="lib/angular-1.7.8/angular-sanitize.min.js"></script>

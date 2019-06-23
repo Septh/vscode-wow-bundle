@@ -114,6 +114,9 @@
 		"postinstall": "node ./node_modules/vscode/bin/install"
 	},
 	"dependencies": {
+		"ng-component-redux": "^1.0.0-beta.3",
+		"redux": "^4.0.1",
+		"redux-starter-kit": "^0.5.1",
 		"rxjs": "^6.5.2"
 	},
 	"devDependencies": {

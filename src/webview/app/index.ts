@@ -8,7 +8,7 @@ import AppTemplate from './app.html'
 import './app.css'
 
 // Crée et exporte l'app
-export const AppModule = angular.module('App', [
+export const RootModule = angular.module('RootModule', [
     'ngSanitize', 'ngAnimate',
     SettingsService.name,
     RuleEditor.name
