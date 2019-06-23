@@ -1,0 +1,36 @@
+<form class="settings-editor" novalidate>
+    <div class="settings-header">
+        <div class="theme-selector">
+            <div>
+                <span>Edit tokenColorCustomizations for:</span>
+                <select ng-model="$ctrl.selectedTheme.name" ng-change="$ctrl.selectedThemeChanged()" ng-options="option.value as option.label group by option.group for option in $ctrl.themeSelectOptions"></select>
+            </div>
+            <div class="debug-options">
+                <label><input type="checkbox" ng-model="$ctrl.showDebug"> Show tokenColorCustomizations in settings.json</label>
+                <label ng-show="$ctrl.showDebug"><input type="checkbox" ng-model="$ctrl.showDebugFiltered">For selected theme only</label>
+            </div>
+        </div>
+        <details class="usage">
+            <summary>Help</summary>
+            <p>Check the <code>Foreground</code> and <code>FontStyle</code> boxes to override per-scope settings. Settings not overriden here will take their normal value. Order of precedence is <code>settings.tokenColorCustomizations[theme] > settings.tokenColorCustomizations > theme defined colors</code>.</p>
+        </details>
+    </div>
+    <div class="settings-body">
+        <div class="toc">
+            <div class="category" ng-repeat="category in $ctrl.categories">
+                <div class="title">{{ ::category.title }}</div>
+                <button ng-repeat="section in category.sections" ng-click="$ctrl.sectionChanged($parent.$index, $index)">{{ ::section.title }}</button>
+            </div>
+        </div>
+        <div class="rules">
+            <details class="rule" ng-repeat="namedRule in $ctrl.namedThemeRules" open>
+                <summary class="summary">
+                    <span class="name" ng-bind-html="namedRule.name"></span>
+                    <span class="description" ng-bind-html="namedRule.description"></span>
+                </summary>
+                <wb-rule-editor rule="namedRule.rule" on-update="$ctrl.ruleChanged(rule, $index)"></wb-rule-editor>
+            </details>
+        </div>
+        <pre class="debug" ng-if="$ctrl.showDebug">{{ $ctrl.generatedRulesLabel }} = {{ $ctrl.generatedRules | json }}</pre>
+    </div>
+</form>

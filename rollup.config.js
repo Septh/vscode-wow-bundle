@@ -9,14 +9,12 @@ import genHtml from 'rollup-plugin-gen-html'
 import { terser } from 'rollup-plugin-terser'
 import fileSize from 'rollup-plugin-filesize'
 
-// Plugin PostCSS
-import importCss from 'postcss-import'
-
 // Quick access to some terser options I want to play with
-const compress = false,
-	  mangle = false,
+const compress = true,
+	  mangle = true,
 	  comments = false,
-	  semicolons = false
+	  semicolons = false,
+	  beautify = false
 
 // Extension config - the easy one
 const extensionConfig = {
@@ -35,7 +33,7 @@ const extensionConfig = {
 			mangle,
 			compress,
 			output: {
-				beautify: true,
+				beautify,
 				indent_level: 2,
 				comments,
 				semicolons
@@ -53,8 +51,7 @@ const webviewConfig = {
 		file: 'extension/webview/index.js',
 		name: 'wowBundle',
 		globals: {
-			angular: 'angular',
-			ng: 'angular'
+			angular: 'angular'
 		},
 		sourcemap: true
 	},
@@ -73,15 +70,12 @@ const webviewConfig = {
 			// Consolidate all our styles in index.css
 			inject: false,
 			extract: true,
-			sourceMap: true,
-			plugins: [
-				importCss()
-			]
+			sourceMap: true
 		}),
 		loadHtml({
 			// Import component templates as strings inside code.
 			// Make sure to include only templates and exclude index
-			include: [ 'src/webview/components/**/*.html' ],
+			include: [ 'src/webview/app/**/*.html' ],
 			exclude: [ 'src/webview/index.html' ],
 			htmlMinifierOptions: {
 				collapseWhitespace: true,
@@ -93,8 +87,8 @@ const webviewConfig = {
 		genHtml({
 			// Generate index.html.
 			// Make sure to include only index and exclude templates
-			include: ['src/webview/index.html'],
-			exclude: ['src/webview/components/**/*.html']
+			include: [ 'src/webview/index.html' ],
+			exclude: ['src/webview/app/**/*.html']
 		}),
 		terser({
 			ecma: 7,
@@ -102,7 +96,7 @@ const webviewConfig = {
 			mangle,
 			compress,
 			output: {
-				beautify: true,
+				beautify,
 				indent_level: 2,
 				comments,
 				semicolons

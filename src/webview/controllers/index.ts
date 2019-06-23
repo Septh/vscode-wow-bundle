@@ -1,2 +1,0 @@
-
-export { MainController } from './MainController'

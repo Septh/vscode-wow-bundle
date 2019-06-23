@@ -3,7 +3,6 @@ import { readFileSync } from 'fs'
 import { join } from 'path'
 import * as vscode from 'vscode'
 import {
-    IVSCodeThemeContribution, IVSCodeTokenColorCustomizationsSettings,
     IWebviewMessage, IWebviewMessageCommand,
     IExtensionMessage, IExtensionMessageCommand
 } from '../shared'
@@ -17,9 +16,9 @@ class SettingsEditor {
     constructor(private context: vscode.ExtensionContext) {}
 
     // Collecte les données à éditer
-    private collectInstalledThemes(): IVSCodeThemeContribution[] {
+    private collectInstalledThemes(): IThemeContribution[] {
 
-        const themes: IVSCodeThemeContribution[] = []
+        const themes: IThemeContribution[] = []
 
         for (const extension of vscode.extensions.all) {
             const pkg = extension.packageJSON || {}

@@ -1,12 +1,14 @@
 
 import * as angular from 'angular'
-import * as Utils from '../utils'
-import { IExtensionService } from './extension.service'
-import { IEditableSettings, IEditableRule, EThemeNames, IEditableTheme } from '../settings'
-import { IVSCodeTokenColorCustomizationsSettings, IVSCodeThemeContribution, ITokenColorizationRule, ITokenColorCustomizations } from '../../shared'
+import * as Utils from '../../utils'
+import { ExtensionService, IExtensionService } from './extension.service'
+import { IEditableSettings, IEditableRule, EThemeNames, IEditableTheme } from '../../settings'
 import { Observable } from 'rxjs'
 import { startWith, map, tap } from 'rxjs/operators'
 
+/*****************************************************************************
+ * Interface du service
+ *****************************************************************************/
 export interface ISettingsService {
     readonly editorSettings$: Observable<IEditableSettings>
     readonly installedThemes$: Observable<IEditableTheme[]>
@@ -34,22 +36,22 @@ class SettingsServiceImpl implements ISettingsService {
     private rawSettings!: IVSCodeTokenColorCustomizationsSettings
 
     // Constructeur
-    public static readonly $inject = [ 'extension.service' ]
-    constructor(private ExtensionService: IExtensionService) {
+    public static readonly $inject = [ ExtensionService.name ]
+    constructor(private Extension: IExtensionService) {
 
         // Transforme les réglages bruts en provenance de l'extension
-        this.editorSettings$ = this.ExtensionService.vscodeSettings$.pipe(
+        this.editorSettings$ = this.Extension.vscodeSettings$.pipe(
             tap( vscodeSettings => this.rawSettings = vscodeSettings),
             map( vscodeSettings => this.normalizeSettings(vscodeSettings) ),
             startWith(initialSettings)
         )
 
-        this.installedThemes$ = this.ExtensionService.vscodeThemes$.pipe(
+        this.installedThemes$ = this.Extension.vscodeThemes$.pipe(
             map( vscodeThemes => this.normalizeThemes(vscodeThemes) ),
             startWith(initialThemes)
         )
 
-        this.currentTheme$ = this.ExtensionService.vscodeCurrentTheme$.pipe(
+        this.currentTheme$ = this.Extension.vscodeCurrentTheme$.pipe(
             map( vscodeCurrentTheme => this.normalizeCurrentTheme(vscodeCurrentTheme) ),
             startWith(initialCurrentTheme)
         )
@@ -100,7 +102,7 @@ class SettingsServiceImpl implements ISettingsService {
     // - S'assure que tous les thèmes ont un label ET un id
     // Ne se produit qu'une fois, à l'ouverture du webview
     // (puisque la liste des thèmes ne peut pas changer sans redémarrer VS Code)
-    private normalizeThemes(vscodeThemes: IVSCodeThemeContribution[]): IEditableTheme[] {
+    private normalizeThemes(vscodeThemes: IThemeContribution[]): IEditableTheme[] {
 
         // Transmet les thèmes normalisés au contrôleur
         const installedThemes = vscodeThemes.map(rawTheme => {
@@ -208,7 +210,7 @@ class SettingsServiceImpl implements ISettingsService {
         }
 
         // Envoie les nouveaux réglages bruts à VS Code
-        this.ExtensionService.putRawSettings(this.rawSettings)
+        this.Extension.putRawSettings(this.rawSettings)
     }
 
     // Dev/debug
@@ -218,8 +220,7 @@ class SettingsServiceImpl implements ISettingsService {
 }
 
 /*****************************************************************************
- * Exporte le registrar pour ce service
+ * Exporte le module du service
  *****************************************************************************/
-export const SettingsService: Utils.NGRegistrar = {
-    register: (parent: ng.IModule) => parent.service('settings.service', SettingsServiceImpl)
-}
+export const SettingsService = angular.module('settings.service', [ ExtensionService.name ])
+    .service('settings.service', SettingsServiceImpl)

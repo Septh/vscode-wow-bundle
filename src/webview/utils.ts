@@ -16,10 +16,3 @@ export function isStyle(str?: string): boolean {
 export function isObject(x?: any): boolean {
     return typeof x === 'object' && !!x && x.constructor === Object
 }
-
-/**
- * Types et fonctions utiles pour Angular
- */
-export interface NGRegistrar {
-    register(parent: ng.IModule): ng.IModule
-}

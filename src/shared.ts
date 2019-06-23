@@ -1,46 +1,5 @@
 
 /**
- * Formats des réglages tels que reçus de VSCode
- * Copié/collé de \vscode\src\vs\workbench\services\themes\common\workbenchThemeService.ts
- */
-export interface ITokenColorizationSetting {
-    foreground?: string
-    background?: string
-    fontStyle?: string
-}
-
-export interface ITokenColorizationRule {
-    name?: string
-    scope: string | string[]
-    settings: ITokenColorizationSetting
-}
-
-// Version simplifiée, avec seulement les champs qui nous intéressent
-export interface ITokenColorCustomizations {
-    // comments?: string | ITokenColorizationSetting
-    // strings?: string | ITokenColorizationSetting
-    // numbers?: string | ITokenColorizationSetting
-    // keywords?: string | ITokenColorizationSetting
-    // types?: string | ITokenColorizationSetting
-    // functions?: string | ITokenColorizationSetting
-    // variables?: string | ITokenColorizationSetting
-    textMateRules?: ITokenColorizationRule[]
-}
-
-// Simplifie l'accès aux thèmes dans les réglages
-export type IVSCodeTokenColorCustomizationsSettings = Record<string, ITokenColorizationRule[] | ITokenColorCustomizations>
-
-/*
- * Format des thèmes dans VSCode
- * (version simplifiée, avec seulement les champs qui nous intéressent)
- */
-export interface IVSCodeThemeContribution {
-    id?: string     // Certains vieux thèmes n'ont pas d'id
-    label: string   // Mais tous ont un label
-    uiTheme: 'vs' | 'vs-dark' | 'hc-black',
-}
-
-/**
  * Format des messages envoyés par le webview à l'extension
  */
 export type IWebviewMessage = IWebviewMessageLog | IWebviewMessageReady | IWebviewMessageUpdateSettings
@@ -88,5 +47,5 @@ export interface IExtensionMessageSettings {
 
 export interface IExtensionMessageThemes {
     command: IExtensionMessageCommand.THEMES
-    themes: IVSCodeThemeContribution[]
+    themes: IThemeContribution[]
 }

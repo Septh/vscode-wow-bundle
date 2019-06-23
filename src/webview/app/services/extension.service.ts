@@ -1,17 +1,18 @@
 
 import * as angular from 'angular'
-import * as Utils from '../utils'
 import { fromEvent, Observable } from 'rxjs'
 import { map, filter, share, distinctUntilChanged, startWith } from 'rxjs/operators'
 import {
-    IVSCodeTokenColorCustomizationsSettings, IVSCodeThemeContribution,
     IExtensionMessage, IExtensionMessageCommand, IExtensionMessageSettings, IExtensionMessageThemes, IExtensionMessageCurrentTheme,
     IWebviewMessage, IWebviewMessageCommand
-} from '../../shared'
+} from '../../../shared'
 
+/*****************************************************************************
+ * Interface du service
+ *****************************************************************************/
 export interface IExtensionService {
     readonly vscodeSettings$: Observable<IVSCodeTokenColorCustomizationsSettings>
-    readonly vscodeThemes$: Observable<IVSCodeThemeContribution[]>
+    readonly vscodeThemes$: Observable<IThemeContribution[]>
     readonly vscodeCurrentTheme$: Observable<string>
     putRawSettings(settings: IVSCodeTokenColorCustomizationsSettings): void
     messageToHost(message: IWebviewMessage): void
@@ -20,10 +21,8 @@ export interface IExtensionService {
 /*****************************************************************************
  * Implémentation du service
  *****************************************************************************/
-
-// Valeurs initiales des réglages
 const initialSettings: IVSCodeTokenColorCustomizationsSettings = {}
-const initialThemes: IVSCodeThemeContribution[] = []
+const initialThemes: IThemeContribution[] = []
 const initialCurrentTheme: string = ''
 
 class ExtensionServiceImpl implements IExtensionService {
@@ -33,7 +32,7 @@ class ExtensionServiceImpl implements IExtensionService {
 
     // Les données reçues de l'extension côté VS Code
     public readonly vscodeSettings$: Observable<IVSCodeTokenColorCustomizationsSettings>
-    public readonly vscodeThemes$: Observable<IVSCodeThemeContribution[]>
+    public readonly vscodeThemes$: Observable<IThemeContribution[]>
     public readonly vscodeCurrentTheme$: Observable<string>
 
     public static readonly $inject = [ '$window' ]
@@ -80,21 +79,13 @@ class ExtensionServiceImpl implements IExtensionService {
 }
 
 /*****************************************************************************
- * Exporte le registrar pour ce service
+ * Crée et exporte le module du service
  *****************************************************************************/
-export const ExtensionService: Utils.NGRegistrar = {
-    register: (parent: ng.IModule) => {
-
-        // Crée le service
-        parent.service('extension.service', ExtensionServiceImpl)
-
+export const ExtensionService = angular.module('extension.service', [])
+    .service('extension.service', ExtensionServiceImpl)
+    .run([ 'extension.service', (ext: IExtensionService) => {
         // Quand l'app démarre, prévient l'extension VS Code qu'on est prêt
-        parent.run(['extension.service', (ext: IExtensionService) => {
-            ext.messageToHost({
-                command: IWebviewMessageCommand.READY
-            })
-        }])
-
-        return parent
-    }
-}
+        ext.messageToHost({
+            command: IWebviewMessageCommand.READY
+        })
+    }])
