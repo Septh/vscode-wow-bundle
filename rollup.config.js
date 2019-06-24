@@ -2,6 +2,7 @@
 
 import nodeExternals from 'rollup-plugin-node-externals'
 import nodeResolve from 'rollup-plugin-node-resolve'
+import commonJS from 'rollup-plugin-commonjs'
 import typescript from '@wessberg/rollup-plugin-ts'
 import loadHtml from 'rollup-plugin-html'
 import postCss from 'rollup-plugin-postcss'
@@ -65,6 +66,7 @@ const webviewConfig = {
 			// We prefer the ES2015 version, accessible via the, well, 'es2015' entry.
 			mainFields: [ 'es2015', 'module', 'jsnext' ]
 		}),
+		commonJS(),
 		typescript(),
 		postCss({
 			// Consolidate all our styles in index.css

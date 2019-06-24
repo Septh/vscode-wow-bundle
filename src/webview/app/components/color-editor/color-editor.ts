@@ -1,5 +1,5 @@
 
-import * as Utils from '../../../utils'
+import { get as isColor } from 'color-string'
 
 export const ColorEditorControllerBindings = {
     color: '<',
@@ -10,28 +10,13 @@ export const ColorEditorControllerBindings = {
 export class ColorEditorController implements ng.IController {
 
     // Bindinds
-    public color!: string
-    public disabled!: boolean
+    public color?: string
+    public disabled?: boolean
     public onUpdate!: ngComponentEventBinding
 
-    // Utilisés par le template
-    public colorModelPattern: RegExp = Utils.HEX_COLOR_REGEX
-    public colorModelOptions: ng.INgModelOptions = {
-        // updateOn: 'default',
-        // debounce: { default: 500 },
-        allowInvalid: true
-    }
-
+    // Utilisé par le template html
     get cssSafeColor() {
-        let color = this.color || ''
-        if (color === '') {
-            color = 'transparent'
-        }
-        else if (color.length === 9) {
-            const rgba = /^#([\da-f]{2})([\da-f]{2})([\da-f]{2})([\da-f]{2})$/ui.exec(color)
-            color = rgba ? `rgba(${parseInt(rgba[1], 16)}, ${parseInt(rgba[2], 16)}, ${parseInt(rgba[3], 16)}, ${parseInt(rgba[4], 16) / 255})` : 'transparent'
-        }
-        return color
+        return this.color && isColor(this.color) ? this.color : 'transparent'
     }
 
     get isPickerShown() {
@@ -79,5 +64,19 @@ export class ColorEditorController implements ng.IController {
     // Met à jour le modèle parent quand le nôtre a changé, mais seulement s'il est valide
     public notifyParent() {
         this.onUpdate({ color: this.color })
+    }
+}
+
+export const validateColorDirective: ng.IDirectiveFactory = () => {
+    return {
+        require: 'ngModel',
+        link(_scope, _elm, _attrs, ctrl) {
+            ctrl!.$validators.cssColor = function(modelValue: string, viewValue: string) {
+                if (ctrl!.$isEmpty(modelValue)) {
+                    return true
+                }
+                return viewValue.match(/^[a-zA-Z]+$/) && isColor(viewValue)
+            }
+        }
     }
 }

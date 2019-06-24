@@ -1,7 +1,7 @@
 
 import * as angular from 'angular'
 
-import { ColorEditorController, ColorEditorControllerBindings } from './color-editor'
+import { ColorEditorController, ColorEditorControllerBindings, validateColorDirective } from './color-editor'
 import ColorEditorTemplate from './color-editor.html'
 import './color-editor.css'
 
@@ -12,3 +12,4 @@ export const ColorEditor = angular.module('ColorEditor', [])
         controller: ColorEditorController,
         template: ColorEditorTemplate
     })
+    .directive('validateColor', validateColorDirective)

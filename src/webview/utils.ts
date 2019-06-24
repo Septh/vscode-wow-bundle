@@ -1,18 +1,19 @@
 
+import { get as getColor } from 'color-string'
+
 // Teste si une chaîne représente une couleur hexa
-export const HEX_COLOR_REGEX = /^#(?:(?:[\da-f]{3}){1,2}|(?:[\da-f]{4}){1,2})$/ui     // #RGB, #RRGGBB, #RGBA, #RRGGBBAA
 export function isColor(str?: string): boolean {
-    return typeof str === 'string' && HEX_COLOR_REGEX.test(str)
+    return typeof str === 'string' && getColor(str) !== null
 }
 
 // Teste si une chaîne représente un style
-export const FONT_STYLE_REGEX = /\b(bold|italic|underline)\b/ui
+const styles: Record<string, boolean> = { bold: true, italic: true, underline: true }
 export function isStyle(str?: string): boolean {
-    return typeof str === 'string' && (str === '' || FONT_STYLE_REGEX.test(str))
+    return typeof str === 'string' && (new Set(str.split(/\W+/).filter(w => styles[w])).size) <= 3
 }
 
 // Teste si une valeur est un objet
 // https://webbjocke.com/javascript-check-data-types/
 export function isObject(x?: any): boolean {
-    return typeof x === 'object' && !!x && x.constructor === Object
+    return typeof x === 'object' && x !== null && (x.constructor === undefined || x.constructor === Object)
 }

@@ -33,8 +33,10 @@ input[type="text"] {
     border: 1px solid var(--vscode-settings-checkboxBorder);
 }
 
-input[type="text"].ng-invalid {
+input[type="text"]:not(:disabled).ng-invalid {
     color: var(--vscode-editorError-foreground);
+    border-color: var(--vscode-editorError-foreground);
+    outline-color: var(--vscode-editorError-foreground);
 }
 
 button:disabled,
