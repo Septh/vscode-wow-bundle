@@ -57,8 +57,8 @@ const webviewConfig = {
 	},
 	plugins: [
 		nodeExternals({
-			// Explicitly mark angular as external as we use it with a <script> tag in index.html
-			include: 'angular'
+			// Explicitly mark the Angular family as external as we use it with a <script> tag in index.html
+			include: /^angular/
 		}),
 		nodeResolve({
 			// RxJs's package.json 'module' entry points to an ES5 version of the lib.

@@ -1,4 +1,12 @@
-// tslint:disable
+/**
+ * This file mocks the VSCode side of the extension.
+ * Useful for testing and debugging the webview in a real browser as if it were a plain app:
+ * - serve the built webview on http: `$ serve extension/webview/`
+ * - view it in Chrome at `http://localhost:5000`
+ * - debug/trace in VSCode using the `Attach to Chrome` launch config
+ */
+
+// tslint:disable object-literal-key-quotes align
 
 import { IWebviewMessage, IWebviewMessageCommand,
          IExtensionMessageCommand, IExtensionMessageSettings, IExtensionMessageThemes, IExtensionMessageCurrentTheme
@@ -7,58 +15,57 @@ import { IWebviewMessage, IWebviewMessageCommand,
 if (typeof acquireVsCodeApi === 'undefined') {
     console.warn('MOCKING!')
 
-    const $$mock_settings: IVSCodeTokenColorCustomizationsSettings = {
-        "[Default Dark+]": {
-            "textMateRules": [
-                {
-                    "scope": "comment.block.wow.lua",
-                    "settings": {
-                        "foreground": "#ffff00",
-                        "fontStyle": "italic"
-                    }
-                },
-                {
-                    "scope": "comment.line.double-dash.wow.lua",
-                    "settings": {
-                        "fontStyle": "bold italic"
-                    }
-                }
-            ]
+    const __vsCodeApi: IVSCodeWebviewApi = {
+        getState() {},
+        setState() {},
+        postMessage(msg: any) {
+            window.postMessage(msg, '*')
+        }
+    }
+    ;(window as any).acquireVsCodeApi = () => __vsCodeApi
+
+    const __msg_settings: IExtensionMessageSettings = {
+        command: IExtensionMessageCommand.SETTINGS,
+        settings: {
+            '[Default Dark+]': {
+                'textMateRules': [
+                    { 'scope': 'comment.line.double-dash.wow.lua', 'settings': { 'fontStyle': 'bold italic' } },
+                    { 'scope': 'comment.block.wow.lua',            'settings': { 'foreground': '#ffff00', 'fontStyle': 'italic' } }
+                ]
+            }
         }
     }
 
-    const $$mock_themes: IThemeContribution[] = [
-        { id: 'Default Dark+',  label: 'Dark+ (default dark)',   uiTheme: 'vs-dark' },
-        { id: 'Default Light+', label: 'Light+ (default light)', uiTheme: 'vs'      },
-        { id: 'Monokai',        label: 'Monokai',                uiTheme: 'vs-dark' },
-    ]
+    const __msg_themes: IExtensionMessageThemes = {
+        command: IExtensionMessageCommand.THEMES,
+        themes: [
+            { id: 'Default Dark+',  label: 'Dark+ (default dark)',   uiTheme: 'vs-dark' },
+            { id: 'Default Light+', label: 'Light+ (default light)', uiTheme: 'vs'      },
+            { id: 'Monokai',        label: 'Monokai',                uiTheme: 'vs-dark' },
+        ]
+    }
 
-    const $$noop = () => {}
-    const $$vsCodeApi: IVSCodeWebviewApi = {
-        getState: () => $$noop,
-        setState: () => $$noop,
-        postMessage: (msg: any) => {
-            window.postMessage(msg, '*')
-        }
-    };
-    (window as any).acquireVsCodeApi = () => $$vsCodeApi
+    const __msg_currentTheme: IExtensionMessageCurrentTheme = {
+        command: IExtensionMessageCommand.CURRENT_THEME,
+        currentTheme: __msg_themes.themes[0].label
+    }
 
     window.addEventListener('message', (event: MessageEvent) => {
         const msg = event.data as IWebviewMessage
         if (msg.command === IWebviewMessageCommand.LOG) {
-            console.log(msg)
+            console.log(msg.data)
         }
         else if (msg.command === IWebviewMessageCommand.READY) {
             // console.log('[MOCK] Reçoit "%s"', IWebviewMessageCommand.READY)
 
             // console.log('[MOCK] Envoie "%s"', IExtensionMessageCommand.THEMES)
-            $$vsCodeApi.postMessage(<IExtensionMessageThemes>{ command: IExtensionMessageCommand.THEMES, themes: $$mock_themes })
+            __vsCodeApi.postMessage(__msg_themes)
 
             // console.log('[MOCK] Envoie "%s"', IExtensionMessageCommand.CURRENT_THEME)
-            $$vsCodeApi.postMessage(<IExtensionMessageCurrentTheme>{ command: IExtensionMessageCommand.CURRENT_THEME, currentTheme: $$mock_themes[0].label })
+            __vsCodeApi.postMessage(__msg_currentTheme)
 
             // console.log('[MOCK] Envoie "%s"', IExtensionMessageCommand.SETTINGS)
-            $$vsCodeApi.postMessage(<IExtensionMessageSettings>{ command: IExtensionMessageCommand.SETTINGS, settings: $$mock_settings })
+            __vsCodeApi.postMessage(__msg_settings)
         }
     }, false)
 }
